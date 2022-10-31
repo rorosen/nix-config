@@ -1,0 +1,25 @@
+// vim:ts=4:sw=4:et
+{
+  "border": "pixel",
+  "current_border_width": 2,
+  "floating": "auto_off",
+  "geometry": {
+    "height": 1020,
+    "width": 1916,
+    "x": 2,
+    "y": 30
+  },
+  "marks": [],
+  //  "name": "i3.nix - nixfiles - Visual Studio Code",
+  "percent": 1,
+  "swallows": [
+    {
+      "class": "^Code$",
+      "instance": "^code$",
+      // "machine": "^hp$",
+      // "title": "^i3\\.nix\\ \\-\\ nixfiles\\ \\-\\ Visual\\ Studio\\ Code$",
+      "window_role": "^browser\\-window$"
+    }
+  ],
+  "type": "con"
+}
