@@ -47,23 +47,23 @@
 
       startup = [
         {
-          command = "i3-msg \"workspace 1; append_layout ~/nixfiles/config/i3/workspace-1.json\"";
+          command = "i3-msg \"workspace 1; append_layout $HOME/.config/i3/workspace-1.json\"";
           notification = false;
         }
         {
-          command = "i3-msg \"workspace 2; append_layout ~/nixfiles/config/i3/workspace-2.json\"";
+          command = "i3-msg \"workspace 2; append_layout $HOME/.config/i3/workspace-2.json\"";
           notification = false;
         }
         {
-          command = "i3-msg \"workspace 3; append_layout ~/nixfiles/config/i3/workspace-3.json\"";
+          command = "i3-msg \"workspace 3; append_layout $HOME/.config/i3/workspace-3.json\"";
           notification = false;
         }
         {
-          command = "i3-msg \"workspace 19; append_layout ~/nixfiles/config/i3/workspace-19.json\"";
+          command = "i3-msg \"workspace 19; append_layout $HOME/.config/i3/workspace-19.json\"";
           notification = false;
         }
         {
-          command = "i3-msg \"workspace 20; append_layout ~/nixfiles/config/i3/workspace-20.json\"";
+          command = "i3-msg \"workspace 20; append_layout $HOME/.config/i3/workspace-20.json\"";
           notification = false;
         }
         { command = "systemctl --user restart polybar"; always = true; notification = false; }
