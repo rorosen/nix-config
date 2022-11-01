@@ -105,7 +105,7 @@ in
         enable.ipc = true;
         modules = {
           left = "launcher title workspaces";
-          right = "volume brightness temperature " + (if battery-available then "battery " else "") + "keyboard date sysmenu";
+          right = "volume brightness temperature " + (if battery-available then "battery " else "") + "keyboard date";
         };
       };
 
@@ -127,7 +127,7 @@ in
         };
         modules = {
           left = "spotify-status spotify-prev spotify-play-pause spotify-next cpu memory filesystem";
-          right = (if network-interface-wired == "" then "" else "network-wired ") + (if network-interface-wireless == "" then "" else "network-wireless ");
+          right = (if network-interface-wired == "" then "" else "network-wired ") + (if network-interface-wireless == "" then "" else "network-wireless ") + "sysmenu";
         };
       };
 
