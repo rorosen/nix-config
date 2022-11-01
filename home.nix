@@ -18,6 +18,9 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  
-  imports = [ ./packages.nix ./config/main.nix ];
+
+  imports = [
+    ./packages.nix
+    ./config/main.nix
+  ];
 }

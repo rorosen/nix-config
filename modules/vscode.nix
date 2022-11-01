@@ -14,6 +14,7 @@
       james-yu.latex-workshop
       ms-vscode.cpptools
       golang.go
+      davidanson.vscode-markdownlint
     ];
 
     userSettings = {
