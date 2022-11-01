@@ -35,6 +35,8 @@
 
       "shellformat.path" = "${pkgs.shfmt}/bin/shfmt";
       "shellformat.flag" = "-i=4";
+
+      "git.confirmSync" = false;
     };
   };
 }
