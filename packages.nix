@@ -29,6 +29,7 @@
     shfmt
     signal-desktop
     flameshot
+    openssh
 
     # fonts
     fantasque-sans-mono

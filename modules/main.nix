@@ -12,6 +12,7 @@
     ./qt.nix
     ./gnome-keyring.nix
     ./git.nix
+    ./ssh-agent.nix
   ];
 
   xsession.enable = true;
