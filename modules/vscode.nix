@@ -37,6 +37,9 @@
       "shellformat.flag" = "-i=4";
 
       "git.confirmSync" = false;
+
+      "update.mode" = "none";
+      "update.showReleaseNotes" = false;
     };
   };
 }

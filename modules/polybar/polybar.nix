@@ -210,6 +210,7 @@ in
           urgent = {
             text = "%icon%";
             foreground = green;
+            overline = green;
             padding = 1;
           };
           empty = {
