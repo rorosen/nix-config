@@ -30,6 +30,7 @@
     signal-desktop
     flameshot
     openssh
+    arp-scan
 
     # fonts
     fantasque-sans-mono
