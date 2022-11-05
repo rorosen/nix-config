@@ -355,7 +355,7 @@ in
             foreground = foreground;
           };
           fill = "\${bar.fill}";
-          foreground = [ green ];
+          foreground = [ yellow ];
           empty = {
             text = "\${bar.empty}";
             foreground = foreground-alt;
@@ -378,7 +378,7 @@ in
           width = "\${bar.width}";
           gradient = false;
           fill = "\${bar.fill}";
-          foreground = [ green ];
+          foreground = [ yellow ];
           indicator = {
             text = "\${bar.indicator}";
             foreground = foreground;
