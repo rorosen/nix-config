@@ -31,6 +31,8 @@
     flameshot
     openssh
     arp-scan
+    qemu
+    virt-manager
 
     # fonts
     fantasque-sans-mono
