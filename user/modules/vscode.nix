@@ -40,6 +40,8 @@
 
       "update.mode" = "none";
       "update.showReleaseNotes" = false;
+
+      "explorer.confirmDragAndDrop" = false;
     };
   };
 }

@@ -1,7 +1,8 @@
 { pkgs, ... }:
 
 {
-  fonts.fontconfig.enable = true;
+  # TODO: does not work when using home-manager as a nixos module
+  # fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     i3
@@ -33,14 +34,6 @@
     arp-scan
     qemu
     virt-manager
-
-    # fonts
-    fantasque-sans-mono
-    noto-fonts
-    terminus_font
-    material-icons
-    siji
-    (nerdfonts.override { fonts = [ "Meslo" "Iosevka" ]; })
   ];
 }
 

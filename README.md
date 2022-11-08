@@ -7,12 +7,13 @@
 Follow the NixOS installation as described in the [manual](https://nixos.org/manual/nixos/stable/index.html#ch-installation). Change the configuration file in `/etc/nixos/configuration.nix` so that it looks like the following. Type in the real values for the placeholders `<HOSTNAME>`, `<VIDEO_DRIVER>` and `<USERNAME>`.
 
 ```nix
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -24,7 +25,13 @@ Follow the NixOS installation as described in the [manual](https://nixos.org/man
   networking = {
     hostName = "<HOSTNAME>";
     networkmanager.enable = true;
+    firewall.enable = false;
   };
+
+  environment.systemPackages = with pkgs; [
+    networkmanager
+    vim
+  ];
 
   time.timeZone = "Europe/Amsterdam";
   console.keyMap = "de-latin1";
@@ -64,41 +71,41 @@ Follow the NixOS installation as described in the [manual](https://nixos.org/man
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "22.05";
+
+  fonts.fonts = with pkgs; [
+    fantasque-sans-mono
+    noto-fonts
+    terminus_font
+    material-icons
+    siji
+    (nerdfonts.override { fonts = [ "Meslo" "Iosevka" ]; })
+  ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.<USERNAME> = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
 
-  environment.systemPackages = with pkgs; [
-    networkmanager
-    vim
-  ];
-
-  networking.firewall.enable = false;
-
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.05";
+  home-manager.users.<USERNAME> = { ... }: {
+    nixpkgs.config.allowUnfree = true;
+    imports = [ ./user/home.nix ];
+  };
 }
 ```
 
-Consequently, run `nixos-rebuild boot`, set a password for the user account using `passswd <USERNAME>` and `reboot` the system. Log in as the newly created user account and install Home Manager as described in the [manual](https://nix-community.github.io/home-manager/index.html#sec-install-standalone).
-
-Once Home Manager is installed, clone this repo. You can install git temporary in a `nix-shell`, it will be installed later through Home Manager anyway.
+Consequently, clone this repo and link its [user](./user) directory to `/etc/nixos/user`.
 
 ```shell
 nix-shell -p git
-# clone repo in the same shell
+git clone ...
+sudo ln -s /path/to/repo/user /etc/nixos/user
 ```
 
-Afterwards, link the repo to `$HOME/.config/nixpkgs/` and create the first Home Manager generation. Reboot the system consequently once again.
-
-```shell
-ln -s /path/to/repo $HOME/.config/nixpkgs
-home-manager switch
-reboot
-```
+Run `nixos-rebuild switch` and set a password for the user account using `passswd <USERNAME>`.
 
 ## Links
 
