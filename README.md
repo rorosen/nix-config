@@ -4,7 +4,7 @@
 
 ## Setup
 
-Follow the NixOS installation as described in the [manual](https://nixos.org/manual/nixos/stable/index.html#ch-installation). Change the configuration file in `/etc/nixos/configuration.nix` so that it looks like the following. Type in the real values for the placeholders `<HOSTNAME>`, `<VIDEO_DRIVER>` and `<USERNAME>`.
+Follow the NixOS installation as described in the [manual](https://nixos.org/manual/nixos/stable/index.html#ch-installation). Change the configuration file in `/etc/nixos/configuration.nix` so that it looks like the following. Type in the real values for the placeholders `<HOSTNAME>` and `<VIDEO_DRIVER>`.
 
 ```nix
 { config, pkgs, lib, ... }:
@@ -85,12 +85,12 @@ Follow the NixOS installation as described in the [manual](https://nixos.org/man
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.<USERNAME> = {
+  users.users.rob = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
 
-  home-manager.users.<USERNAME> = { ... }: {
+  home-manager.users.rob = { ... }: {
     nixpkgs.config.allowUnfree = true;
     imports = [ ./user/home.nix ];
   };
