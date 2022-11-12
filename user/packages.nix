@@ -34,6 +34,7 @@
     arp-scan
     qemu
     virt-manager
+    kubectl
   ];
 }
 

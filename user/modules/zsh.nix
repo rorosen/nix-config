@@ -25,6 +25,7 @@
 
     shellAliases = {
       ".." = "cd ..";
+      "k" = "kubectl";
     };
 
     plugins = [
