@@ -71,6 +71,8 @@ Follow the NixOS installation as described in the [manual](https://nixos.org/man
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  virtualisation.libvirtd.enable = true;
+
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05";
