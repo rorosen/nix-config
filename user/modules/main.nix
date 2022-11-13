@@ -15,7 +15,11 @@
     ./ssh-agent.nix
   ];
 
-  xsession.enable = true;
+  xsession = {
+    enable = true;
+    numlock.enable = true;
+  };
+
   home.keyboard.layout = "de";
 }
 
