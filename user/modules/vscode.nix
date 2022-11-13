@@ -32,6 +32,7 @@
       "[typescriptreact]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
       "[shellscript]"."editor.defaultFormatter" = "foxundermoon.shell-format";
       "[nix]"."editor.defaultFormatter" = "jnoortheen.nix-ide";
+      "[ignore]"."editor.defaultFormatter" = "foxundermoon.shell-format";
 
       "shellformat.path" = "${pkgs.shfmt}/bin/shfmt";
       "shellformat.flag" = "-i=4";
