@@ -28,7 +28,7 @@
         };
         cursor = {
           text = "0xEBEBEB";
-          cursor = "#fdd835";
+          cursor = "#b19102";
         };
         normal = {
           black = "0x0D0D0D";
