@@ -35,6 +35,7 @@
     qemu
     virt-manager
     kubectl
+    wireguard-tools
   ];
 }
 
