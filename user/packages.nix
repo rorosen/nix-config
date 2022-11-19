@@ -36,6 +36,7 @@
     virt-manager
     kubectl
     wireguard-tools
+    kubernetes-helm
   ];
 }
 
