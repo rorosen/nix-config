@@ -15,6 +15,7 @@
       ms-vscode.cpptools
       golang.go
       davidanson.vscode-markdownlint
+      ms-kubernetes-tools.vscode-kubernetes-tools
     ];
 
     userSettings = {
