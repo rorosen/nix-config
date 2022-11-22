@@ -37,6 +37,9 @@
     kubectl
     wireguard-tools
     kubernetes-helm
+    openssl
+    docker
+    kubectx
   ];
 }
 
