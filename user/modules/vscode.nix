@@ -16,6 +16,7 @@
       golang.go
       davidanson.vscode-markdownlint
       ms-kubernetes-tools.vscode-kubernetes-tools
+      redhat.vscode-yaml
     ];
 
     userSettings = {
@@ -34,6 +35,9 @@
       "[shellscript]"."editor.defaultFormatter" = "foxundermoon.shell-format";
       "[nix]"."editor.defaultFormatter" = "jnoortheen.nix-ide";
       "[ignore]"."editor.defaultFormatter" = "foxundermoon.shell-format";
+      "[properties]"."editor.defaultFormatter" = "foxundermoon.shell-format";
+
+      "prettier.bracketSpacing" = false;
 
       "shellformat.path" = "${pkgs.shfmt}/bin/shfmt";
       "shellformat.flag" = "-i=4";
