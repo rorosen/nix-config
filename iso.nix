@@ -16,7 +16,6 @@
   console.keyMap = "de-latin1";
 
   environment.systemPackages = with pkgs; [
-    networkmanager
     vim
   ];
 
