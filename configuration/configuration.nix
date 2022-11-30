@@ -1,9 +1,12 @@
 { config, pkgs, lib, ... }:
 
+let
+  values = import ./values.nix;
+in
 {
   imports =
     [
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
       <home-manager/nixos>
     ];
 
@@ -13,11 +16,14 @@
     efi.canTouchEfiVariables = true;
   };
 
+  # Let the kernel load the video driver right away
+  boot.initrd.kernelModules = [ values.videoDriver ];
+
   # Clean tmp on boot
   boot.cleanTmpDir = true;
 
   networking = {
-    hostName = "<HOSTNAME>";
+    hostName = values.hostName;
     networkmanager.enable = true;
     firewall.enable = false;
   };
@@ -39,7 +45,7 @@
     enable = true;
 
     updateDbusEnvironment = true;
-    videoDrivers = [ "<VIDEO_DRIVER>" ];
+    videoDrivers = [ values.videoDriver ];
 
     libinput = {
       enable = true;
