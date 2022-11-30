@@ -2,13 +2,15 @@
 
 let
   # --------- HARDWARE ---------
+  # leave empty if disabled
   # for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
-  temp-hwmon-path = "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input";
+  temp-hwmon-path = "";
   # ls -1 /sys/class/backlight/
-  backlight-card = "intel_backlight";
+  backlight-card = "";
   network-interface-wired = "";
-  network-interface-wireless = "wlo1";
-  battery-available = true;
+  network-interface-wireless = "";
+  # ls -1 /sys/class/power_supply/
+  battery = "";
 
   # --------- COLORS ---------
   background = "#0a0a0a";
@@ -105,7 +107,7 @@ in
         enable.ipc = true;
         modules = {
           left = "launcher title workspaces";
-          right = "volume brightness temperature " + (if battery-available then "battery " else "") + "keyboard date";
+          right = "volume " + (if backlight-card == "" then "" else "brightness ") + "temperature " + (if battery == "" then "" else "battery ") + "keyboard date";
         };
       };
 
@@ -251,8 +253,8 @@ in
 
       "module/battery" = {
         type = "internal/battery";
-        full.at = 93;
-        battery = "BAT1";
+        full.at = 99;
+        battery = battery;
         adapter = "ACAD";
         poll.interval = 2;
         time.format = "%H:%M";

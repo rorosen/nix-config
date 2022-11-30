@@ -21,6 +21,7 @@
 
       autoload -U select-word-style
       select-word-style bash
+      export EDITOR=vim
     '';
 
     shellAliases = {

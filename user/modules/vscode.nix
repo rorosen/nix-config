@@ -48,6 +48,8 @@
       "update.showReleaseNotes" = false;
 
       "explorer.confirmDragAndDrop" = false;
+
+      "redhat.telemetry.enabled" = false;
     };
   };
 }

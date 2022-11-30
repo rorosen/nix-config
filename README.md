@@ -22,6 +22,9 @@ Follow the NixOS installation as described in the [manual](https://nixos.org/man
     efi.canTouchEfiVariables = true;
   };
 
+  # Clean tmp on boot
+  boot.cleanTmpDir = true;
+
   networking = {
     hostName = "<HOSTNAME>";
     networkmanager.enable = true;
@@ -33,7 +36,7 @@ Follow the NixOS installation as described in the [manual](https://nixos.org/man
     vim
   ];
 
-  time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Europe/Berlin";
   console.keyMap = "de-latin1";
 
   # unlock "login" keyring on login
@@ -65,13 +68,22 @@ Follow the NixOS installation as described in the [manual](https://nixos.org/man
   };
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  virtualisation.libvirtd.enable = true;
+  # Enable scanner support
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.sane-airscan ];
+  };
+
+  virtualisation = {
+    libvirtd.enable = true;
+    docker.enable = true;
+  };
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
@@ -89,7 +101,7 @@ Follow the NixOS installation as described in the [manual](https://nixos.org/man
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rob = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "libvirtd" "docker" "cups" "scanner" "lp" ];
   };
 
   home-manager.users.rob = { ... }: {

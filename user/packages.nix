@@ -40,6 +40,13 @@
     openssl
     docker
     kubectx
+    gparted
+    udisks
+    sops
+    age
+    minikube
+    pdfsam-basic
+    gnome.simple-scan
   ];
 }
 
