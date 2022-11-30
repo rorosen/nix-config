@@ -1,0 +1,4 @@
+{
+  videoDriver = "videoDriver";
+  hostName = "hostName";
+}
