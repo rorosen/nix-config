@@ -7,6 +7,7 @@ let
   temp-hwmon-path = "";
   # ls -1 /sys/class/backlight/
   backlight-card = "";
+  # ip l
   network-interface-wired = "";
   network-interface-wireless = "";
   # ls -1 /sys/class/power_supply/
