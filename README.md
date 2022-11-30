@@ -21,7 +21,17 @@ Copy the content of `/etc/configuration` to `/etc/nixos/`.
 cp /etc/configuration/* /etc/nixos/
 ```
 
-Run `nixos-install`, boot into the new system, log in as root and set a password for the user with `passswd <USERNAME>`.
+Move `/etc/nixos/values.nix.example` to `/etc/nixos/values.nix` and set the right values.
+
+Consequently, run `nixos-install`, boot into the new system, log in as root and set a password for the user with `passswd <USERNAME>`.
+
+## Post Install
+
+Link the repo to `/etc/nixos`.
+
+```bash
+sudo ln -sf $(pwd)/configuration/* /etc/nixos
+```
 
 ## Links
 
