@@ -1,18 +1,8 @@
 { config, pkgs, lib, ... }:
 
-let
-  # --------- HARDWARE ---------
-  # leave empty if disabled
-  # for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
-  temp-hwmon-path = "";
-  # ls -1 /sys/class/backlight/
-  backlight-card = "";
-  # ip l
-  network-interface-wired = "";
-  network-interface-wireless = "";
-  # ls -1 /sys/class/power_supply/
-  battery = "";
+with lib;
 
+let
   # --------- COLORS ---------
   background = "#0a0a0a";
   foreground = "#f5f5f5";
@@ -21,6 +11,8 @@ let
   red = "#FF5250";
   green = "#006600";
   yellow = "#fdd835";
+
+  cfg = config.services.polybar;
 in
 {
   imports = [
@@ -28,524 +20,575 @@ in
     ./spotify-status.nix
   ];
 
-  services.polybar = {
-    enable = true;
+  options.services.polybar = {
+    tempHwmonPath = mkOption {
+      default = "";
+      type = types.str;
+      description = "
+        Full path of temperature sysfs path
+        Use `sensors` to find preferred temperature source, then run
+        $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo \"$(<$(dirname $i)/name): $(cat \${i%_*}_label 2>/dev/null || echo $(basename \${i%_*})) $(readlink -f $i)\"; done
+        to find path to desired file
+        ";
+    };
 
-    script = ''
-      polybar top &
-      polybar bottom &
-    '';
+    backlightCard = mkOption {
+      default = "";
+      type = types.str;
+      description = "      
+        Use the following command to list available cards:
+        $ ls -1 /sys/class/backlight/
+      ";
+    };
 
-    settings = {
-      "settings" = {
-        screenchange.reload = false;
-        pseudo.transparency = false;
-        compositing = {
-          background = "source";
-          foreground = "over";
-          overline = "over";
-          underline = "over";
-          border = "over";
-        };
+    battery = mkOption {
+      default = "";
+      type = types.str;
+      description = "      
+        Use the following command to list batteries and adapters:
+        $ ls -1 /sys/class/power_supply/
+      ";
+    };
+
+    network = {
+      interfaceWired = mkOption {
+        default = "";
+        type = types.str;
+        description = "      
+          $ ip l
+        ";
       };
 
-      "gloabl/wm" = {
-        margin.bottom = 0;
-        margin-top = 0;
+      interfaceWireless = mkOption {
+        default = "";
+        type = types.str;
+        description = "      
+          $ ip l
+        ";
       };
+    };
+  };
 
-      "bar" = {
-        fill = "ﭳ ";
-        empty = "ﭳ ";
-        indicator = "";
-        width = 6;
-        format = "%{T4}%fill%%indicator%%empty%%{F-}%{T-}";
-      };
+  config = {
+    services.polybar = {
+      enable = true;
 
-      # --------- BARS ---------
+      script = ''
+        polybar top &
+        polybar bottom &
+      '';
 
-      "bar/main" = {
-        monitor.strict = false;
-        override.redirect = false;
-        bottom = false;
-        fixed.center = true;
-        width = "100%";
-        height = "28";
-        offset = {
-          x = "0%";
-          y = "0%";
+      settings = {
+        "settings" = {
+          screenchange.reload = false;
+          pseudo.transparency = false;
+          compositing = {
+            background = "source";
+            foreground = "over";
+            overline = "over";
+            underline = "over";
+            border = "over";
+          };
         };
-        background = background;
-        foreground = foreground;
-        radius = {
-          top = "0.0";
-          bottom = "0.0";
-        };
-        line = {
-          size = 2;
-          color = primary;
-        };
-        border = {
-          size = 0;
-          color = primary;
-        };
-        padding = 0;
-        module.margin = {
-          left = 0;
-          right = 0;
-        };
-        # Fonts are defined using <font-name>;<vertical-offset>
-        font = [
-          "Iosevka Nerd Font:style=Medium:size=10;4"
-          "Iosevka Nerd Font:style=Medium:size=19;3"
-          "Iosevka Nerd Font:style=Medium:size=12;4"
-          "Iosevka Nerd Font:style=Medium:size=7;4"
-        ];
-      };
 
-      "bar/top" = {
-        "inherit" = "bar/main";
-        enable.ipc = true;
-        modules = {
-          left = "launcher title workspaces";
-          right = "volume " + (if backlight-card == "" then "" else "brightness ") + "temperature " + (if battery == "" then "" else "battery ") + "keyboard date";
+        "gloabl/wm" = {
+          margin.bottom = 0;
+          margin-top = 0;
         };
-      };
 
-      "bar/bottom" = {
-        "inherit" = "bar/main";
-        enable.ipc = true;
-        bottom = true;
-        tray = {
-          position = "center";
-          detached = false;
-          maxsize = 16;
-          background = background;
-          padding = 0;
-          scale = "1.0";
+        "bar" = {
+          fill = "ﭳ ";
+          empty = "ﭳ ";
+          indicator = "";
+          width = 6;
+          format = "%{T4}%fill%%indicator%%empty%%{F-}%{T-}";
+        };
+
+        # --------- BARS ---------
+
+        "bar/main" = {
+          monitor.strict = false;
+          override.redirect = false;
+          bottom = false;
+          fixed.center = true;
+          width = "100%";
+          height = "28";
           offset = {
-            x = 0;
-            y = 0;
+            x = "0%";
+            y = "0%";
           };
-        };
-        modules = {
-          left = "spotify-status spotify-prev spotify-play-pause spotify-next cpu memory filesystem";
-          right = (if network-interface-wired == "" then "" else "network-wired ") + (if network-interface-wireless == "" then "" else "network-wireless ") + "sysmenu";
-        };
-      };
-
-      # --------- MODULES TOP ---------
-
-      "module/launcher" = {
-        type = "custom/text";
-        click.left = "${pkgs.rofi}/bin/rofi -no-config -show drun -theme $HOME/.config/rofi/config.rasi";
-        content = {
-          text = " ";
           background = background;
-          foreground = primary;
-          padding = 2;
-        };
-      };
-
-      "module/title" = {
-        type = "internal/xwindow";
-        format = {
-          text = "<label>";
-          background = background;
+          foreground = foreground;
+          radius = {
+            top = "0.0";
+            bottom = "0.0";
+          };
+          line = {
+            size = 2;
+            color = primary;
+          };
+          border = {
+            size = 0;
+            color = primary;
+          };
           padding = 0;
+          module.margin = {
+            left = 0;
+            right = 0;
+          };
+          # Fonts are defined using <font-name>;<vertical-offset>
+          font = [
+            "Iosevka Nerd Font:style=Medium:size=10;4"
+            "Iosevka Nerd Font:style=Medium:size=19;3"
+            "Iosevka Nerd Font:style=Medium:size=12;4"
+            "Iosevka Nerd Font:style=Medium:size=7;4"
+          ];
         };
-        label = {
-          text = "%title%";
-          minlen = 40;
-          maxlen = 40;
-          # Used instead of label when there is no window title (40 spaces)
-          empty = "                                        ";
-        };
-      };
 
-      "module/workspaces" = {
-        type = "internal/xworkspaces";
-        pin.workspaces = true;
-        enable = {
-          click = true;
-          scroll = false;
-        };
-        icon = [
-          "1;1"
-          "2;2"
-          "3;3"
-          "4;4"
-          "5;5"
-          "6;6"
-          "7;7"
-          "8;8"
-          "9;9"
-          "10;10"
-          "11;11"
-          "12;12"
-          "13;13"
-          "14;14"
-          "15;15"
-          "16;16"
-          "17;17"
-          "18;18"
-          "19;19"
-          "20;20"
-        ];
-        format = {
-          text = "<label-state>";
-          background = background;
-          padding = 0;
-        };
-        label = {
-          monitor = "%name%";
-          active = {
-            text = "%icon%";
-            foreground = red;
-            overline = red;
-            padding = 1;
-          };
-          occupied = {
-            text = "%icon%";
-            foreground = yellow;
-            padding = 1;
-          };
-          urgent = {
-            text = "%icon%";
-            foreground = green;
-            overline = green;
-            padding = 1;
-          };
-          empty = {
-            text = "%icon%";
-            foreground = yellow;
-            padding = 1;
+        "bar/top" = {
+          "inherit" = "bar/main";
+          enable.ipc = true;
+          modules = {
+            left = "launcher title workspaces";
+            right = "volume " + (if cfg.backlightCard == "" then "" else "brightness ") + "temperature " + (if cfg.battery == "" then "" else "battery ") + "keyboard date";
           };
         };
-      };
 
-      "module/temperature" = {
-        type = "internal/temperature";
-        interval = 1;
-        thermal.zone = 0;
-        hwmon.path = temp-hwmon-path;
-        warn.temperature = 65;
-        base.temperature = 20;
-        units = true;
-        format = {
-          text = "<ramp> <label>";
-          background = background;
-          padding = 1;
-          warn = {
-            text = "<ramp> <label-warn>";
+        "bar/bottom" = {
+          "inherit" = "bar/main";
+          enable.ipc = true;
+          bottom = true;
+          tray = {
+            position = "center";
+            detached = false;
+            maxsize = 16;
+            background = background;
+            padding = 0;
+            scale = "1.0";
+            offset = {
+              x = 0;
+              y = 0;
+            };
+          };
+          modules = {
+            left = "spotify-status spotify-prev spotify-play-pause spotify-next cpu memory filesystem";
+            right = (if cfg.network.interfaceWired == "" then "" else "network-wired ") + (if cfg.network.interfaceWireless == "" then "" else "network-wireless ") + "sysmenu";
+          };
+        };
+
+        # --------- MODULES TOP ---------
+
+        "module/launcher" = {
+          type = "custom/text";
+          click.left = "${pkgs.rofi}/bin/rofi -no-config -show drun -theme $HOME/.config/rofi/config.rasi";
+          content = {
+            text = " ";
+            background = background;
+            foreground = primary;
+            padding = 2;
+          };
+        };
+
+        "module/title" = {
+          type = "internal/xwindow";
+          format = {
+            text = "<label>";
+            background = background;
+            padding = 0;
+          };
+          label = {
+            text = "%title%";
+            minlen = 40;
+            maxlen = 40;
+            # Used instead of label when there is no window title (40 spaces)
+            empty = "                                        ";
+          };
+        };
+
+        "module/workspaces" = {
+          type = "internal/xworkspaces";
+          pin.workspaces = true;
+          enable = {
+            click = true;
+            scroll = false;
+          };
+          icon = [
+            "1;1"
+            "2;2"
+            "3;3"
+            "4;4"
+            "5;5"
+            "6;6"
+            "7;7"
+            "8;8"
+            "9;9"
+            "10;10"
+            "11;11"
+            "12;12"
+            "13;13"
+            "14;14"
+            "15;15"
+            "16;16"
+            "17;17"
+            "18;18"
+            "19;19"
+            "20;20"
+          ];
+          format = {
+            text = "<label-state>";
+            background = background;
+            padding = 0;
+          };
+          label = {
+            monitor = "%name%";
+            active = {
+              text = "%icon%";
+              foreground = red;
+              overline = red;
+              padding = 1;
+            };
+            occupied = {
+              text = "%icon%";
+              foreground = yellow;
+              padding = 1;
+            };
+            urgent = {
+              text = "%icon%";
+              foreground = green;
+              overline = green;
+              padding = 1;
+            };
+            empty = {
+              text = "%icon%";
+              foreground = yellow;
+              padding = 1;
+            };
+          };
+        };
+
+        "module/temperature" = {
+          type = "internal/temperature";
+          interval = 1;
+          thermal.zone = 0;
+          hwmon.path = cfg.tempHwmonPath;
+          warn.temperature = 65;
+          base.temperature = 20;
+          units = true;
+          format = {
+            text = "<ramp> <label>";
             background = background;
             padding = 1;
+            warn = {
+              text = "<ramp> <label-warn>";
+              background = background;
+              padding = 1;
+            };
           };
-        };
-        label = {
-          text = "%temperature-c%";
-          warn = {
+          label = {
             text = "%temperature-c%";
-            foreground = red;
+            warn = {
+              text = "%temperature-c%";
+              foreground = red;
+            };
           };
+          ramp = [ "" "" "" "" "" ];
         };
-        ramp = [ "" "" "" "" "" ];
-      };
 
-      "module/battery" = {
-        type = "internal/battery";
-        full.at = 99;
-        battery = battery;
-        adapter = "ACAD";
-        poll.interval = 2;
-        time.format = "%H:%M";
-        format = {
-          charging = {
-            text = "<label-charging>";
-            prefix = "  ";
-            background = background;
-            padding = 1;
+        "module/battery" = {
+          type = "internal/battery";
+          full.at = 99;
+          battery = cfg.battery;
+          adapter = "ACAD";
+          poll.interval = 2;
+          time.format = "%H:%M";
+          format = {
+            charging = {
+              text = "<label-charging>";
+              prefix = "  ";
+              background = background;
+              padding = 1;
+            };
+            discharging = {
+              text = "<ramp-capacity> <label-discharging>";
+              background = background;
+              padding = 1;
+            };
+            full = {
+              text = "<label-full>";
+              prefix = "   ";
+              background = background;
+              padding = 1;
+            };
           };
-          discharging = {
-            text = "<ramp-capacity> <label-discharging>";
-            background = background;
-            padding = 1;
+          label = {
+            charging = "%percentage%%";
+            discharging = "%percentage%%";
+            full = "Full";
           };
-          full = {
-            text = "<label-full>";
-            prefix = "   ";
-            background = background;
-            padding = 1;
-          };
+          ramp.capacity = [ "  " "  " "  " "  " "  " ];
         };
-        label = {
-          charging = "%percentage%%";
-          discharging = "%percentage%%";
-          full = "Full";
-        };
-        ramp.capacity = [ "  " "  " "  " "  " "  " ];
-      };
 
-      "module/keyboard" = {
-        type = "internal/xkeyboard";
-        blacklist = [ "num lock" "scroll lock" ];
-        format = {
-          text = "<label-layout> <label-indicator>";
-          background = background;
-          padding = 1;
-          prefix = " ";
+        "module/keyboard" = {
+          type = "internal/xkeyboard";
+          blacklist = [ "num lock" "scroll lock" ];
+          format = {
+            text = "<label-layout> <label-indicator>";
+            background = background;
+            padding = 1;
+            prefix = " ";
+          };
+          label = {
+            layout = " %layout%";
+            indicator.on = {
+              text = "%name%";
+              foreground = primary;
+            };
+          };
         };
-        label = {
-          layout = " %layout%";
-          indicator.on = {
-            text = "%name%";
+
+        "module/date" = {
+          type = "internal/date";
+          interval = 1;
+          label = "%time%";
+          time = {
+            text = "  %H:%M";
+            alt = "  %a, %d %b %Y";
+          };
+          format = {
+            text = "<label>";
+            background = background;
+            padding = 1;
+          };
+        };
+
+        "module/volume" = {
+          type = "internal/alsa";
+          interval = 5;
+          master = {
+            mixer = "Master";
+            soundcard = "default";
+          };
+          speaker.soundcard = "default";
+          headphone.soundcard = "default";
+          format = {
+            volume = {
+              text = "<ramp-volume> <bar-volume>";
+              background = background;
+              padding = 2;
+            };
+            muted = {
+              text = "<label-muted>";
+              prefix = " ";
+              background = background;
+              padding = 2;
+            };
+          };
+          label = {
+            volume = "%percentage%%";
+            muted = {
+              text = " Muted";
+              foreground = foreground;
+            };
+          };
+          ramp.volume = [ " " " " " " ];
+          bar.volume = {
+            format = "\${bar.format}";
+            width = "\${bar.width}";
+            gradient = false;
+            indicator = {
+              text = "\${bar.indicator}";
+              foreground = foreground;
+            };
+            fill = "\${bar.fill}";
+            foreground = [ yellow ];
+            empty = {
+              text = "\${bar.empty}";
+              foreground = foreground-alt;
+            };
+          };
+        };
+
+        "module/brightness" = {
+          type = "internal/backlight";
+          card = cfg.backlightCard;
+          label = "%percentage%%";
+          format = {
+            text = "<ramp> <bar>";
+            background = background;
+            padding = 2;
+          };
+          ramp = [ " " " " " " ];
+          bar = {
+            format = "\${bar.format}";
+            width = "\${bar.width}";
+            gradient = false;
+            fill = "\${bar.fill}";
+            foreground = [ yellow ];
+            indicator = {
+              text = "\${bar.indicator}";
+              foreground = foreground;
+            };
+            empty = {
+              text = "\${bar.empty}";
+              foreground = foreground-alt;
+            };
+          };
+        };
+
+        "module/sysmenu" = {
+          type = "custom/text";
+          content = {
+            text = " ";
+            background = background;
+            foreground = primary;
+            padding = 1;
+          };
+          click.left = "${pkgs.bash}/bin/bash $HOME/.config/polybar/sysmenu.sh";
+        };
+
+        # --------- MODULES BOTTOM ---------
+
+        "module/spotify-status" = {
+          type = "custom/script";
+          interval = 1;
+          format = {
+            text = "<label>";
+            prefix = " 阮  ";
+            background = background;
+            padding = 2;
+          };
+          label.maxlen = 50;
+          exec = "${pkgs.bash}/bin/bash $HOME/.config/polybar/spotify-status.sh";
+        };
+
+        "module/spotify-play-pause" = {
+          type = "custom/ipc";
+          hook = [ "echo \"  \"" "echo \"  \"" ];
+          initial = 1;
+          format = {
+            background = background;
             foreground = primary;
           };
+          click.left = "${pkgs.playerctl}/bin/playerctl play-pause -p spotify";
         };
-      };
 
-      "module/date" = {
-        type = "internal/date";
-        interval = 1;
-        label = "%time%";
-        time = {
-          text = "  %H:%M";
-          alt = "  %a, %d %b %Y";
-        };
-        format = {
-          text = "<label>";
-          background = background;
-          padding = 1;
-        };
-      };
-
-      "module/volume" = {
-        type = "internal/alsa";
-        interval = 5;
-        master = {
-          mixer = "Master";
-          soundcard = "default";
-        };
-        speaker.soundcard = "default";
-        headphone.soundcard = "default";
-        format = {
-          volume = {
-            text = "<ramp-volume> <bar-volume>";
+        "module/spotify-prev" = {
+          type = "custom/text";
+          content = {
+            text = "ﭣ  ";
             background = background;
-            padding = 2;
-          };
-          muted = {
-            text = "<label-muted>";
-            prefix = " ";
-            background = background;
-            padding = 2;
-          };
-        };
-        label = {
-          volume = "%percentage%%";
-          muted = {
-            text = " Muted";
             foreground = foreground;
+            padding = 1;
           };
+          click.left = "${pkgs.playerctl}/bin/playerctl previous -p spotify";
         };
-        ramp.volume = [ " " " " " " ];
-        bar.volume = {
-          format = "\${bar.format}";
-          width = "\${bar.width}";
-          gradient = false;
-          indicator = {
-            text = "\${bar.indicator}";
+
+        "module/spotify-next" = {
+          type = "custom/text";
+          content = {
+            text = "ﭡ  ";
+            background = background;
             foreground = foreground;
+            padding = 1;
           };
-          fill = "\${bar.fill}";
-          foreground = [ yellow ];
-          empty = {
-            text = "\${bar.empty}";
-            foreground = foreground-alt;
-          };
+          click.left = "${pkgs.playerctl}/bin/playerctl next -p spotify";
         };
-      };
 
-      "module/brightness" = {
-        type = "internal/backlight";
-        card = backlight-card;
-        label = "%percentage%%";
-        format = {
-          text = "<ramp> <bar>";
-          background = background;
-          padding = 2;
-        };
-        ramp = [ " " " " " " ];
-        bar = {
-          format = "\${bar.format}";
-          width = "\${bar.width}";
-          gradient = false;
-          fill = "\${bar.fill}";
-          foreground = [ yellow ];
-          indicator = {
-            text = "\${bar.indicator}";
-            foreground = foreground;
-          };
-          empty = {
-            text = "\${bar.empty}";
-            foreground = foreground-alt;
-          };
-        };
-      };
-
-      "module/sysmenu" = {
-        type = "custom/text";
-        content = {
-          text = " ";
-          background = background;
-          foreground = primary;
-          padding = 1;
-        };
-        click.left = "${pkgs.bash}/bin/bash $HOME/.config/polybar/sysmenu.sh";
-      };
-
-      # --------- MODULES BOTTOM ---------
-
-      "module/spotify-status" = {
-        type = "custom/script";
-        interval = 1;
-        format = {
-          text = "<label>";
-          prefix = " 阮  ";
-          background = background;
-          padding = 2;
-        };
-        label.maxlen = 50;
-        exec = "${pkgs.bash}/bin/bash $HOME/.config/polybar/spotify-status.sh";
-      };
-
-      "module/spotify-play-pause" = {
-        type = "custom/ipc";
-        hook = [ "echo \"  \"" "echo \"  \"" ];
-        initial = 1;
-        format = {
-          background = background;
-          foreground = primary;
-        };
-        click.left = "${pkgs.playerctl}/bin/playerctl play-pause -p spotify";
-      };
-
-      "module/spotify-prev" = {
-        type = "custom/text";
-        content = {
-          text = "ﭣ  ";
-          background = background;
-          foreground = foreground;
-          padding = 1;
-        };
-        click.left = "${pkgs.playerctl}/bin/playerctl previous -p spotify";
-      };
-
-      "module/spotify-next" = {
-        type = "custom/text";
-        content = {
-          text = "ﭡ  ";
-          background = background;
-          foreground = foreground;
-          padding = 1;
-        };
-        click.left = "${pkgs.playerctl}/bin/playerctl next -p spotify";
-      };
-
-      "module/cpu" = {
-        type = "internal/cpu";
-        interval = 1;
-        label = "%percentage%%";
-        format = {
-          text = "<label>";
-          prefix = " ";
-          background = background;
-          padding = 2;
-        };
-      };
-
-      "module/memory" = {
-        type = "internal/memory";
-        interval = 1;
-        label = "%gb_used%";
-        format = {
-          text = "<label>";
-          prefix = "  ";
-          background = background;
-          padding = 2;
-        };
-      };
-
-      "module/filesystem" = {
-        type = "internal/fs";
-        mount = [ "/" ];
-        interval = 30;
-        fixed.values = true;
-        label = {
-          mounted = "%free%";
-          unmounted = " %mountpoint%: not mounted";
-        };
-        format = {
-          mounted = {
-            text = "<label-mounted>";
-            prefix = " ";
-            background = background;
-            padding = 2;
-          };
-          unmounted = {
-            text = "<label-unmounted>";
-            prefix = " ";
+        "module/cpu" = {
+          type = "internal/cpu";
+          interval = 1;
+          label = "%percentage%%";
+          format = {
+            text = "<label>";
+            prefix = " ";
             background = background;
             padding = 2;
           };
         };
-      };
 
-      "module/network" = {
-        type = "internal/network";
-        interval = 1;
-        accumulate-stats = true;
-        unknown-as-up = true;
-        label = {
-          connected = "%{A1:${pkgs.networkmanagerapplet}/bin/nm-connection-editor:} %essid% - %local_ip%    %downspeed%   %upspeed%%{A}";
-          disconnected = "%{A1:${pkgs.networkmanagerapplet}/bin/nm-connection-editor:} Offline%{A}";
-        };
-      };
-
-      "module/network-wired" = {
-        "inherit" = "module/network";
-        interface = network-interface-wired;
-        format = {
-          connected = {
-            text = "<label-connected>";
-            prefix = " ";
-            background = background;
-            padding = 2;
-          };
-          disconnected = {
-            text = "<label-disconnected>";
-            prefix = " ";
+        "module/memory" = {
+          type = "internal/memory";
+          interval = 1;
+          label = "%gb_used%";
+          format = {
+            text = "<label>";
+            prefix = "  ";
             background = background;
             padding = 2;
           };
         };
-      };
 
-      "module/network-wireless" = {
-        "inherit" = "module/network";
-        interface = network-interface-wireless;
-        format = {
-          connected = {
-            text = "<label-connected>";
-            prefix = "直 ";
-            background = background;
-            padding = 2;
+        "module/filesystem" = {
+          type = "internal/fs";
+          mount = [ "/" ];
+          interval = 30;
+          fixed.values = true;
+          label = {
+            mounted = "%free%";
+            unmounted = " %mountpoint%: not mounted";
           };
-          disconnected = {
-            text = "<label-disconnected>";
-            prefix = "睊 ";
-            background = background;
-            padding = 2;
+          format = {
+            mounted = {
+              text = "<label-mounted>";
+              prefix = " ";
+              background = background;
+              padding = 2;
+            };
+            unmounted = {
+              text = "<label-unmounted>";
+              prefix = " ";
+              background = background;
+              padding = 2;
+            };
+          };
+        };
+
+        "module/network" = {
+          type = "internal/network";
+          interval = 1;
+          accumulate-stats = true;
+          unknown-as-up = true;
+          label = {
+            connected = "%{A1:${pkgs.networkmanagerapplet}/bin/nm-connection-editor:} %essid% - %local_ip%    %downspeed%   %upspeed%%{A}";
+            disconnected = "%{A1:${pkgs.networkmanagerapplet}/bin/nm-connection-editor:} Offline%{A}";
+          };
+        };
+
+        "module/network-wired" = {
+          "inherit" = "module/network";
+          interface = cfg.network.interfaceWired;
+          format = {
+            connected = {
+              text = "<label-connected>";
+              prefix = " ";
+              background = background;
+              padding = 2;
+            };
+            disconnected = {
+              text = "<label-disconnected>";
+              prefix = " ";
+              background = background;
+              padding = 2;
+            };
+          };
+        };
+
+        "module/network-wireless" = {
+          "inherit" = "module/network";
+          interface = cfg.network.interfaceWireless;
+          format = {
+            connected = {
+              text = "<label-connected>";
+              prefix = "直 ";
+              background = background;
+              padding = 2;
+            };
+            disconnected = {
+              text = "<label-disconnected>";
+              prefix = "睊 ";
+              background = background;
+              padding = 2;
+            };
           };
         };
       };

@@ -6,7 +6,7 @@
 
 Create a bootable ISO image containing the configuration directory and flash it to a USB stick.
 
-```bash
+```shell
 nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=iso.nix
 sudo dd if=result/iso/*.iso of=/dev/<ID> bs=4M status=progress conv=fdatasync
 ```
@@ -17,11 +17,11 @@ Follow the NixOS installation as described in the [manual](https://nixos.org/man
 
 Copy the content of `/etc/configuration` to `/etc/nixos/`.
 
-```bash
+```shell
 cp /etc/configuration/* /etc/nixos/
 ```
 
-Move `/etc/nixos/values.nix.example` to `/etc/nixos/values.nix` and set the right values.
+Copy `/etc/nixos/values.nix.example` to `/etc/nixos/values.nix` and set the right values.
 
 Consequently, run `nixos-install`, boot into the new system, log in as root and set a password for the user with `passswd <USERNAME>`.
 
@@ -29,8 +29,10 @@ Consequently, run `nixos-install`, boot into the new system, log in as root and 
 
 Link the repo to `/etc/nixos`.
 
-```bash
-sudo ln -sf $(pwd)/configuration/* /etc/nixos
+```shell
+setopt extendedglob
+sudo ln -sf $(pwd)/configuration/^values.example.nix /etc/nixos
+unsetopt extendedglob
 ```
 
 ## Links

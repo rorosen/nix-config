@@ -47,6 +47,8 @@
     minikube
     pdfsam-basic
     gnome.simple-scan
+    pinentry
+    gnupg
   ];
 }
 

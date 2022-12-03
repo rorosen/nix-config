@@ -103,6 +103,18 @@ in
 
   home-manager.users.rob = { ... }: {
     nixpkgs.config.allowUnfree = true;
+
+    # set device specific values
+    services.polybar = {
+      tempHwmonPath = values.polybar.tempHwmonPath;
+      backlightCard = values.polybar.backlightCard;
+      battery = values.polybar.battery;
+      network = {
+        interfaceWired = values.polybar.network.interfaceWired;
+        interfaceWireless = values.polybar.network.interfaceWireless;
+      };
+    };
+
     imports = [ ./user/home.nix ];
   };
 }
