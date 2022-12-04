@@ -7,6 +7,7 @@ in
   imports =
     [
       /etc/nixos/hardware-configuration.nix
+      ./system-extras.nix
       <home-manager/nixos>
     ];
 
@@ -16,14 +17,10 @@ in
     efi.canTouchEfiVariables = true;
   };
 
-  # Let the kernel load the video driver right away
-  boot.initrd.kernelModules = [ values.videoDriver ];
-
   # Clean tmp on boot
   boot.cleanTmpDir = true;
 
   networking = {
-    hostName = values.hostName;
     networkmanager.enable = true;
     firewall.enable = false;
   };
@@ -45,7 +42,6 @@ in
     enable = true;
 
     updateDbusEnvironment = true;
-    videoDrivers = [ values.videoDriver ];
 
     libinput = {
       enable = true;
@@ -104,17 +100,9 @@ in
   home-manager.users.rob = { ... }: {
     nixpkgs.config.allowUnfree = true;
 
-    # set device specific values
-    services.polybar = {
-      tempHwmonPath = values.polybar.tempHwmonPath;
-      backlightCard = values.polybar.backlightCard;
-      battery = values.polybar.battery;
-      network = {
-        interfaceWired = values.polybar.network.interfaceWired;
-        interfaceWireless = values.polybar.network.interfaceWireless;
-      };
-    };
-
-    imports = [ ./user/home.nix ];
+    imports = [
+      ./user/home.nix
+      ./user-extras.nix
+    ];
   };
 }

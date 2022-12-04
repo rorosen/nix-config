@@ -25,10 +25,7 @@ in
       default = "";
       type = types.str;
       description = "
-        Full path of temperature sysfs path
-        Use `sensors` to find preferred temperature source, then run
-        $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo \"$(<$(dirname $i)/name): $(cat \${i%_*}_label 2>/dev/null || echo $(basename \${i%_*})) $(readlink -f $i)\"; done
-        to find path to desired file
+        Full path of temperature sysfs path.
         ";
     };
 
@@ -36,8 +33,7 @@ in
       default = "";
       type = types.str;
       description = "      
-        Use the following command to list available cards:
-        $ ls -1 /sys/class/backlight/
+        Backlight card to use.
       ";
     };
 
@@ -45,8 +41,15 @@ in
       default = "";
       type = types.str;
       description = "      
-        Use the following command to list batteries and adapters:
-        $ ls -1 /sys/class/power_supply/
+        Battery to use.
+      ";
+    };
+
+    spotify.enabled = mkOption {
+      default = true;
+      type = types.bool;
+      description = "
+        Whether the spotfy (playerctl) modules should be enabled. Default true.
       ";
     };
 
@@ -55,7 +58,7 @@ in
         default = "";
         type = types.str;
         description = "      
-          $ ip l
+          Wired interface name. Leave empty if disabled. Default \"\".
         ";
       };
 
@@ -63,7 +66,7 @@ in
         default = "";
         type = types.str;
         description = "      
-          $ ip l
+          Wireless interface name. Leave empty if disabled. Default \"\".
         ";
       };
     };
@@ -171,7 +174,7 @@ in
             };
           };
           modules = {
-            left = "spotify-status spotify-prev spotify-play-pause spotify-next cpu memory filesystem";
+            left = (if cfg.spotify.enabled then "spotify-status spotify-prev spotify-play-pause spotify-next " else "") + "cpu memory filesystem";
             right = (if cfg.network.interfaceWired == "" then "" else "network-wired ") + (if cfg.network.interfaceWireless == "" then "" else "network-wireless ") + "sysmenu";
           };
         };
