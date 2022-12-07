@@ -13,6 +13,7 @@
     ./gnome-keyring.nix
     ./git.nix
     ./ssh-agent.nix
+    ./nemo.nix
   ];
 
   xsession = {
