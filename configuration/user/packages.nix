@@ -49,6 +49,7 @@
     gnome.simple-scan
     pinentry
     gnupg
+    texlive.combined.scheme-medium
   ];
 }
 
