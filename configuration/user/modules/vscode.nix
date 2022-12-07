@@ -50,6 +50,8 @@
       "explorer.confirmDragAndDrop" = false;
 
       "redhat.telemetry.enabled" = false;
+
+      "workbench.editorAssociations"."*.pdf" = "latex-workshop-pdf-hook";
     };
   };
 }
