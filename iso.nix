@@ -19,8 +19,6 @@
     vim
   ];
 
-  environment.etc = {
-    "configuration".source = ./configuration;
-  };
+  environment.etc.nixos.source = ./configuration;
 }
 
