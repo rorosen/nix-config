@@ -50,6 +50,8 @@
     pinentry
     gnupg
     texlive.combined.scheme-medium
+    xfce.ristretto
+    xfce.tumbler
   ];
 }
 
