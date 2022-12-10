@@ -17,6 +17,8 @@
       davidanson.vscode-markdownlint
       ms-kubernetes-tools.vscode-kubernetes-tools
       redhat.vscode-yaml
+      matklad.rust-analyzer
+      tamasfe.even-better-toml
     ];
 
     userSettings = {
@@ -36,6 +38,7 @@
       "[nix]"."editor.defaultFormatter" = "jnoortheen.nix-ide";
       "[ignore]"."editor.defaultFormatter" = "foxundermoon.shell-format";
       "[properties]"."editor.defaultFormatter" = "foxundermoon.shell-format";
+      "[toml]"."editor.defaultFormatter" = "tamasfe.even-better-toml";
 
       "prettier.bracketSpacing" = false;
 

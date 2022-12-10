@@ -52,6 +52,9 @@
     texlive.combined.scheme-medium
     xfce.ristretto
     xfce.tumbler
+    cargo
+    rustc
+    gcc
   ];
 }
 
