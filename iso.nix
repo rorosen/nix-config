@@ -1,6 +1,5 @@
-# This module defines a small NixOS installation CD.  It does not
-# contain any graphical stuff.
 { config, pkgs, ... }:
+
 {
   imports = [
     <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
@@ -19,6 +18,6 @@
     vim
   ];
 
-  environment.etc.nixos.source = ./configuration;
+  environment.etc.configuration.source = ./configuration;
 }
 
