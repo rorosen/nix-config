@@ -55,6 +55,7 @@
     cargo
     rustc
     gcc
+    nil
   ];
 }
 
