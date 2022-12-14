@@ -56,6 +56,7 @@
     rustc
     gcc
     nil
+    gnumake
   ];
 }
 
