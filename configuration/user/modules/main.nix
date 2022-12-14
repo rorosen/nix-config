@@ -2,12 +2,12 @@
 
 {
   imports = [
-    ./zsh.nix
-    ./alacritty.nix
     ./i3/i3.nix
     ./polybar/polybar.nix
-    ./vscode.nix
+    ./vscode/vscode.nix
     ./rofi/rofi.nix
+    ./zsh.nix
+    ./alacritty.nix
     ./gtk.nix
     ./qt.nix
     ./gnome-keyring.nix

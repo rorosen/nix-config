@@ -1,0 +1,53 @@
+{
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  },
+  "[properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": ["source.organizeImports"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "'Iosevka Nerd Font'",
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "explorer.confirmDragAndDrop": false,
+  "git.confirmSync": false,
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nil",
+  "prettier.bracketSpacing": false,
+  "redhat.telemetry.enabled": false,
+  "shellformat.flag": "-i=4",
+  "shellformat.path": "/nix/store/7sf3h4nby9lfiip5af2laq215f9pnd03-shfmt-3.5.1/bin/shfmt",
+  "update.mode": "none",
+  "update.showReleaseNotes": false,
+  "workbench.editorAssociations": {
+    "*.pdf": "latex-workshop-pdf-hook"
+  }
+}
