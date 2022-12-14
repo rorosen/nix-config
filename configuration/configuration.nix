@@ -1,8 +1,5 @@
 { config, pkgs, lib, ... }:
 
-let
-  values = import ./values.nix;
-in
 {
   imports =
     [
