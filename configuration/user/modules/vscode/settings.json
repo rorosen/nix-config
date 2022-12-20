@@ -32,6 +32,9 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
   "editor.codeActionsOnSave": ["source.organizeImports"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "'Iosevka Nerd Font'",

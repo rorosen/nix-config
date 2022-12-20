@@ -83,6 +83,7 @@
           notification = false;
         }
         { command = "systemctl --user restart polybar"; always = true; notification = false; }
+        { command = "pasystray"; notification = false; }
         { command = "firefox"; notification = false; }
         { command = "code"; notification = false; }
         { command = "alacritty"; notification = false; }

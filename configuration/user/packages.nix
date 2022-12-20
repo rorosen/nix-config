@@ -54,9 +54,12 @@
     xfce.tumbler
     cargo
     rustc
+    rustfmt
     gcc
     nil
     gnumake
+    element-desktop
+    pasystray
   ];
 }
 

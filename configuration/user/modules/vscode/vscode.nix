@@ -19,6 +19,7 @@
       redhat.vscode-yaml
       matklad.rust-analyzer
       tamasfe.even-better-toml
+      ms-vsliveshare.vsliveshare
     ];
 
     userSettings = builtins.fromJSON (builtins.readFile ./settings.json);

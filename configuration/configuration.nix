@@ -94,7 +94,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rob = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "docker" "cups" "scanner" "lp" ];
+    extraGroups = [ "wheel" "libvirtd" "docker" "cups" "scanner" "lp" "audio" ];
   };
 
   home-manager.users.rob = { ... }: {
