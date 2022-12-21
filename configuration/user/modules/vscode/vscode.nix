@@ -18,8 +18,11 @@
       ms-kubernetes-tools.vscode-kubernetes-tools
       redhat.vscode-yaml
       matklad.rust-analyzer
-      tamasfe.even-better-toml
       ms-vsliveshare.vsliveshare
+      zxh404.vscode-proto3
+      bungcip.better-toml
+      Arjun.swagger-viewer
+      ms-azuretools.vscode-docker
     ];
 
     userSettings = builtins.fromJSON (builtins.readFile ./settings.json);

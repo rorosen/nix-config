@@ -60,6 +60,9 @@
     gnumake
     element-desktop
     pasystray
+    go
+    gopls
+    go-outline
   ];
 }
 
