@@ -22,6 +22,7 @@
       autoload -U select-word-style
       select-word-style bash
       export EDITOR=vim
+      ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
     '';
 
     shellAliases = {
