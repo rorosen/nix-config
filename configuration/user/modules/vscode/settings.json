@@ -24,7 +24,7 @@
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[toml]": {
-    "editor.defaultFormatter": "tamasfe.even-better-toml"
+    "editor.defaultFormatter": "bungcip.better-toml"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -37,6 +37,9 @@
   },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[proto3]": {
+    "editor.defaultFormatter": "zxh404.vscode-proto3"
   },
   "editor.codeActionsOnSave": ["source.organizeImports"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -55,5 +58,7 @@
   "update.showReleaseNotes": false,
   "workbench.editorAssociations": {
     "*.pdf": "latex-workshop-pdf-hook"
-  }
+  },
+  "workbench.startupEditor": "none",
+  "terminal.integrated.defaultProfile.linux": "zsh"
 }
