@@ -23,6 +23,7 @@
       bungcip.better-toml
       Arjun.swagger-viewer
       ms-azuretools.vscode-docker
+      arrterian.nix-env-selector
     ];
 
     userSettings = builtins.fromJSON (builtins.readFile ./settings.json);
