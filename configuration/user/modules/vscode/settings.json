@@ -53,8 +53,6 @@
   "prettier.bracketSpacing": false,
   "redhat.telemetry.enabled": false,
   "shellformat.flag": "-i=4",
-  "shellformat.path": "/nix/store/7sf3h4nby9lfiip5af2laq215f9pnd03-shfmt-3.5.1/bin/shfmt",
-  "update.mode": "none",
   "update.showReleaseNotes": false,
   "workbench.editorAssociations": {
     "*.pdf": "latex-workshop-pdf-hook"

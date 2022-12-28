@@ -26,7 +26,10 @@
       arrterian.nix-env-selector
     ];
 
-    userSettings = builtins.fromJSON (builtins.readFile ./settings.json);
+    enableUpdateCheck = false;
+    enableExtensionUpdateCheck = false;
+
+    userSettings = builtins.fromJSON (builtins.readFile ./settings.json) // {  "shellformat.path" = "${pkgs.shfmt}/bin/shfmt"; };
   };
 }
 
