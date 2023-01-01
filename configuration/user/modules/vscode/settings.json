@@ -58,5 +58,6 @@
     "*.pdf": "latex-workshop-pdf-hook"
   },
   "workbench.startupEditor": "none",
-  "terminal.integrated.defaultProfile.linux": "zsh"
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "editor.suggest.snippetsPreventQuickSuggestions": false
 }
