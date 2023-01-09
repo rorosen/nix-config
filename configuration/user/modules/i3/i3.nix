@@ -29,6 +29,7 @@
         "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -no-config -show drun -theme ~/.config/rofi/config.rasi";
         "${modifier}+x" = "exec ${pkgs.bash}/bin/bash $HOME/.config/polybar/sysmenu.sh";
         "${modifier}+n" = "exec ${pkgs.cinnamon.nemo}/bin/nemo";
+        "${modifier}+less" = "move workspace to output left";
         # Keybindings for additional workaspces
         "${modifier}+Ctrl+1" = "workspace number 11";
         "${modifier}+Ctrl+2" = "workspace number 12";
