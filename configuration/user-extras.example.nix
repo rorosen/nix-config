@@ -13,4 +13,9 @@
       interfaceWireless = "";
     };
   };
+
+  programs.git = {
+    userEmail = "mail@example.com";
+    userName = "Your Name";
+  };
 }
