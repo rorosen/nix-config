@@ -14,6 +14,7 @@
     ./git.nix
     ./ssh-agent.nix
     ./nemo.nix
+    ./blueman.nix
   ];
 
   xsession = {
