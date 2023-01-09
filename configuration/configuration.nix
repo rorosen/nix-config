@@ -73,6 +73,8 @@
     extraBackends = [ pkgs.sane-airscan ];
   };
 
+  programs.wireshark.enable = true;
+
   virtualisation = {
     libvirtd.enable = true;
     docker.enable = true;
@@ -94,7 +96,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rob = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "docker" "cups" "scanner" "lp" "audio" ];
+    extraGroups = [ "wheel" "libvirtd" "docker" "cups" "scanner" "lp" "audio" "wireshark"];
   };
 
   home-manager.users.rob = { ... }: {

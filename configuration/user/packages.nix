@@ -63,6 +63,7 @@
     go
     gopls
     go-outline
+    wireshark
   ];
 }
 
