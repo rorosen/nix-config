@@ -24,6 +24,7 @@
       Arjun.swagger-viewer
       ms-azuretools.vscode-docker
       arrterian.nix-env-selector
+      eamodio.gitlens
     ];
 
     enableUpdateCheck = false;
