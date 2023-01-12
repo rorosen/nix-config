@@ -60,6 +60,7 @@
     gnumake
     element-desktop
     pasystray
+    pavucontrol
     go
     gopls
     go-outline

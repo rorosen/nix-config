@@ -63,9 +63,14 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    media-session.enable = true;
+    pulse.enable = true;
+    wireplumber.enable = false;
+  };
 
   # Enable scanner support
   hardware.sane = {
