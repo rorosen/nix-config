@@ -3,7 +3,7 @@
 {
   imports =
     [
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
       ./system-extras.nix
       <home-manager/nixos>
     ];
@@ -69,7 +69,7 @@
   security.rtkit.enable = true;
   hardware.pulseaudio.enable = true;
   sound.enable = true;
-  
+
   # services.pipewire = {
   #   enable = true;
   #   alsa.enable = true;
@@ -107,8 +107,15 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rob = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "docker" "cups" "scanner" "lp" "audio" "wireshark"];
+    extraGroups = [ "wheel" "libvirtd" "docker" "cups" "scanner" "lp" "audio" "wireshark" ];
   };
+
+  nix.nixPath = [
+    "/home/rob/.nix-defexpr/channels"
+    "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+    "nixos-config=/home/rob/misc/nix-config/configuration/configuration.nix"
+    "/nix/var/nix/profiles/per-user/root/channels"
+  ];
 
   home-manager.users.rob = { ... }: {
     nixpkgs.config.allowUnfree = true;

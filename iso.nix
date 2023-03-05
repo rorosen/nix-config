@@ -9,6 +9,7 @@
     <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
   ];
 
+  isoImage.compressImage = false;
   isoImage.squashfsCompression = "lz4";
 
   time.timeZone = "Europe/Berlin";

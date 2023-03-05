@@ -27,13 +27,7 @@ Consequently, run `nixos-install`, boot into the new system, log in as root and 
 
 ## Post Install
 
-Link the repo to `/etc/nixos`.
-
-```shell
-setopt extendedglob
-sudo ln -sf $(pwd)/configuration/^values.example.nix /etc/nixos
-unsetopt extendedglob
-```
+This repo is expected to be in `/home/rob/nix-config` for the next rebuild to work.
 
 ## Links
 
