@@ -21,6 +21,6 @@
 
   imports = [
     ./packages.nix
-    ./modules/main.nix
+    ./modules
   ];
 }

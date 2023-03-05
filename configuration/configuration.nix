@@ -63,14 +63,20 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  services.udisks2.enable = true;
+  programs.gnome-disks.enable = true;
+
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    media-session.enable = true;
-    pulse.enable = true;
-    wireplumber.enable = false;
-  };
+  hardware.pulseaudio.enable = true;
+  sound.enable = true;
+  
+  # services.pipewire = {
+  #   enable = true;
+  #   alsa.enable = true;
+  #   jack.enable = true;
+  #   pulse.enable = true;
+  #   # wireplumber.enable = false;
+  # };
 
   # Enable scanner support
   hardware.sane = {

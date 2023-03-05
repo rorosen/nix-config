@@ -10,7 +10,6 @@
     git
     zsh
     firefox
-    vscode
     evince
     alacritty
     networkmanagerapplet
@@ -18,7 +17,6 @@
     rofi
     any-nix-shell
     killall
-    nixpkgs-fmt
     brightnessctl
     spotify
     playerctl
@@ -56,15 +54,18 @@
     rustc
     rustfmt
     gcc
-    nil
     gnumake
     element-desktop
     pasystray
-    pavucontrol
     go
     gopls
+    libreoffice
     go-outline
     wireshark
+    prusa-slicer
+    android-tools
+    nil
+    nixpkgs-fmt
   ];
 }
 

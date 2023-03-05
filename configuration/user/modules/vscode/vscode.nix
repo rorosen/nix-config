@@ -17,7 +17,7 @@
       davidanson.vscode-markdownlint
       ms-kubernetes-tools.vscode-kubernetes-tools
       redhat.vscode-yaml
-      matklad.rust-analyzer
+      rust-lang.rust-analyzer
       ms-vsliveshare.vsliveshare
       zxh404.vscode-proto3
       bungcip.better-toml
@@ -25,12 +25,23 @@
       ms-azuretools.vscode-docker
       arrterian.nix-env-selector
       eamodio.gitlens
+    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "vscode-drawio";
+        publisher = "hediet";
+        version = "1.6.6";
+        sha256 = "sha256-SPcSnS7LnRL5gdiJIVsFaN7eccrUHSj9uQYIQZllm0M=";
+      }
     ];
 
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
 
-    userSettings = builtins.fromJSON (builtins.readFile ./settings.json) // {  "shellformat.path" = "${pkgs.shfmt}/bin/shfmt"; };
+    userSettings = builtins.fromJSON (builtins.readFile ./settings.json) // {
+      "shellformat.path" = "${pkgs.shfmt}/bin/shfmt";
+      "nix.formatterPath" = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
+      "nix.serverPath" = "${pkgs.nil}/bin/nil";
+    };
   };
 }
 
