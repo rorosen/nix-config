@@ -44,11 +44,14 @@
   "[latex]": {
     "editor.defaultFormatter": "James-Yu.latex-workshop"
   },
-  "editor.codeActionsOnSave": ["source.organizeImports"],
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "'Iosevka Nerd Font'",
-  "editor.formatOnSave": true,
-  "editor.wordWrap": "on",
+  "editor": {
+    "codeActionsOnSave": ["source.organizeImports"],
+    "defaultFormatter": "esbenp.prettier-vscode",
+    "fontFamily": "'Iosevka Nerd Font'",
+    "formatOnSave": true,
+    "wordWrap": "on",
+    "suggest.snippetsPreventQuickSuggestions": false
+  },
   "explorer.confirmDragAndDrop": false,
   "git.confirmSync": false,
   "prettier.bracketSpacing": false,
@@ -59,13 +62,5 @@
     "*.pdf": "latex-workshop-pdf-hook"
   },
   "workbench.startupEditor": "none",
-  "terminal.integrated.defaultProfile.linux": "zsh",
-  "editor.suggest.snippetsPreventQuickSuggestions": false,
-  "nix.serverSettings": {
-    "nil": {
-      "formatting": {
-        "command": ["nixpkgs-fmt"]
-      }
-    }
-  }
+  "terminal.integrated.defaultProfile.linux": "zsh"
 }

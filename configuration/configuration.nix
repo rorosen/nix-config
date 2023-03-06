@@ -121,7 +121,7 @@
     nixpkgs.config.allowUnfree = true;
 
     imports = [
-      ./user/home.nix
+      ./user
       ./user-extras.nix
     ];
   };

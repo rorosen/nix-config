@@ -4,6 +4,9 @@
   programs.vscode = {
     enable = true;
 
+    enableUpdateCheck = false;
+    enableExtensionUpdateCheck = false;
+
     extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
       jnoortheen.nix-ide
@@ -34,13 +37,17 @@
       }
     ];
 
-    enableUpdateCheck = false;
-    enableExtensionUpdateCheck = false;
-
     userSettings = builtins.fromJSON (builtins.readFile ./settings.json) // {
       "shellformat.path" = "${pkgs.shfmt}/bin/shfmt";
       "nix.formatterPath" = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
       "nix.serverPath" = "${pkgs.nil}/bin/nil";
+      "nix.serverSettings" = {
+        "nil" = {
+          "formatting" = {
+            "command" = [ "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt" ];
+          };
+        };
+      };
     };
   };
 }

@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ./i3/i3.nix
-    ./polybar/polybar.nix
-    ./vscode/vscode.nix
-    ./rofi/rofi.nix
-    ./zsh.nix
+    ./i3
+    ./polybar
+    ./vscode
+    ./rofi
+    ./zsh
     ./alacritty.nix
     ./gtk.nix
     ./qt.nix
