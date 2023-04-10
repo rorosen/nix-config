@@ -50,7 +50,8 @@
     "fontFamily": "'Iosevka Nerd Font'",
     "formatOnSave": true,
     "wordWrap": "on",
-    "suggest.snippetsPreventQuickSuggestions": false
+    "suggest.snippetsPreventQuickSuggestions": false,
+    "lineNumbers": "relative"
   },
   "explorer.confirmDragAndDrop": false,
   "git.confirmSync": false,
@@ -62,5 +63,6 @@
     "*.pdf": "latex-workshop-pdf-hook"
   },
   "workbench.startupEditor": "none",
-  "terminal.integrated.defaultProfile.linux": "zsh"
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "vim.useSystemClipboard": true
 }

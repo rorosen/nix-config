@@ -28,6 +28,7 @@
       ms-azuretools.vscode-docker
       arrterian.nix-env-selector
       eamodio.gitlens
+      vscodevim.vim
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "vscode-drawio";
