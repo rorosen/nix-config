@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./system-extras.nix
+      ./extras.nix
     ];
 
   # Enable flakes
@@ -103,7 +103,6 @@
     (nerdfonts.override { fonts = [ "Meslo" "Iosevka" ]; })
   ];
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rob = {
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" "docker" "cups" "scanner" "lp" "audio" "wireshark" ];
@@ -116,14 +115,9 @@
     "/nix/var/nix/profiles/per-user/root/channels"
   ];
 
-  # home-manager.users.rob = { ... }: {
-  #   nixpkgs.config = {
-  #     allowUnfree = true;
-  #     allowUnfreePredicate = (_: true);
-  #   };
-
-  #   imports = [
-  #     ./user-extras.nix
-  #   ];
-  # };
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
 }

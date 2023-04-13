@@ -45,6 +45,6 @@
     ./ssh-agent.nix
     ./nemo.nix
     ./blueman.nix
-    ./user-extras.nix
+    ./extras.nix
   ];
 }
