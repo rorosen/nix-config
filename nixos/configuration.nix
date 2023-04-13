@@ -116,12 +116,14 @@
     "/nix/var/nix/profiles/per-user/root/channels"
   ];
 
-  home-manager.users.rob = { ... }: {
-    nixpkgs.config.allowUnfree = true;
+  # home-manager.users.rob = { ... }: {
+  #   nixpkgs.config = {
+  #     allowUnfree = true;
+  #     allowUnfreePredicate = (_: true);
+  #   };
 
-    imports = [
-      ./user
-      ./user-extras.nix
-    ];
-  };
+  #   imports = [
+  #     ./user-extras.nix
+  #   ];
+  # };
 }

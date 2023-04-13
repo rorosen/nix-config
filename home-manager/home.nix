@@ -1,6 +1,13 @@
 { config, pkgs, ... }:
 
 {
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
+
   home = {
     username = "rob";
     homeDirectory = "/home/rob";
@@ -38,5 +45,6 @@
     ./ssh-agent.nix
     ./nemo.nix
     ./blueman.nix
+    ./user-extras.nix
   ];
 }
