@@ -3,9 +3,8 @@
 {
   imports =
     [
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
       ./system-extras.nix
-      <home-manager/nixos>
     ];
 
   # Enable flakes
