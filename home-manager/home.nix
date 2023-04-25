@@ -46,5 +46,6 @@
     ./nemo.nix
     ./blueman.nix
     ./extras.nix
+    ./neovim.nix
   ];
 }
