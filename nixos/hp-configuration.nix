@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -15,7 +15,7 @@
     extraBackends = [ pkgs.sane-airscan ];
   };
 
-  users.user.rob.extraGroups = [ "scanner" ];
+  users.users.rob.extraGroups = [ "scanner" ];
 
   hardware.logitech.wireless = {
     enable = true;

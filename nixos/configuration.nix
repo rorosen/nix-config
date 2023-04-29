@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -58,10 +58,6 @@
 
   hardware.bluetooth.enable = true;
 
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11";
-
   fonts.fonts = with pkgs; [
     fantasque-sans-mono
     noto-fonts
@@ -75,4 +71,8 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" "docker" "cups" "lp" "audio" "wireshark" ];
   };
+
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "22.11";
 }

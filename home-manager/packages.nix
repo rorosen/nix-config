@@ -5,67 +5,60 @@
   # fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    i3
-    polybar
-    git
-    zsh
+    # gui
     firefox
     evince
-    alacritty
-    networkmanagerapplet
     cinnamon.nemo
-    rofi
-    any-nix-shell
-    killall
-    brightnessctl
-    spotify
-    playerctl
     keepassxc
-    nextcloud-client
-    freecad
-    thunderbird
-    betterlockscreen
-    shfmt
-    signal-desktop
-    flameshot
-    openssh
-    arp-scan
-    qemu
+    spotify
     virt-manager
-    kubectl
-    wireguard-tools
-    kubernetes-helm
-    openssl
-    docker
-    kubectx
     gparted
-    udisks
-    sops
-    age
-    minikube
     pdfsam-basic
     gnome.simple-scan
-    pinentry
-    gnupg
-    texlive.combined.scheme-medium
     xfce.ristretto
     xfce.tumbler
+    libreoffice
+    pavucontrol
+    pasystray
+
+    # terminal
+    zsh
+    alacritty
+    any-nix-shell
+
+    # programming
+    shfmt
     cargo
     rustc
     rustfmt
     gcc
     gnumake
-    element-desktop
-    pasystray
     go
     gopls
-    libreoffice
     go-outline
-    wireshark
-    prusa-slicer
-    android-tools
     nil
     nixpkgs-fmt
+
+    # utils
+    git
+    killall
+    brightnessctl
+    openssh
+    arp-scan
+    qemu
+    kubectl
+    wireguard-tools
+    kubernetes-helm
+    openssl
+    kubectx
+    sops
+    age
+    minikube
+    udisks
+    pinentry
+    gnupg
+    texlive.combined.scheme-medium
+    wireshark
   ];
 }
 
