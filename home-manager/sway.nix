@@ -71,7 +71,8 @@ in
       ];
 
       startup = [
-        { command = "systemctl --user restart waybar"; always = true; }
+        { command = "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"; }
+        { command = "${pkgs.systemd}/bin/systemctl --user restart waybar"; always = true; }
         { command = "${pkgs.sway}/bin/swaymsg 'workspace 1; exec ${pkgs.firefox}/bin/firefox"; }
         { command = "${pkgs.sway}/bin/swaymsg 'workspace 2; exec ${pkgs.vscode}/bin/code'"; }
         { command = "${pkgs.sway}/bin/swaymsg 'workspace 3; exec ${pkgs.alacritty}/bin/alacritty'"; }

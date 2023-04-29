@@ -7,10 +7,7 @@ window {
 }
 
 #input {
-  margin: 5px;
-  border: none;
-  color: #f8f8f2;
-  background-color: rgba(55, 59, 65, 0.95);
+  visibility: hidden;
 }
 
 #inner-box {

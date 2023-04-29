@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  home.file.".config/wofi/sysmenu-style.css" = builtins.readFile ./sysmenu-style.css;
   home.file.".config/wofi/sysmenu.sh" = {
     executable = true;
 
@@ -18,13 +19,14 @@
       # wofi CMD
       wofi_cmd() {
         ${pkgs.wofi}/bin/wofi --dmenu \
+          --style $HOME/.config/wofi/sysmenu-style.css \
           --prompt "Uptime: $(${pkgs.procps}/bin/uptime --pretty | ${pkgs.gnused}/bin/sed -e 's/up //g')" \
           --lines 6
       }
 
       # Confirmation CMD
       confirm_cmd() {
-        ${pkgs.wofi}/bin/wofi --dmenu --prompt 'Are you sure?'
+        ${pkgs.wofi}/bin/wofi --dmenu --prompt 'Are you sure?' --lines 4
       }
 
       # Ask for confirmation
@@ -64,7 +66,7 @@
         run_cmd --reboot
           ;;
         "$lock")
-        ${pkgs.betterlockscreen}/bin/betterlockscreen --lock
+        ${pkgs.swaylock}/bin/swaylock
           ;;
         "$suspend")
         run_cmd --suspend
