@@ -18,6 +18,7 @@
       bindkey "\e[5D" backward-word
       bindkey "\e[1;5C" forward-word
       bindkey "\e[1;5D" backward-word
+      bindkey "^R" history-incremental-search-backward
 
       autoload -U select-word-style
       select-word-style bash
