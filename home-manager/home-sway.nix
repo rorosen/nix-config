@@ -23,6 +23,7 @@
       export QT_QPA_PLATFORM=wayland
       export XDG_CURRENT_DESKTOP=sway
       export XDG_SESSION_DESKTOP=sway
+      export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
       [ "$(tty)" = "/dev/tty1" ] && exec ${pkgs.sway}/bin/sway
     '';
   };
