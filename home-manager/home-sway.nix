@@ -5,6 +5,7 @@
     ./home.nix
     ./sway.nix
     ./waybar
+    ./wofi
   ];
 
   programs.bash = {

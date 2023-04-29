@@ -11,10 +11,10 @@
         layer = "top";
         position = "top";
         height = 30;
-        spacing = 4;
+        spacing = 6;
         modules-left = [ "sway/workspaces" "sway/mode" "sway/scratchpad" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "idle_inhibitor" "pulseaudio" "backlight" "battery" "sway/language" "tray" ];
+        modules-right = [ "idle_inhibitor" "pulseaudio" "backlight" "battery" "tray" ];
         tray.spacing = 10;
         idle_inhibitor = {
           format = "{icon}";
@@ -24,7 +24,7 @@
           };
         };
         pulseaudio = {
-          format = "{volume}% {icon} {format_source}";
+          format = "{volume}% {icon}  {format_source}";
           format-bluetooth = "{volume}% {icon}  {format_source}";
           format-bluetooth-muted = "  {icon}  {format_source}";
           format-muted = "  {format_source}";
@@ -59,12 +59,12 @@
         layer = "top";
         position = "bottom";
         height = 30;
-        spacing = 4;
+        spacing = 6;
         modules-left = [ "cpu" "memory" "disk" "temperature" ];
-        modules-right = [ "network" "clock" ];
-        cpu.format = "{usage}%  ";
-        memory.format = "{}%  ";
-        disk.format = "{percentage_free}%  ";
+        modules-right = [ "network" "sway/language" "clock" ];
+        cpu.format = "  {usage}%";
+        memory.format = "  {}%";
+        disk.format = "   {percentage_free}%";
         clock = {
           format = "{:%H:%M}  ";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>";
@@ -75,21 +75,21 @@
           format-calendar-weekdays = "<span color='#ffcc66'>{}</span>";
         };
         network = {
-          format-wifi = "{essid}: {ipaddr}/{cidr}  ";
-          format-ethernet = "{ipaddr}/{cidr}  ";
-          tooltip-format = "{ifname} via {gwaddr}";
+          format-wifi = "{essid}  ";
+          format-ethernet = " ";
+          tooltip-format = "{ifname}: {ipaddr}/{cidr} via {gwaddr}";
           format-linked = "{ifname} (No IP)  ";
           format-disconnected = "Disconnected ⚠ ";
+          on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
         };
         temperature = {
           critical-threshold = 80;
-          format = "{temperatureC}°C {icon}";
+          format = "{icon} {temperatureC}°C";
           format-icons = [ " " " " " " " " " " ];
         };
       }
     ];
 
     style = builtins.readFile ./style.css;
-
   };
 }
