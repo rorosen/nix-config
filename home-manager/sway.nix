@@ -34,7 +34,7 @@ in
         "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 10";
         "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 10";
         # Custom keybindings
-        "${modifier}+d" = "exec ${pkgs.wofi}/bin/wofi --show=drun --allow-images";
+        "${modifier}+d" = "exec ${pkgs.wofi}/bin/wofi --show=drun --allow-images --insensitive";
         "${modifier}+x" = "exec $HOME/.config/wofi/sysmenu.sh";
         "${modifier}+n" = "exec ${pkgs.cinnamon.nemo}/bin/nemo";
         "${modifier}+less" = "move workspace to output left";

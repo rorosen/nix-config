@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   home.file.".config/wofi/sysmenu.sh" = {
@@ -17,22 +17,14 @@
 
       # wofi CMD
       wofi_cmd() {
-        ${pkgs.wofi}/bin/wofi -dmenu \
-          -mesg "Uptime: $(${pkgs.procps}/bin/uptime --pretty | ${pkgs.gnused}/bin/sed -e 's/up //g')" \
-          -theme-str '${wofi-theme}'
+        ${pkgs.wofi}/bin/wofi --dmenu \
+          --prompt "Uptime: $(${pkgs.procps}/bin/uptime --pretty | ${pkgs.gnused}/bin/sed -e 's/up //g')" \
+          --lines 6
       }
 
       # Confirmation CMD
       confirm_cmd() {
-        ${pkgs.wofi}/bin/wofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
-          -theme-str 'mainbox {children: [ "message", "listview" ];}' \
-          -theme-str 'listview {columns: 2; lines: 1;}' \
-          -theme-str 'element-text {horizontal-align: 0.5;}' \
-          -theme-str 'textbox {horizontal-align: 0.5;}' \
-          -dmenu \
-          -p 'Confirmation' \
-          -mesg 'Really, really, really?' \
-          -theme-str '${wofi-theme}'
+        ${pkgs.wofi}/bin/wofi --dmenu --prompt 'Are you sure?'
       }
 
       # Ask for confirmation
@@ -79,5 +71,5 @@
           ;;
       esac
     '';
-  }
-    }
+  };
+}

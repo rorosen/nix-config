@@ -6,6 +6,7 @@
     ./sway.nix
     ./waybar
     ./wofi
+    ./swaylock.nix
   ];
 
   programs.bash = {
