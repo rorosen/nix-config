@@ -1,33 +1,10 @@
-# nix-home
+# Nix Config
 
-[Home Manager](https://nixos.wiki/wiki/Home_Manager) configuration to use on [NixOS](https://nixos.org/).
+My [NixOS](https://nixos.org/) configuration files.
 
-## Create ISO Image
+## Usage
 
-Create a bootable ISO image containing the configuration directory and flash it to a USB stick.
-
-```shell
-nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=iso.nix
-sudo dd if=result/iso/*.iso of=/dev/<ID> bs=4M status=progress conv=fdatasync
-```
-
-## Setup
-
-Follow the NixOS installation as described in the [manual](https://nixos.org/manual/nixos/stable/index.html#ch-installation), stop before executing `nixos-install`.
-
-Copy the content of `/etc/configuration` to `/etc/nixos/`.
-
-```shell
-cp /etc/configuration/* /etc/nixos/
-```
-
-Copy `/etc/nixos/values.nix.example` to `/etc/nixos/values.nix` and set the right values.
-
-Consequently, run `nixos-install`, boot into the new system, log in as root and set a password for the user with `passswd <USERNAME>`.
-
-## Post Install
-
-This repo is expected to be in `/home/rob/nix-config` for the next rebuild to work.
+`sudo nixos-rebuild --flake .#<configuration> switch`
 
 ## Links
 
