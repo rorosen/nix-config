@@ -39,6 +39,7 @@ in
         "${modifier}+n" = "exec ${pkgs.cinnamon.nemo}/bin/nemo";
         "${modifier}+less" = "move workspace to output left";
         # Keybindings for additional workaspces
+        "${modifier}+0" = "workspace number 10";
         "${modifier}+Ctrl+1" = "workspace number 11";
         "${modifier}+Ctrl+2" = "workspace number 12";
         "${modifier}+Ctrl+3" = "workspace number 13";
@@ -49,6 +50,7 @@ in
         "${modifier}+Ctrl+8" = "workspace number 18";
         "${modifier}+Ctrl+9" = "workspace number 19";
         "${modifier}+Ctrl+0" = "workspace number 20";
+        "${modifier}+Shift+0" = "move container to workspace number 10";
         "${modifier}+Shift+Ctrl+1" = "move container to workspace number 11";
         "${modifier}+Shift+Ctrl+2" = "move container to workspace number 12";
         "${modifier}+Shift+Ctrl+3" = "move container to workspace number 13";
@@ -70,8 +72,10 @@ in
 
       startup = [
         { command = "systemctl --user restart waybar"; always = true; }
-        { command = "${pkgs.firefox}/bin/firefox"; }
-        { command = "${pkgs.vscode}/bin/code"; }
+        { command = "${pkgs.sway}/bin/swaymsg 'workspace 1; exec ${pkgs.firefox}/bin/firefox"; }
+        { command = "${pkgs.sway}/bin/swaymsg 'workspace 2; exec ${pkgs.vscode}/bin/code'"; }
+        { command = "${pkgs.sway}/bin/swaymsg 'workspace 3; exec ${pkgs.alacritty}/bin/alacritty'"; }
+        { command = "${pkgs.sway}/bin/swaymsg 'workspace 20; exec ${pkgs.alacritty}/bin/keepassxc'"; }
       ];
     };
   };

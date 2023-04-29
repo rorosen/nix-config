@@ -17,5 +17,5 @@
     extraBackends = [ pkgs.sane-airscan ];
   };
 
-  users.users.rob.extraGroups = [ "scanner" "video" ];
+  users.users.rob.extraGroups = [ "scanner" ];
 }

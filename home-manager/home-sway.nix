@@ -1,13 +1,16 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
     ./home.nix
     ./sway.nix
-    ./waybar.nix
+    ./waybar
   ];
 
-  programs.zsh.initExtra = ''
-    [ "$(tty)" = "/dev/tty1" ] && exec sway
-  '';
+  programs.bash = {
+    enable = true;
+    profileExtra = ''
+      [ "$(tty)" = "/dev/tty1" ] && exec ${pkgs.sway}/bin/sway
+    '';
+  };
 }
