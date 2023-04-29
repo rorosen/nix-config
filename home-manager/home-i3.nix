@@ -12,4 +12,8 @@
     enable = true;
     numlock.enable = true;
   };
+
+  home.packages = [
+    brightnessctl
+  ];
 }

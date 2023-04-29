@@ -18,7 +18,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.rob = import ./home-manager/home-i3.nix;
+            home-manager.users.rob = import ./home-manager/home-sway.nix;
             home-manager.sharedModules = [
               ({ pkgs, ... }: {
                 home.packages = with pkgs; [

@@ -21,7 +21,11 @@
     firewall.enable = false;
   };
 
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
+  };
+
   sound.enable = true;
 
   # Unlock "login" keyring on login

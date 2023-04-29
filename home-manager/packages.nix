@@ -42,7 +42,6 @@
     # utils
     git
     killall
-    brightnessctl
     openssh
     arp-scan
     qemu
