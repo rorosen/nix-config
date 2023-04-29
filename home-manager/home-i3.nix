@@ -2,10 +2,10 @@
 
 {
   imports = [
+    ./home.nix
     ./i3
     ./polybar
     ./rofi
-    ./home.nix
   ];
 
   xsession = {

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   modifier = "Mod4";
@@ -13,12 +13,21 @@ in
       terminal = "${pkgs.alacritty}/bin/alacritty";
       window.titlebar = false;
 
-      keybindings = {
+      input = {
+        "*" = {
+          xkb_layout = "de";
+        };
+
+        "type:touchpad" = {
+          dwt = "enabled";
+          tap = "enabled";
+          middle_emulation = "enabled";
+          natural_scroll = "enabled";
+        };
+      };
+
+      keybindings = lib.mkOptionDefault {
         # Use selected XF86 keyboard symbols
-        "XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause -p spotify";
-        "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause -p spotify";
-        "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous -p spotify";
-        "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next -p spotify";
         "XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer set Master toggle";
         "XF86AudioRaiseVolume" = "exec ${pkgs.alsa-utils}/bin/amixer set Master 8%+";
         "XF86AudioLowerVolume" = "exec ${pkgs.alsa-utils}/bin/amixer set Master 8%-";
@@ -60,8 +69,9 @@ in
       ];
 
       startup = [
-        { command = "${pkgs.firefox}/bin/firefox"; notification = false; }
-        { command = "${pkgs.vscode}/bin/code"; notification = false; }
+        { command = "systemctl --user restart waybar"; always = true; }
+        { command = "${pkgs.firefox}/bin/firefox"; }
+        { command = "${pkgs.vscode}/bin/code"; }
       ];
     };
   };
