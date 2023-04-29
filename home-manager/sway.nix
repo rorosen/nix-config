@@ -34,8 +34,8 @@ in
         "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 10";
         "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 10";
         # Custom keybindings
-        #"${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -no-config -show drun -theme ~/.config/rofi/config.rasi";
-        #"${modifier}+x" = "exec ${pkgs.bash}/bin/bash $HOME/.config/polybar/sysmenu.sh";
+        "${modifier}+d" = "exec ${pkgs.wofi}/bin/wofi --show=drun --allow-images";
+        "${modifier}+x" = "exec $HOME/.config/wofi/sysmenu.sh";
         "${modifier}+n" = "exec ${pkgs.cinnamon.nemo}/bin/nemo";
         "${modifier}+less" = "move workspace to output left";
         # Keybindings for additional workaspces
