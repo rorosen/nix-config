@@ -76,10 +76,6 @@ in
     services.polybar = {
       enable = true;
 
-      home.packages = mkIf cfg.spotify.enabled [
-        pkgs.playerctl
-      ];
-
       script = ''
         polybar top &
         polybar bottom &

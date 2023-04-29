@@ -13,7 +13,6 @@
     ./ssh-agent.nix
     ./nemo.nix
     ./blueman.nix
-    ./extras.nix
     ./neovim.nix
   ];
 
