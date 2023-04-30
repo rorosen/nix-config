@@ -1,10 +1,6 @@
 { pkgs, ... }:
 
 {
-  xsession.profileExtra = ''
-    export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket;
-  '';
-
   systemd.user.services."ssh-agent" = {
     Unit = {
       Description = "SSH key agent";

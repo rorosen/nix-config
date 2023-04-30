@@ -1,3 +1,5 @@
+{ ... }:
+
 {
   services.betterlockscreeen = {
     enable = true;

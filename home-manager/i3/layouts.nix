@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ ... }:
 
 {
   home.file.".config/i3/workspace-1.json" = {

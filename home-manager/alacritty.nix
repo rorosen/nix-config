@@ -23,7 +23,7 @@
 
       colors = {
         primary = {
-          background = "0x000000";
+          background = "0x1c1d1f";
           foreground = "0xEBEBEB";
         };
         cursor = {

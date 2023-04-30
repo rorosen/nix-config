@@ -21,7 +21,11 @@
     firewall.enable = false;
   };
 
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
+  };
+
   sound.enable = true;
 
   # Unlock "login" keyring on login
@@ -67,9 +71,22 @@
     (nerdfonts.override { fonts = [ "Meslo" "Iosevka" ]; })
   ];
 
+  i18n.defaultLocale = "en_US.utf8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "de_DE.utf8";
+    LC_IDENTIFICATION = "de_DE.utf8";
+    LC_MEASUREMENT = "de_DE.utf8";
+    LC_MONETARY = "de_DE.utf8";
+    LC_NAME = "de_DE.utf8";
+    LC_NUMERIC = "de_DE.utf8";
+    LC_PAPER = "de_DE.utf8";
+    LC_TELEPHONE = "de_DE.utf8";
+    LC_TIME = "de_DE.utf8";
+  };
+
   users.users.rob = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "docker" "cups" "lp" "audio" "wireshark" ];
+    extraGroups = [ "wheel" "libvirtd" "docker" "cups" "lp" "audio" "wireshark" "video" "input" ];
   };
 
   # Before changing this value read the documentation for this option

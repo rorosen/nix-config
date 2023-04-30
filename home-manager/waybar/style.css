@@ -1,0 +1,70 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Ubuntu Nerd Font";
+  font-weight: bold;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(29, 31, 33, 0.95);
+  /* background: #100000; */
+  color: white;
+}
+
+#window {
+  font-family: "Ubuntu";
+}
+
+#workspaces button {
+  padding: 0 5px;
+  background: transparent;
+  color: white;
+  border-top: 2px solid transparent;
+}
+
+#workspaces button.focused {
+  color: #c9545d;
+  border-top: 2px solid #c9545d;
+}
+
+#mode {
+  background: #64727d;
+  border-bottom: 3px solid white;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#tray,
+#mode {
+  padding: 0 3px;
+  margin: 0 2px;
+}
+
+#clock {
+  font-weight: bold;
+}
+
+#battery icon {
+  color: red;
+}
+
+@keyframes blink {
+  to {
+    background-color: #c9545d;
+    color: black;
+  }
+}
+#battery.critical:not(.charging) {
+  color: white;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}

@@ -1,0 +1,88 @@
+{ pkgs, lib, config, ... }:
+
+let
+  modifier = "Mod4";
+  toolwait = "${config.home.homeDirectory}/.config/sway/sway-toolwait";
+in
+{
+  imports = [
+    ./sway-toolwait.nix
+    ./sync-startup.nix
+  ];
+
+  wayland.windowManager.sway = {
+    enable = true;
+
+    startupSync = [
+      { command = "${pkgs.vscode}/bin/code"; workspace = 2; appId = "code"; }
+      { command = "${pkgs.firefox}/bin/firefox"; workspace = 1; appId = "firefox"; }
+      { command = "${pkgs.alacritty}/bin/alacritty"; workspace = 3; appId = "Alacritty"; }
+      { command = "${pkgs.keepassxc}/bin/keepassxc"; workspace = 20; appId = "org.keepassxc.KeePassXC"; }
+    ];
+
+    config = {
+      modifier = modifier;
+      bars = [ ];
+      terminal = "${pkgs.alacritty}/bin/alacritty";
+      window.titlebar = false;
+
+      input = {
+        "*" = {
+          xkb_layout = "de";
+        };
+
+        "type:touchpad" = {
+          dwt = "enabled";
+          tap = "enabled";
+          middle_emulation = "enabled";
+          natural_scroll = "enabled";
+        };
+      };
+
+      keybindings = lib.mkOptionDefault {
+        # Use selected XF86 keyboard symbols
+        "XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer set Master toggle";
+        "XF86AudioRaiseVolume" = "exec ${pkgs.alsa-utils}/bin/amixer set Master 8%+";
+        "XF86AudioLowerVolume" = "exec ${pkgs.alsa-utils}/bin/amixer set Master 8%-";
+        "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 10";
+        "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 10";
+        # Custom keybindings
+        "${modifier}+d" = "exec ${pkgs.wofi}/bin/wofi --show=drun --allow-images --insensitive";
+        "${modifier}+x" = "exec ${pkgs.wlogout}/bin/wlogout";
+        "${modifier}+n" = "exec ${pkgs.cinnamon.nemo}/bin/nemo";
+        "${modifier}+less" = "move workspace to output left";
+        # Keybindings for additional workaspces
+        "${modifier}+0" = "workspace number 10";
+        "${modifier}+Ctrl+1" = "workspace number 11";
+        "${modifier}+Ctrl+2" = "workspace number 12";
+        "${modifier}+Ctrl+3" = "workspace number 13";
+        "${modifier}+Ctrl+4" = "workspace number 14";
+        "${modifier}+Ctrl+5" = "workspace number 15";
+        "${modifier}+Ctrl+6" = "workspace number 16";
+        "${modifier}+Ctrl+7" = "workspace number 17";
+        "${modifier}+Ctrl+8" = "workspace number 18";
+        "${modifier}+Ctrl+9" = "workspace number 19";
+        "${modifier}+Ctrl+0" = "workspace number 20";
+        "${modifier}+Shift+0" = "move container to workspace number 10";
+        "${modifier}+Shift+Ctrl+1" = "move container to workspace number 11";
+        "${modifier}+Shift+Ctrl+2" = "move container to workspace number 12";
+        "${modifier}+Shift+Ctrl+3" = "move container to workspace number 13";
+        "${modifier}+Shift+Ctrl+4" = "move container to workspace number 14";
+        "${modifier}+Shift+Ctrl+5" = "move container to workspace number 15";
+        "${modifier}+Shift+Ctrl+6" = "move container to workspace number 16";
+        "${modifier}+Shift+Ctrl+7" = "move container to workspace number 17";
+        "${modifier}+Shift+Ctrl+8" = "move container to workspace number 18";
+        "${modifier}+Shift+Ctrl+9" = "move container to workspace number 19";
+        "${modifier}+Shift+Ctrl+0" = "move container to workspace number 20";
+      };
+
+      floating.criteria = [
+        { app_id = "nm-connection-editor"; }
+      ];
+
+      startup = [
+        { command = "${pkgs.systemd}/bin/systemctl --user restart waybar"; always = true; }
+      ];
+    };
+  };
+}
