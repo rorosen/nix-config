@@ -1,4 +1,3 @@
-#!/usr/bin/env -S python3 -B
 # https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-toolwait
 TIME_STAMP="20230321.220111"
 

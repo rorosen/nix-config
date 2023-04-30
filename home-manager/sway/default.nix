@@ -5,7 +5,10 @@ let
   toolwait = "${config.home.homeDirectory}/.config/sway/sway-toolwait";
 in
 {
-  imports = [ ./sway-toolwait.nix ];
+  imports = [
+    ./sway-toolwait.nix
+    ./startup.nix
+  ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -74,7 +77,7 @@ in
 
       startup = [
         { command = "${pkgs.systemd}/bin/systemctl --user restart waybar"; always = true; }
-        { command = "${config.home.homeDirectory}/.config/sway/startup"; }
+        # { command = "${config.home.homeDirectory}/.config/sway/startup"; }
         # { command = "${pkgs.sway}/bin/swaymsg \"${pkgs.sway}/bin/swaymsg 'workspace 1'; ${toolwait} --waitfor 'firefox' ${pkgs.firefox}/bin/firefox\""; }
         # { command = "${pkgs.sway}/bin/swaymsg \"'workspace 3'; ${toolwait} --waitfor 'Alacritty' ${pkgs.alacritty}/bin/alacritty\""; }
         # { command = "${pkgs.sway}/bin/swaymsg \"'workspace 20'; ${toolwait} --waitfor 'org.keepassxc.KeePassXC' ${pkgs.keepassxc}/bin/keepassxc\""; }
