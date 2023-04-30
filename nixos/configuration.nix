@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 
 let
-  cfg = config.system.flavour;
-  isSway = cfg.system.flavour == "sway";
-  isI3 = cfg.system.flavour == "i3";
+  cfg = config.system;
+  isSway = cfg.flavour == "sway";
+  isI3 = cfg.flavour == "i3";
 in
 {
   options.system.flavour = lib.mkOption {
@@ -50,13 +50,13 @@ in
     environment.systemPackages = with pkgs; [
       networkmanager
       vim
-    ] ++ lib.mkIf isSway [
+    ] ++ lib.optionals isSway [
       xdg-desktop-portal
       xdg-desktop-portal-wlr
       grim
     ];
 
-    xdg.portal = mkIf isSway {
+    xdg.portal = lib.mkIf isSway {
       enable = true;
       wlr.enable = true;
       extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
