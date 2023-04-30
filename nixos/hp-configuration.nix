@@ -2,9 +2,11 @@
 
 {
   imports = [
-    ./configuration-sway.nix
+    ./configuration.nix
     ./hp-hardware-configuration.nix
   ];
+
+  system.flavour = "sway";
 
   networking.hostName = "hp";
   boot.initrd.kernelModules = [ "amdgpu" ];
