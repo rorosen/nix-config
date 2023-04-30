@@ -13,6 +13,8 @@ in
   wayland.windowManager.sway = {
     enable = true;
 
+    extraConfig = "${config.home.homeDirectory}/.config/sway/sync-startup";
+
     config = {
       modifier = modifier;
       bars = [ ];

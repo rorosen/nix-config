@@ -4,6 +4,45 @@
   programs.wlogout = {
     enable = true;
 
+    layout = [
+      {
+        label = "lock";
+        action = "${pkgs.swaylock}/bin/swaylock";
+        text = "Lock";
+        keybind = "l";
+      }
+      {
+        label = "shutdown";
+        action = "${pkgs.systemd}/bin/systemctl poweroff";
+        text = "Shutdown";
+        keybind = "s";
+      }
+      {
+        label = "reboot";
+        action = "${pkgs.systemd}/bin/systemctl reboot";
+        text = "Reboot";
+        keybind = "r";
+      }
+      {
+        label = "suspend";
+        action = "${pkgs.systemd}/bin/systemctl suspend";
+        text = "Suspend";
+        keybind = "u";
+      }
+      {
+        label = "logout";
+        action = "${pkgs.systemd}/bin/loginctl terminate-user $USER";
+        text = "Logout";
+        keybind = "e";
+      }
+      {
+        label = "hibernate";
+        action = "${pkgs.systemd}/bin/systemctl hibernate";
+        text = "Hibernate";
+        keybind = "h";
+      }
+    ];
+
     style = ''
       * {
       	background-image: none;
