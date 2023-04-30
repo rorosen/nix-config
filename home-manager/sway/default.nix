@@ -1,10 +1,11 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 let
   modifier = "Mod4";
+  toolwait = "${config.home.homeDirectory}/.config/sway/sway-toolwait";
 in
 {
-  imports = [ ./sway-toolwait ];
+  imports = [ ./sway-toolwait.nix ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -73,11 +74,11 @@ in
 
       startup = [
         { command = "${pkgs.systemd}/bin/systemctl --user restart waybar"; always = true; }
-        { command = "${pkgs.firefox}/bin/firefox"; }
-        { command = "${pkgs.vscode}/bin/code"; }
-        { command = "${pkgs.alacritty}/bin/alacritty"; }
-        { command = "${pkgs.kepassxc}/bin/keepassxc"; }
-        { command = "${pkgs.pasystray}/bin/pasystray"; }
+        { command = "${config.home.homeDirectory}/.config/sway/startup"; }
+        # { command = "${pkgs.sway}/bin/swaymsg \"${pkgs.sway}/bin/swaymsg 'workspace 1'; ${toolwait} --waitfor 'firefox' ${pkgs.firefox}/bin/firefox\""; }
+        # { command = "${pkgs.sway}/bin/swaymsg \"'workspace 3'; ${toolwait} --waitfor 'Alacritty' ${pkgs.alacritty}/bin/alacritty\""; }
+        # { command = "${pkgs.sway}/bin/swaymsg \"'workspace 20'; ${toolwait} --waitfor 'org.keepassxc.KeePassXC' ${pkgs.keepassxc}/bin/keepassxc\""; }
+        # { command = "${pkgs.sway}/bin/swaymsg \"'workspace 2'; ${toolwait} --nocheck ${pkgs.vscode}/bin/code\""; }
       ];
     };
   };

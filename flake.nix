@@ -20,11 +20,11 @@
             home-manager.useUserPackages = true;
             home-manager.users.rob = import ./home-manager/home-sway.nix;
             home-manager.sharedModules = [
+              # extra packages to install
               ({ pkgs, ... }: {
                 home.packages = with pkgs; [
                   nextcloud-client
                   thunderbird
-                  betterlockscreen
                   signal-desktop
                   flameshot
                   prusa-slicer
@@ -33,6 +33,14 @@
                   android-tools
                 ];
               })
+              # extra commands to autostart
+              # ({ pkgs, config, ... }: {
+              #   wayland.windowManager.sway.config.startup = [
+              #     { command = "${pkgs.nextcloud-client}/bin/nextcloud"; }
+              #     { command = "${pkgs.sway}/bin/swaymsg 'workspace 19'"; }
+              #     { command = "${config.home.homeDirectory}/.config/sway/sway-toolwait --waitfor 'thunderbird' ${pkgs.thunderbird}/bin/thunderbird"; }
+              #   ];
+              # })
 
               ({ programs.git.userEmail = "robert.rose@mailbox.org"; })
             ];
