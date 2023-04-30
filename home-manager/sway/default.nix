@@ -4,6 +4,8 @@ let
   modifier = "Mod4";
 in
 {
+  imports = [ ./sway-toolwait ];
+
   wayland.windowManager.sway = {
     enable = true;
 
@@ -63,7 +65,6 @@ in
         "${modifier}+Shift+Ctrl+0" = "move container to workspace number 20";
       };
 
-
       floating.criteria = [
         {
           app_id = "nm-connection-editor";
@@ -71,12 +72,12 @@ in
       ];
 
       startup = [
-        { command = "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"; }
         { command = "${pkgs.systemd}/bin/systemctl --user restart waybar"; always = true; }
-        { command = "${pkgs.sway}/bin/swaymsg 'workspace 1; exec ${pkgs.firefox}/bin/firefox"; }
-        { command = "${pkgs.sway}/bin/swaymsg 'workspace 2; exec ${pkgs.vscode}/bin/code'"; }
-        { command = "${pkgs.sway}/bin/swaymsg 'workspace 3; exec ${pkgs.alacritty}/bin/alacritty'"; }
-        { command = "${pkgs.sway}/bin/swaymsg 'workspace 20; exec ${pkgs.alacritty}/bin/keepassxc'"; }
+        { command = "${pkgs.firefox}/bin/firefox"; }
+        { command = "${pkgs.vscode}/bin/code"; }
+        { command = "${pkgs.alacritty}/bin/alacritty"; }
+        { command = "${pkgs.kepassxc}/bin/keepassxc"; }
+        { command = "${pkgs.pasystray}/bin/pasystray"; }
       ];
     };
   };

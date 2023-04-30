@@ -3,7 +3,7 @@
 {
   imports = [
     ./home.nix
-    ./sway.nix
+    ./sway
     ./waybar
     ./wofi
     ./swaylock.nix

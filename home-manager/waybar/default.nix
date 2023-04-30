@@ -64,7 +64,7 @@
         modules-right = [ "network" "sway/language" "clock" ];
         cpu.format = "  {usage}%";
         memory.format = "  {}%";
-        disk.format = "   {percentage_free}%";
+        disk.format = "   {percentage_used}%";
         clock = {
           format = "{:%H:%M}  ";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>";
