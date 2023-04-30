@@ -1,7 +1,6 @@
 { pkgs, config, lib, ... }:
 
 let
-  toolwait = "${config.home.homeDirectory}/.config/sway/sway-toolwait";
   cfg = config.wayland.windowManager.sway;
 
   startupModule = lib.types.submodule {
@@ -25,7 +24,7 @@ let
 
   startupEntryStr = { command, workspace, appId, ... }: ''
     ${pkgs.sway}/bin/swaymsg 'workspace ${builtins.toString workspace}';
-    ${toolwait} --waitfor '${appId}' ${command};
+    ${config.home.homeDirectory}/.config/sway/sway-toolwait --waitfor '${appId}' ${command};
   '';
 in
 {

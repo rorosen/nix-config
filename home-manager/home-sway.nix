@@ -8,6 +8,7 @@
     ./wofi
     ./swaylock.nix
     ./wlogout.nix
+    ./swayidle.nix
   ];
 
   programs.bash = {
