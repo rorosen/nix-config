@@ -44,7 +44,7 @@
         battery = {
           states.critical = 10;
           format = "{capacity}% {icon}";
-          format-charging = "{capacity}%  ";
+          format-charging = "{capacity}% {icon}";
           format-plugged = "{capacity}%  ";
           format-alt = "{time} {icon}";
           format-icons = [ " " " " " " " " " " ];
@@ -75,8 +75,9 @@
           format-calendar-weekdays = "<span color='#ffcc66'>{}</span>";
         };
         network = {
-          format-wifi = "{essid}  ";
-          format-ethernet = " ";
+          interval = 1;
+          format-wifi = "  {essid} -   {bandwidthDownBytes}    {bandwidthUpBytes}";
+          format-ethernet = "  -   {bandwidthDownBytes}    {bandwidthUpBytes}";
           tooltip-format = "{ifname}: {ipaddr}/{cidr} via {gwaddr}";
           format-linked = "{ifname} (No IP)  ";
           format-disconnected = "Disconnected ⚠ ";

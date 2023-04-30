@@ -2,10 +2,11 @@
 
 {
   imports = [
-    ./home.nix
+    ./home-base.nix
     ./i3
     ./polybar
     ./rofi
+    ./betterlockscreen.nix
   ];
 
   xsession = {

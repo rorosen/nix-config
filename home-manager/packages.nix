@@ -1,9 +1,6 @@
 { pkgs, ... }:
 
 {
-  # TODO: does not work when using home-manager as a nixos module
-  # fonts.fontconfig.enable = true;
-
   home.packages = with pkgs; [
     # gui
     firefox
@@ -21,6 +18,7 @@
     libreoffice
     pavucontrol
     pasystray
+    flameshot
 
     # terminal
     zsh

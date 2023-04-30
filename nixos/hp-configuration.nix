@@ -2,18 +2,12 @@
 
 {
   imports = [
-    ./configuration.nix
+    ./configuration-sway.nix
     ./hp-hardware-configuration.nix
   ];
 
   networking.hostName = "hp";
   boot.initrd.kernelModules = [ "amdgpu" ];
-
-  programs = {
-    light.enable = true;
-    sway.enable = true;
-  };
-  xdg.portal.wlr.enable = true;
 
   # Enable scanner support
   hardware.sane = {

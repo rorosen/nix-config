@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration";
+  description = "NixOS configuration files";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -20,33 +20,27 @@
             home-manager.useUserPackages = true;
             home-manager.users.rob = import ./home-manager/home-sway.nix;
             home-manager.sharedModules = [
-              # extra packages to install
               ({ pkgs, ... }: {
+                imports = [ ./home-manager/nextcloud-client.nix ];
+                # extra packages to install
                 home.packages = with pkgs; [
+                  nextcloud-client
                   thunderbird
                   signal-desktop
-                  flameshot
                   prusa-slicer
                   freecad
                   element-desktop
                   android-tools
                 ];
-              })
-              # extra commands to autostart
-              ({ pkgs, config, ... }: {
-                wayland.windowManager.sway = {
-                  startupSync = [
-                    {
-                      command = "${pkgs.thunderbird}/bin/thunderbird";
-                      workspace = 19;
-                      appId = "thunderbird";
-                    }
-                  ];
-                };
-              })
-              # other stuff
-              ({ ... }: {
-                imports = [ ./home-manager/nextcloud-client.nix ];
+                # extra applications to autostart
+                wayland.windowManager.sway.startupSync = [
+                  {
+                    command = "${pkgs.thunderbird}/bin/thunderbird";
+                    workspace = 19;
+                    appId = "thunderbird";
+                  }
+                ];
+
                 programs.git.userEmail = "robert.rose@mailbox.org";
               })
             ];

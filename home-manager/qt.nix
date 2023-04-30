@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  qt.enable = true;
-  qt.style.name = "adwaita-dark";
+  qt = {
+    enable = true;
+    style = "adwaita-dark";
+  };
 }
