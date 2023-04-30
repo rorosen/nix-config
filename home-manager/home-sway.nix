@@ -7,7 +7,6 @@
     ./waybar
     ./wofi
     ./swaylock.nix
-    ./electron-wayland.nix
   ];
 
   home.packages = with pkgs; [
