@@ -11,6 +11,7 @@ in
 
     Service = {
       Type = "simple";
+      Environment = [ "DISPLAY=:0" ];
       ExecStart = "${config.home.homeDirectory}/.config/sway/start-apps";
     };
 

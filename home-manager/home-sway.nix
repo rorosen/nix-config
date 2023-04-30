@@ -7,6 +7,7 @@
     ./waybar
     ./wofi
     ./swaylock.nix
+    ./wlogout.nix
   ];
 
   home.packages = with pkgs; [
