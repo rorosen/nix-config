@@ -23,7 +23,6 @@
               # extra packages to install
               ({ pkgs, ... }: {
                 home.packages = with pkgs; [
-                  nextcloud-client
                   thunderbird
                   signal-desktop
                   flameshot
@@ -34,15 +33,22 @@
                 ];
               })
               # extra commands to autostart
-              # ({ pkgs, config, ... }: {
-              #   wayland.windowManager.sway.config.startup = [
-              #     { command = "${pkgs.nextcloud-client}/bin/nextcloud"; }
-              #     { command = "${pkgs.sway}/bin/swaymsg 'workspace 19'"; }
-              #     { command = "${config.home.homeDirectory}/.config/sway/sway-toolwait --waitfor 'thunderbird' ${pkgs.thunderbird}/bin/thunderbird"; }
-              #   ];
-              # })
-
-              ({ programs.git.userEmail = "robert.rose@mailbox.org"; })
+              ({ pkgs, config, ... }: {
+                wayland.windowManager.sway = {
+                  startupSync = [
+                    {
+                      command = "${pkgs.thunderbird}/bin/thunderbird";
+                      workspace = 19;
+                      appId = "thunderbird";
+                    }
+                  ];
+                };
+              })
+              # other stuff
+              ({ ... }: {
+                imports = [ ./home-manager/nextcloud-client.nix ];
+                programs.git.userEmail = "robert.rose@mailbox.org";
+              })
             ];
           }
         ];

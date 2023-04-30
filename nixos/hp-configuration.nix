@@ -9,7 +9,11 @@
   networking.hostName = "hp";
   boot.initrd.kernelModules = [ "amdgpu" ];
 
-  programs.light.enable = true;
+  programs = {
+    light.enable = true;
+    sway.enable = true;
+  };
+  xdg.portal.wlr.enable = true;
 
   # Enable scanner support
   hardware.sane = {

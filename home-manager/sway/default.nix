@@ -7,13 +7,18 @@ in
 {
   imports = [
     ./sway-toolwait.nix
-    ./startup.nix
+    ./sync-startup.nix
   ];
 
   wayland.windowManager.sway = {
     enable = true;
 
-    extraConfig = "${config.home.homeDirectory}/.config/sway/sync-startup";
+    startupSync = [
+      { command = "${pkgs.vscode}/bin/code"; workspace = 2; appId = "code"; }
+      { command = "${pkgs.firefox}/bin/firefox"; workspace = 1; appId = "firefox"; }
+      { command = "${pkgs.alacritty}/bin/alacritty"; workspace = 3; appId = "Alacritty"; }
+      { command = "${pkgs.keepassxc}/bin/keepassxc"; workspace = 20; appId = "org.keepassxc.KeePassXC"; }
+    ];
 
     config = {
       modifier = modifier;
@@ -72,18 +77,11 @@ in
       };
 
       floating.criteria = [
-        {
-          app_id = "nm-connection-editor";
-        }
+        { app_id = "nm-connection-editor"; }
       ];
 
       startup = [
         { command = "${pkgs.systemd}/bin/systemctl --user restart waybar"; always = true; }
-        # { command = "${config.home.homeDirectory}/.config/sway/startup"; }
-        # { command = "${pkgs.sway}/bin/swaymsg \"${pkgs.sway}/bin/swaymsg 'workspace 1'; ${toolwait} --waitfor 'firefox' ${pkgs.firefox}/bin/firefox\""; }
-        # { command = "${pkgs.sway}/bin/swaymsg \"'workspace 3'; ${toolwait} --waitfor 'Alacritty' ${pkgs.alacritty}/bin/alacritty\""; }
-        # { command = "${pkgs.sway}/bin/swaymsg \"'workspace 20'; ${toolwait} --waitfor 'org.keepassxc.KeePassXC' ${pkgs.keepassxc}/bin/keepassxc\""; }
-        # { command = "${pkgs.sway}/bin/swaymsg \"'workspace 2'; ${toolwait} --nocheck ${pkgs.vscode}/bin/code\""; }
       ];
     };
   };

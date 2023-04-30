@@ -51,7 +51,6 @@
   };
 
   programs = {
-    sway.enable = true;
     wireshark.enable = true;
     dconf.enable = true;
   };
@@ -61,7 +60,6 @@
     docker.enable = true;
   };
 
-  #hardware.opengl.extraPackages = [ pkgs.rocm-opencl-icd ];
   hardware.bluetooth.enable = true;
 
   fonts.fonts = with pkgs; [
