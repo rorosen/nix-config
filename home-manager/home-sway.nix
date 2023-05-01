@@ -6,6 +6,7 @@
     ./sway
     ./waybar
     ./wofi
+    ./swaync
     ./swaylock.nix
     ./wlogout.nix
     ./swayidle.nix

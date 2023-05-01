@@ -17,7 +17,7 @@ in
     };
 
     settings = mkOption {
-      type = types.str;
+      type = types.attrs;
     };
 
     style = mkOption {
@@ -26,7 +26,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.file.".config/swaync/config.json".text = cfg.settings;
+    home.file.".config/swaync/config.json".text = builtins.toJSON cfg.settings;
 
     home.file.".config/swaync/style.css".text = cfg.style;
 

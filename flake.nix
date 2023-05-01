@@ -13,7 +13,6 @@
         system = "x86_64-linux";
         modules = [
           ./nixos/hp-configuration.nix
-          ./modules/home-manager
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -21,7 +20,10 @@
             home-manager.users.rob = import ./home-manager/home-sway.nix;
             home-manager.sharedModules = [
               ({ pkgs, ... }: {
-                imports = [ ./home-manager/nextcloud-client.nix ];
+                imports = [
+                  ./home-manager/nextcloud-client.nix
+                  ./modules/home-manager
+                ];
                 # extra packages to install
                 home.packages = with pkgs; [
                   nextcloud-client

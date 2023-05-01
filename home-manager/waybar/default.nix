@@ -61,10 +61,15 @@
         height = 30;
         spacing = 8;
         modules-left = [ "cpu" "memory" "disk" "temperature" ];
-        modules-right = [ "network" "clock" ];
+        modules-right = [ "network" "clock" "custom/powermenu" ];
         cpu.format = "  {usage}%";
         memory.format = "  {}%";
         disk.format = "  {percentage_used}%";
+        temperature = {
+          critical-threshold = 80;
+          format = "{icon} {temperatureC}°C";
+          format-icons = [ " " " " " " " " " " ];
+        };
         clock = {
           format = "{:%H:%M}  ";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>";
@@ -86,10 +91,10 @@
           format-disconnected = "Disconnected ⚠ ";
           on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
         };
-        temperature = {
-          critical-threshold = 80;
-          format = "{icon} {temperatureC}°C";
-          format-icons = [ " " " " " " " " " " ];
+        "custom/powermenu" = {
+          on-click = "${pkgs.wlogout}/bin/wlogout";
+          format = " ";
+          tooltip = false;
         };
       }
     ];

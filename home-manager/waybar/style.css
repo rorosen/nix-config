@@ -44,7 +44,7 @@ window#waybar {
 #idle_inhibitor,
 #mode {
   border-radius: 10px;
-  background: rgba(95, 102, 109, 0.75);
+  background: rgba(69, 74, 80, 0.75);
   padding: 0 3px;
 }
 
@@ -67,4 +67,10 @@ window#waybar {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+
+#custom-powermenu {
+  font-size: 16px;
+  color: #c9545d;
+  padding: 0 3px;
 }
