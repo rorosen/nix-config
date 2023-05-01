@@ -9,6 +9,7 @@
     ./swaylock.nix
     ./wlogout.nix
     ./swayidle.nix
+    ./dunst.nix
   ];
 
   programs.bash = {

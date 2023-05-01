@@ -11,7 +11,7 @@
         layer = "top";
         position = "top";
         height = 30;
-        spacing = 6;
+        spacing = 8;
         modules-left = [ "sway/workspaces" "sway/mode" "sway/scratchpad" ];
         modules-center = [ "sway/window" ];
         modules-right = [ "idle_inhibitor" "pulseaudio" "backlight" "battery" "tray" ];
@@ -59,12 +59,12 @@
         layer = "top";
         position = "bottom";
         height = 30;
-        spacing = 6;
+        spacing = 8;
         modules-left = [ "cpu" "memory" "disk" "temperature" ];
         modules-right = [ "network" "sway/language" "clock" ];
         cpu.format = "  {usage}%";
         memory.format = "  {}%";
-        disk.format = "   {percentage_used}%";
+        disk.format = "  {percentage_used}%";
         clock = {
           format = "{:%H:%M}  ";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>";
@@ -76,9 +76,12 @@
         };
         network = {
           interval = 1;
+          min-length = 30;
+          max-length = 30;
           format-wifi = "  {essid} -   {bandwidthDownBytes}    {bandwidthUpBytes}";
           format-ethernet = "  -   {bandwidthDownBytes}    {bandwidthUpBytes}";
           tooltip-format = "{ifname}: {ipaddr}/{cidr} via {gwaddr}";
+          tooltip-format-wifi = "{ifname}: {ipaddr}/{cidr} via {gwaddr} ({signalStrength}%)";
           format-linked = "{ifname} (No IP)  ";
           format-disconnected = "Disconnected ⚠ ";
           on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";

@@ -9,7 +9,6 @@
 
 window#waybar {
   background: rgba(29, 31, 33, 0.95);
-  /* background: #100000; */
   color: white;
 }
 
@@ -29,10 +28,14 @@ window#waybar {
   border-top: 2px solid #c9545d;
 }
 
-#mode {
+#tray {
+  background: transparent;
+}
+
+/* #mode {
   background: #64727d;
   border-bottom: 3px solid white;
-}
+} */
 
 #clock,
 #battery,
@@ -40,26 +43,32 @@ window#waybar {
 #memory,
 #network,
 #pulseaudio,
-#tray,
+#backlight,
+#disk,
+#temperature,
 #mode {
+  border-radius: 10px;
+  background: rgba(95, 102, 109, 0.75);
   padding: 0 3px;
-  margin: 0 2px;
 }
 
-#clock {
-  font-weight: bold;
+#idle_inhibitor {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
-#battery icon {
-  color: red;
+#idle_inhibitor.activated {
+  border-radius: 10px;
+  background-color: #c9545d;
 }
 
 @keyframes blink {
   to {
     background-color: #c9545d;
-    color: black;
+    color: rgba(95, 102, 109, 0.75);
   }
 }
+
 #battery.critical:not(.charging) {
   color: white;
   animation-name: blink;

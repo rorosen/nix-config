@@ -20,6 +20,11 @@ in
       { command = "${pkgs.keepassxc}/bin/keepassxc"; workspace = 20; appId = "org.keepassxc.KeePassXC"; }
     ];
 
+    extraConfigEarly = ''
+      for_window [class=".*"] inhibit_idle fullscreen
+      for_window [app_id=".*"] inhibit_idle fullscreen
+    '';
+
     config = {
       modifier = modifier;
       bars = [ ];

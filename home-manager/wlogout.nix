@@ -7,7 +7,7 @@
     layout = [
       {
         label = "lock";
-        action = "${pkgs.swaylock}/bin/swaylock";
+        action = "${pkgs.swaylock}/bin/swaylock --daemonize";
         text = "Lock";
         keybind = "l";
       }
