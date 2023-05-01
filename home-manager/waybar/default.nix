@@ -14,7 +14,7 @@
         spacing = 8;
         modules-left = [ "sway/workspaces" "sway/mode" "sway/scratchpad" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "idle_inhibitor" "pulseaudio" "backlight" "battery" "tray" ];
+        modules-right = [ "sway/language" "idle_inhibitor" "pulseaudio" "backlight" "battery" "tray" ];
         tray.spacing = 10;
         idle_inhibitor = {
           format = "{icon}";
@@ -61,7 +61,7 @@
         height = 30;
         spacing = 8;
         modules-left = [ "cpu" "memory" "disk" "temperature" ];
-        modules-right = [ "network" "sway/language" "clock" ];
+        modules-right = [ "network" "clock" ];
         cpu.format = "  {usage}%";
         memory.format = "  {}%";
         disk.format = "  {percentage_used}%";
@@ -78,8 +78,8 @@
           interval = 1;
           min-length = 30;
           max-length = 30;
-          format-wifi = "  {essid} -   {bandwidthDownBytes}    {bandwidthUpBytes}";
-          format-ethernet = "  -   {bandwidthDownBytes}    {bandwidthUpBytes}";
+          format-wifi = "  {essid}     {bandwidthDownBytes}    {bandwidthUpBytes}";
+          format-ethernet = "      {bandwidthDownBytes}    {bandwidthUpBytes}";
           tooltip-format = "{ifname}: {ipaddr}/{cidr} via {gwaddr}";
           tooltip-format-wifi = "{ifname}: {ipaddr}/{cidr} via {gwaddr} ({signalStrength}%)";
           format-linked = "{ifname} (No IP)  ";

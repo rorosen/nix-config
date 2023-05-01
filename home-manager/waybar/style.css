@@ -32,11 +32,6 @@ window#waybar {
   background: transparent;
 }
 
-/* #mode {
-  background: #64727d;
-  border-bottom: 3px solid white;
-} */
-
 #clock,
 #battery,
 #cpu,
@@ -46,15 +41,11 @@ window#waybar {
 #backlight,
 #disk,
 #temperature,
+#idle_inhibitor,
 #mode {
   border-radius: 10px;
   background: rgba(95, 102, 109, 0.75);
   padding: 0 3px;
-}
-
-#idle_inhibitor {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
 }
 
 #idle_inhibitor.activated {

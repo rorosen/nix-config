@@ -13,7 +13,7 @@
         system = "x86_64-linux";
         modules = [
           ./nixos/hp-configuration.nix
-
+          ./modules/home-manager
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
