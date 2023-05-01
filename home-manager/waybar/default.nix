@@ -3,7 +3,6 @@
 {
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
 
     settings = [
       {
@@ -12,7 +11,7 @@
         position = "top";
         height = 30;
         spacing = 8;
-        modules-left = [ "sway/workspaces" "sway/mode" "sway/scratchpad" ];
+        modules-left = [ "custom/launcher" "sway/workspaces" "sway/mode" "sway/scratchpad" ];
         modules-center = [ "sway/window" ];
         modules-right = [ "sway/language" "idle_inhibitor" "pulseaudio" "backlight" "battery" "tray" ];
         tray.spacing = 10;
@@ -53,6 +52,11 @@
           format = "{percent}% {icon}";
           format-icons = [ " " " " " " " " " " " " " " " " " " ];
         };
+        "custom/launcher" = {
+          on-click = "${pkgs.wofi}/bin/wofi --show=drun --allow-images --insensitive";
+          format = " ";
+          tooltip = false;
+        };
       }
       {
         name = "bottom-bar";
@@ -60,8 +64,8 @@
         position = "bottom";
         height = 30;
         spacing = 8;
-        modules-left = [ "cpu" "memory" "disk" "temperature" ];
-        modules-right = [ "network" "clock" "custom/powermenu" ];
+        modules-left = [ "custom/powermenu" "cpu" "memory" "disk" "temperature" ];
+        modules-right = [ "network" "clock" ];
         cpu.format = "  {usage}%";
         memory.format = "  {}%";
         disk.format = "  {percentage_used}%";

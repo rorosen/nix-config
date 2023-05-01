@@ -86,7 +86,7 @@ in
       ];
 
       startup = [
-        { command = "${pkgs.systemd}/bin/systemctl --user restart waybar"; always = true; }
+        { command = "${pkgs.waybar}/bin/waybar"; }
       ];
     };
   };

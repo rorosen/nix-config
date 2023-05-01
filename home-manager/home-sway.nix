@@ -6,11 +6,10 @@
     ./sway
     ./waybar
     ./wofi
-    ./swaync
+    ./dunst
     ./swaylock.nix
     ./wlogout.nix
     ./swayidle.nix
-    ./dunst.nix
   ];
 
   programs.bash = {

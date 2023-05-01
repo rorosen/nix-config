@@ -69,8 +69,10 @@ window#waybar {
   animation-direction: alternate;
 }
 
-#custom-powermenu {
+#custom-powermenu,
+#custom-launcher {
   font-size: 16px;
   color: #c9545d;
-  padding: 0 3px;
+  margin-left: 0.5em;
+  /* padding: 3px 0; */
 }
