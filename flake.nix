@@ -22,7 +22,6 @@
               ({ pkgs, ... }: {
                 imports = [
                   ./home-manager/nextcloud-client.nix
-                  ./modules/home-manager
                 ];
                 # extra packages to install
                 home.packages = with pkgs; [

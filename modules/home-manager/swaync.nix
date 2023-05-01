@@ -1,3 +1,5 @@
+# TODO: Does not work, fails each start with "COULD NOT FIND CSS FILE! REINSTALL THE PACKAGE!"
+
 { pkgs, lib, config, ... }:
 
 let
@@ -40,7 +42,7 @@ in
       Service = {
         Type = "simple";
         ExecStart =
-          "${cfg.package}/bin/swaync ";
+          "${cfg.package}/bin/swaync --config ${config.home.homeDirectory}/.config/swaync/config.json --style ${config.home.homeDirectory}/.config/swaync/style.css";
       };
 
       Install = { WantedBy = [ cfg.systemd.target ]; };
