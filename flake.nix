@@ -48,6 +48,23 @@
           }
         ];
       };
+      t14 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos/t14-configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.rob = import ./home-manager/home-sway.nix;
+            home-manager.sharedModules = [
+              ({ pkgs, ... }: {
+                programs.git.userEmail = "robert.rose@secunet.com";
+              })
+           ];
+          }
+        ];
+      };
     };
   };
 }
