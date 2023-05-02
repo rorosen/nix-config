@@ -15,5 +15,9 @@
     enable = true;
     extraBackends = [ pkgs.sane-airscan ];
   };
-  users.users.rob.extraGroups = [ "scanner" ];
+
+  users.users.rob = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "libvirtd" "docker" "cups" "lp" "audio" "wireshark" "video" "input" "scanner" ];
+  };
 }

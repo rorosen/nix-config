@@ -136,11 +136,6 @@ in
       LC_TIME = "de_DE.utf8";
     };
 
-    users.users.rob = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" "libvirtd" "docker" "cups" "lp" "audio" "wireshark" "video" "input" ];
-    };
-
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
     system.stateVersion = "22.11";
