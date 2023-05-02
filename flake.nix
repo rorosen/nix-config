@@ -41,7 +41,6 @@
                     appId = "thunderbird";
                   }
                 ];
-
                 programs.git.userEmail = "robert.rose@mailbox.org";
               })
             ];
