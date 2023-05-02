@@ -19,7 +19,7 @@ in
           name = "top-bar";
           layer = "top";
           position = "top";
-          height = 30;
+          height = 26;
           spacing = 8;
           modules-left = [ "custom/launcher" "sway/workspaces" "sway/mode" "sway/scratchpad" ];
           modules-center = [ "sway/window" ];
@@ -72,7 +72,7 @@ in
           name = "bottom-bar";
           layer = "top";
           position = "bottom";
-          height = 30;
+          height = 26;
           spacing = 8;
           modules-left = [ "custom/powermenu" "cpu" "memory" "disk" "temperature" ];
           modules-right = [ "network" "clock" ];
