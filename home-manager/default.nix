@@ -22,10 +22,10 @@ in
     ./sway
     ./waybar
     ./wofi
-    ./dunst
     ./swaylock.nix
     ./wlogout.nix
     ./swayidle.nix
+    ./dunst.nix
   ] else if isI3 then [
     ./i3
     ./polybar
