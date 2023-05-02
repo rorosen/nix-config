@@ -103,7 +103,6 @@ in
       wireshark.enable = true;
       dconf.enable = true;
     } // lib.mkIf isSway {
-      light.enable = true;
       sway.enable = true;
     };
 

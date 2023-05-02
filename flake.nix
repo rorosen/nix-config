@@ -17,12 +17,14 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.rob = import ./home-manager/home-sway.nix;
+            home-manager.users.rob = import ./home-manager;
             home-manager.sharedModules = [
               ({ pkgs, ... }: {
                 imports = [
                   ./home-manager/nextcloud-client.nix
                 ];
+                home.username = "rob";
+                home.homeDirectory = "/home/rob";
                 # extra packages to install
                 home.packages = with pkgs; [
                   nextcloud-client
@@ -55,9 +57,11 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.rob = import ./home-manager/home-sway.nix;
+            home-manager.users.rob = import ./home-manager;
             home-manager.sharedModules = [
               ({ pkgs, ... }: {
+                home.username = "rob";
+                home.homeDirectory = "/home/rob";
                 wayland.windowManager.sway.startupSync = [
                   {
                     command = "${pkgs.ungoogled-chromium}/bin/chromium";

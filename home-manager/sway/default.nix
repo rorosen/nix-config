@@ -49,8 +49,8 @@ in
         "XF86AudioMute" = "exec ${pkgs.alsa-utils}/bin/amixer set Master toggle";
         "XF86AudioRaiseVolume" = "exec ${pkgs.alsa-utils}/bin/amixer set Master 8%+";
         "XF86AudioLowerVolume" = "exec ${pkgs.alsa-utils}/bin/amixer set Master 8%-";
-        "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 10";
-        "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 10";
+        "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 8%-";
+        "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 8%+";
         # Custom keybindings
         "${modifier}+d" = "exec ${pkgs.wofi}/bin/wofi --show=drun --allow-images --insensitive";
         "${modifier}+x" = "exec ${pkgs.wlogout}/bin/wlogout";

@@ -57,6 +57,7 @@
     gnupg
     texlive.combined.scheme-medium
     wireshark
+    brightnessctl
   ];
 }
 
