@@ -19,7 +19,6 @@ in
     ./blueman.nix
     ./neovim.nix
   ] ++ (if isSway then [
-    ./home-base.nix
     ./sway
     ./waybar
     ./wofi
@@ -28,7 +27,6 @@ in
     ./wlogout.nix
     ./swayidle.nix
   ] else if isI3 then [
-    ./home-base.nix
     ./i3
     ./polybar
     ./rofi
