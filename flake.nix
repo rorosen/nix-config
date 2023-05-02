@@ -59,6 +59,13 @@
             home-manager.users.rob = import ./home-manager/home-sway.nix;
             home-manager.sharedModules = [
               ({ pkgs, ... }: {
+                wayland.windowManager.sway.startupSync = [
+                  {
+                    command = "${pkgs.ungoogled-chromium}/bin/chromium";
+                    workspace = 4;
+                    appId = "chromium-browser";
+                  }
+                ];
                 programs.git.userEmail = "robert.rose@secunet.com";
               })
             ];
