@@ -61,7 +61,7 @@
               ({ pkgs, ... }: {
                 programs.git.userEmail = "robert.rose@secunet.com";
               })
-           ];
+            ];
           }
         ];
       };

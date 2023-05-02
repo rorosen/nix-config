@@ -67,8 +67,11 @@
         modules-left = [ "custom/powermenu" "cpu" "memory" "disk" "temperature" ];
         modules-right = [ "network" "clock" ];
         cpu.format = "  {usage}%";
-        memory.format = "  {}%";
         disk.format = "  {percentage_used}%";
+        memory = {
+          format = "  {}%";
+          tooltip-format = "{used:0.1f}GiB used out of {total}";
+        };
         temperature = {
           critical-threshold = 80;
           format = "{icon} {temperatureC}°C";
