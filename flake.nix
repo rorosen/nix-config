@@ -19,32 +19,8 @@
             home-manager.useUserPackages = true;
             home-manager.users.rob = import ./home-manager;
             home-manager.sharedModules = [
-              ({ pkgs, ... }: {
-                imports = [
-                  ./home-manager/nextcloud-client.nix
-                ];
-                home.username = "rob";
-                home.homeDirectory = "/home/rob";
-                # extra packages to install
-                home.packages = with pkgs; [
-                  nextcloud-client
-                  thunderbird
-                  signal-desktop
-                  prusa-slicer
-                  freecad
-                  element-desktop
-                  android-tools
-                ];
-                # extra applications to autostart
-                wayland.windowManager.sway.startupSync = [
-                  {
-                    command = "${pkgs.thunderbird}/bin/thunderbird";
-                    workspace = 19;
-                    appId = "thunderbird";
-                  }
-                ];
-                programs.git.userEmail = "robert.rose@mailbox.org";
-              })
+              ./home-manager/hp-home.nix
+              ./home-manager/nextcloud-client.nix
             ];
           }
         ];
@@ -59,19 +35,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.rob = import ./home-manager;
             home-manager.sharedModules = [
-              ({ pkgs, ... }: {
-                home.username = "rob";
-                home.homeDirectory = "/home/rob";
-                wayland.windowManager.sway.startupSync = [
-                  {
-                    command = "${pkgs.ungoogled-chromium}/bin/chromium";
-                    workspace = 4;
-                    appId = "chromium-browser";
-                  }
-                ];
-                programs.waybar.hwmon-path = "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon4/temp1_input";
-                programs.git.userEmail = "robert.rose@secunet.com";
-              })
+              ./home-manager/t14-home.nix
             ];
           }
         ];

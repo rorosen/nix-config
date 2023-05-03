@@ -19,6 +19,8 @@
     pavucontrol
     pasystray
     flameshot
+    gnome.seahorse
+    drawio
 
     # terminal
     zsh
