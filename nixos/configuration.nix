@@ -1,9 +1,8 @@
 { pkgs, config, lib, ... }:
 
 let
-  cfg = config.system;
-  isSway = cfg.flavour == "sway";
-  isI3 = cfg.flavour == "i3";
+  isSway = config.system == "sway";
+  isI3 = config.system == "i3";
 in
 {
   options.system.flavour = lib.mkOption {

@@ -4,13 +4,18 @@ let
   cfg = config.programs.waybar;
 in
 {
-  options.programs.waybar.hwmon-path = lib.mkOption {
-    type = lib.types.str;
-    default = "";
-    description = "The temperature path to use, e.g. /sys/class/hwmon/hwmon2/temp1_input instead of one in /sys/class/thermal/.";
+  options.programs.waybar = {
+    hwmon-path = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+      description = "The temperature path to use, e.g. /sys/class/hwmon/hwmon2/temp1_input instead of one in /sys/class/thermal/.";
+    };
+    auxbar.enable = lib.mkEnableOption "enable an auxiliary bar for multi output setups.";
   };
 
   config = {
+    imports = lib.optionals cfg.auxbar.enable ./auxbar.nix;
+
     programs.waybar = {
       enable = true;
 
