@@ -26,6 +26,7 @@ in
     ./wlogout.nix
     ./swayidle.nix
     ./dunst.nix
+    ./kanshi.nix
   ] else if isI3 then [
     ./i3
     ./polybar

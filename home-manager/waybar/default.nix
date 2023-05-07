@@ -53,7 +53,7 @@ in
           battery = {
             states.critical = 10;
             format = "{capacity}% {icon}";
-            format-charging = "{capacity}% {icon}";
+            format-charging = "{capacity}%  ";
             format-plugged = "{capacity}%  ";
             format-alt = "{time} {icon}";
             format-icons = [ " " " " " " " " " " ];
