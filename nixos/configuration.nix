@@ -1,8 +1,8 @@
 { pkgs, config, lib, ... }:
 
 let
-  isSway = config.system == "sway";
-  isI3 = config.system == "i3";
+  isSway = config.system.flavour == "sway";
+  isI3 = config.system.flavour == "i3";
 in
 {
   options.system.flavour = lib.mkOption {
@@ -38,12 +38,14 @@ in
     security = {
       rtkit.enable = true;
       polkit.enable = true;
+      pam.services = {
+        login.enableGnomeKeyring = true;
+        swaylock = lib.mkIf isSway { };
+      };
     };
 
     sound.enable = true;
 
-    # Unlock "login" keyring on login
-    security.pam.services.login.enableGnomeKeyring = true;
     environment.pathsToLink = [ "/share/zsh" ];
 
     environment.systemPackages = with pkgs; [
@@ -95,14 +97,12 @@ in
           }
         ];
       };
-
     };
 
     programs = {
       wireshark.enable = true;
       dconf.enable = true;
-    } // lib.mkIf isSway {
-      sway.enable = true;
+      xwayland.enable = lib.mkIf isSway true;
     };
 
     virtualisation = {
@@ -110,8 +110,12 @@ in
       docker.enable = true;
     };
 
-    hardware.bluetooth.enable = true;
+    hardware = {
+      bluetooth.enable = true;
+      opengl.enable = true;
+    };
 
+    fonts.enableDefaultFonts = true;
     fonts.fonts = with pkgs; [
       fantasque-sans-mono
       noto-fonts

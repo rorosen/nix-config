@@ -79,7 +79,7 @@ in
           modules-left = [ "custom/powermenu" "cpu" "memory" "disk" "temperature" ];
           modules-right = [ "network" "clock" ];
           cpu.format = "  {usage}%";
-          disk.format = "  {percentage_used}%";
+          disk.format = "󰋊 {percentage_used}%";
           memory = {
             format = "  {}%";
             tooltip-format = "{used:0.1f}GiB used out of {total}";
@@ -104,7 +104,7 @@ in
             interval = 1;
             min-length = 35;
             format-wifi = "  {essid}     {bandwidthDownBytes}    {bandwidthUpBytes}";
-            format-ethernet = "      {bandwidthDownBytes}    {bandwidthUpBytes}";
+            format-ethernet = "󰈁      {bandwidthDownBytes}    {bandwidthUpBytes}";
             tooltip-format = "{ifname}: {ipaddr}/{cidr} via {gwaddr}";
             tooltip-format-wifi = "{ifname}: {ipaddr}/{cidr} via {gwaddr} ({signalStrength}%)";
             format-linked = "{ifname} (No IP)  ";
