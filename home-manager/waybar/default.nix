@@ -110,7 +110,7 @@ in
             interval = 1;
             min-length = 35;
             format-wifi = "  {essid}     {bandwidthDownBytes}    {bandwidthUpBytes}";
-            format-ethernet = "󰈁      {bandwidthDownBytes}    {bandwidthUpBytes}";
+            format-ethernet = "󰈁     {bandwidthDownBytes}    {bandwidthUpBytes}";
             tooltip-format = "{ifname}: {ipaddr}/{cidr} via {gwaddr}";
             tooltip-format-wifi = "{ifname}: {ipaddr}/{cidr} via {gwaddr} ({signalStrength}%)";
             format-linked = "{ifname} (No IP)  ";
