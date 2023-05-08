@@ -32,6 +32,7 @@ in
         for i in /sys/class/hwmon/hwmon*/temp*_input; do
           if [[ "$(<$(dirname "$i")/name)" == "${cfg.name}" && "$(cat "''${i%_*}_label" 2>/dev/null || basename "''${i%_*}")" == "${cfg.label}" ]]; then
             ln -sf "$i" ${cfg.link}
+            break
           fi
         done
       '';
