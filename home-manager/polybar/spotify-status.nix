@@ -6,7 +6,7 @@
     executable = true;
 
     text = ''
-      #!${pkgs.bashInteractive}/bin/bash
+      #!${pkgs.bash}/bin/bash
 
       PARENT_BAR_PID=$(${pkgs.procps}/bin/pgrep -a "polybar" | ${pkgs.gnugrep}/bin/grep "bottom" | ${pkgs.coreutils-full}/bin/cut -d" " -f1)
 

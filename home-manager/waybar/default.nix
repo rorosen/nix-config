@@ -4,12 +4,18 @@ let
   cfg = config.programs.waybar;
 in
 {
-  options.programs.waybar = {
-    hwmon-path = lib.mkOption {
-      type = lib.types.str;
-      default = "";
-      description = "The temperature path to use, e.g. /sys/class/hwmon/hwmon2/temp1_input instead of one in /sys/class/thermal/.";
-    };
+  imports = [
+    ./startup.nix
+    ./hwmon-dynamic.nix
+  ];
+
+  options.programs.waybar.hwmon.path = lib.mkOption {
+    type = lib.types.str;
+    default = "";
+    description = ''
+      The temperature path to use, e.g. /sys/class/hwmon/hwmon2/temp1_input instead of one in /sys/class/thermal/.
+      Only has an effect if programs.waybar.hwmon.dynamic is disabled.
+    '';
   };
 
   config = {
@@ -88,7 +94,7 @@ in
             critical-threshold = 80;
             format = "{icon} {temperatureC}°C";
             format-icons = [ " " " " " " " " " " ];
-            hwmon-path = lib.mkIf (cfg.hwmon-path != "") cfg.hwmon-path;
+            hwmon-path = if cfg.hwmon.dynamic.enable then cfg.hwmon.dynamic.link else (lib.mkIf (cfg.hwmon.path != "") cfg.hwmon.path);
             interval = 5;
           };
           clock = {

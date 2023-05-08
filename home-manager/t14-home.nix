@@ -6,8 +6,12 @@
   home.username = "rob";
   home.homeDirectory = "/home/rob";
 
-  programs.waybar.hwmon-path = "/sys/class/hwmon/hwmon6/temp1_input";
   programs.git.userEmail = "robert.rose@secunet.com";
+  programs.waybar.hwmon.dynamic = {
+    enable = true;
+    name = "thinkpad";
+    label = "CPU";
+  };
 
   wayland.windowManager.sway.startupSync = [
     {

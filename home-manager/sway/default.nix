@@ -86,7 +86,7 @@ in
       ];
 
       startup = [
-        { command = "${pkgs.waybar}/bin/waybar"; }
+        { command = "${config.home.homeDirectory}/.config/waybar/startup"; }
       ];
     };
   };

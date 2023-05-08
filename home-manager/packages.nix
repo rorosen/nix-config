@@ -42,7 +42,6 @@
 
     # utils
     git
-    killall
     openssh
     arp-scan
     qemu
