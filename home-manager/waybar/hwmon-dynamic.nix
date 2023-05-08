@@ -9,12 +9,10 @@ in
     enable = mkEnableOption "enable dynamic linking of hwmon path.";
     name = mkOption {
       type = types.str;
-      default = "";
       description = "The name of the hwmon path to use.";
     };
     label = mkOption {
       type = types.str;
-      default = "";
       description = "The label of the hwmon path to use.";
     };
     link = mkOption {
