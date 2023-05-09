@@ -29,6 +29,7 @@
       arrterian.nix-env-selector
       eamodio.gitlens
       vscodevim.vim
+      Arjun.swagger-viewer
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "vscode-drawio";
