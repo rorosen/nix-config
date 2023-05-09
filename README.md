@@ -2,12 +2,7 @@
 
 My [NixOS](https://nixos.org/) and [home-manager](https://github.com/nix-community/home-manager) configuration files.
 
-## Adding a Profile
-
-This config is made to be used for various PCs simultaneously.
-However, most hardware has specific needs that cannot be expressed generically (i.e. disk encryption, kernel modules, hostname, etc.).
-
-A new hardware profile can be added as follows.
+## Adding a Hardware Profile
 
 Place the hardware configuration in the [nixos](./nixos/) directory.
 Usually, the hardware configuration is located at `/etc/nixos/hardware-configuration.nix` after a regular installation.
@@ -17,10 +12,10 @@ Chose a unique name, e.g. by prepending the hostname.
 cp /etc/nixos/hardware-configuration.nix nixos/<hostname>-hardware-configuration.nix
 ```
 
-Create a configuration file for the respective device at `nixos/<hostname>-configuration.nix`.
+Create a configuration file for the machine at `nixos/<hostname>-configuration.nix`.
 Add all device specific configuration and import the formerly copied hardware configuration file.
 
-Consequently, add the profile to [flake.nix](./flake.nix) under `nixosConfigurations`.
+Consequently, add the profile to [flake.nix](./flake.nix) in `nixosConfigurations`.
 Replace `<hostname>` and `<user>` with actual values.
 You can add device specific home-manager configuration directly in `sharedModules` or move it to a separate file and import the file.
 
@@ -46,7 +41,11 @@ You can add device specific home-manager configuration directly in `sharedModule
 };
 ```
 
-Remember to add newly created files to git (e.g. with `git add *`) before building the profile.
+Remember to add newly created files to git before building the profile.
+
+## Sway or i3
+
+Select either Sway or i3 with `system.flavor` like in `system.flavor = "sway"`.
 
 ## Building a Profile
 

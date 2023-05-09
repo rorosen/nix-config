@@ -1,17 +1,17 @@
 { pkgs, config, lib, ... }:
 
 let
-  isSway = config.system.flavour == "sway";
-  isI3 = config.system.flavour == "i3";
+  isSway = config.system.flavor == "sway";
+  isI3 = config.system.flavor == "i3";
 in
 {
-  options.system.flavour = lib.mkOption {
+  options.system.flavor = lib.mkOption {
     type = lib.types.enum [
       "i3"
       "sway"
     ];
     default = "sway";
-    description = "Flavour of the window manager";
+    description = "Flavor of the window manager";
   };
 
   config = {

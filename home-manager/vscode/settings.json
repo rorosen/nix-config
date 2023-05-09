@@ -64,5 +64,6 @@
   },
   "workbench.startupEditor": "none",
   "terminal.integrated.defaultProfile.linux": "zsh",
-  "vim.useSystemClipboard": true
+  "vim.useSystemClipboard": true,
+  "git.openRepositoryInParentFolders": "never"
 }

@@ -1,8 +1,8 @@
 { pkgs, osConfig, lib, ... }:
 
 let
-  isSway = osConfig.system.flavour == "sway";
-  isI3 = osConfig.system.flavour == "i3";
+  isSway = osConfig.system.flavor == "sway";
+  isI3 = osConfig.system.flavor == "i3";
 in
 {
   imports = [
