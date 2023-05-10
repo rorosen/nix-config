@@ -18,6 +18,7 @@ in
     ./nemo.nix
     ./blueman.nix
     ./neovim.nix
+    ./chromium.nix
   ] ++ (if isSway then [
     ./sway
     ./waybar

@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     # gui
     firefox
-    ungoogled-chromium
     evince
     cinnamon.nemo
     keepassxc
