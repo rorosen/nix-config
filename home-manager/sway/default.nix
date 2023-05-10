@@ -34,6 +34,7 @@ in
       input = {
         "*" = {
           xkb_layout = "de";
+          xkb_numlock = "enabled";
         };
 
         "type:touchpad" = {
