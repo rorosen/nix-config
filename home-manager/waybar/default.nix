@@ -31,13 +31,25 @@ in
           spacing = 8;
           modules-left = [ "custom/launcher" "sway/workspaces" "sway/mode" "sway/scratchpad" ];
           modules-center = [ "sway/window" ];
-          modules-right = [ "sway/language" "idle_inhibitor" "pulseaudio" "backlight" "battery" "tray" ];
+          modules-right = [ "keyboard-state" "sway/language" "idle_inhibitor" "pulseaudio" "backlight" "battery" "tray" ];
           tray.spacing = 10;
           idle_inhibitor = {
             format = "{icon}";
             format-icons = {
               activated = " ";
               deactivated = " ";
+            };
+          };
+          keyboard-state = {
+            numlock = true;
+            capslock = true;
+            format = {
+              numlock = "N {icon}";
+              capslock = "C {icon}";
+            };
+            format-icons = {
+              locked = " ";
+              unlocked = " ";
             };
           };
           pulseaudio = {
