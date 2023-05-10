@@ -41,15 +41,11 @@ in
             };
           };
           keyboard-state = {
-            numlock = true;
             capslock = true;
-            format = {
-              numlock = "N {icon}";
-              capslock = "C {icon}";
-            };
+            format = "{icon}";
             format-icons = {
               locked = " ";
-              unlocked = " ";
+              unlocked = "";
             };
           };
           pulseaudio = {
