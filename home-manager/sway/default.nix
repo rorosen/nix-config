@@ -14,7 +14,7 @@ in
     enable = true;
 
     startupSync = [
-      { command = "${pkgs.vscode}/bin/code"; workspace = 2; appId = "code"; }
+      { command = "${pkgs.vscode}/bin/code"; workspace = 2; appId = "code-url-handler"; }
       { command = "${pkgs.firefox}/bin/firefox"; workspace = 1; appId = "firefox"; }
       { command = "${pkgs.alacritty}/bin/alacritty"; workspace = 3; appId = "Alacritty"; }
       { command = "${pkgs.keepassxc}/bin/keepassxc"; workspace = 20; appId = "org.keepassxc.KeePassXC"; }
