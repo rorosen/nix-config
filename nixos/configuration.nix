@@ -5,6 +5,8 @@ let
   isI3 = config.system.flavor == "i3";
 in
 {
+  imports = [ ../pkgs ];
+
   options.system.flavor = lib.mkOption {
     type = lib.types.enum [
       "i3"
