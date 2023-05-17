@@ -1,10 +1,11 @@
-{ pkgs, lib, config, ... }:
-
-let
-  modifier = "Mod4";
-  toolwait = "${config.home.homeDirectory}/.config/sway/sway-toolwait";
-in
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  modifier = "Mod4";
+in {
   imports = [
     ./sway-toolwait.nix
     ./sync-startup.nix
@@ -14,10 +15,26 @@ in
     enable = true;
 
     startupSync = [
-      { command = "${pkgs.vscode}/bin/code"; workspace = 2; appId = "code-url-handler"; }
-      { command = "${pkgs.firefox}/bin/firefox"; workspace = 1; appId = "firefox"; }
-      { command = "${pkgs.alacritty}/bin/alacritty"; workspace = 3; appId = "Alacritty"; }
-      { command = "${pkgs.keepassxc}/bin/keepassxc"; workspace = 20; appId = "org.keepassxc.KeePassXC"; }
+      {
+        command = "${pkgs.vscode}/bin/code";
+        workspace = 2;
+        appId = "code-url-handler";
+      }
+      {
+        command = "${pkgs.firefox}/bin/firefox";
+        workspace = 1;
+        appId = "firefox";
+      }
+      {
+        command = "${pkgs.alacritty}/bin/alacritty";
+        workspace = 3;
+        appId = "Alacritty";
+      }
+      {
+        command = "${pkgs.keepassxc}/bin/keepassxc";
+        workspace = 20;
+        appId = "org.keepassxc.KeePassXC";
+      }
     ];
 
     extraConfigEarly = ''
@@ -27,7 +44,7 @@ in
 
     config = {
       modifier = modifier;
-      bars = [ ];
+      bars = [];
       terminal = "${pkgs.alacritty}/bin/alacritty";
       window.titlebar = false;
 
@@ -83,11 +100,11 @@ in
       };
 
       floating.criteria = [
-        { app_id = "nm-connection-editor"; }
+        {app_id = "nm-connection-editor";}
       ];
 
       startup = [
-        { command = "${config.home.homeDirectory}/.config/waybar/startup"; }
+        {command = "${config.home.homeDirectory}/.config/waybar/startup";}
       ];
     };
   };

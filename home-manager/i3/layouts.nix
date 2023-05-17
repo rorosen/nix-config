@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   home.file.".config/i3/workspace-1.json" = {
     target = ".config/i3/workspace-1.json";
 

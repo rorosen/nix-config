@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-
-{
-  imports = [ ./t14-kanshi.nix ];
+{pkgs, ...}: {
+  imports = [./t14-kanshi.nix];
 
   home.username = "rob";
   home.homeDirectory = "/home/rob";

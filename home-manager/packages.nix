@@ -37,7 +37,7 @@
     gopls
     go-outline
     nil
-    nixpkgs-fmt
+    alejandra
 
     # utils
     git

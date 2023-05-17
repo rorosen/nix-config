@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-
-with lib;
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib; let
   # --------- COLORS ---------
   background = "#0a0a0a";
   foreground = "#f5f5f5";
@@ -13,8 +15,7 @@ let
   yellow = "#fdd835";
 
   cfg = config.services.polybar;
-in
-{
+in {
   imports = [
     ./sysmenu.nix
     ./spotify-status.nix
@@ -153,7 +154,20 @@ in
           enable.ipc = true;
           modules = {
             left = "launcher title workspaces";
-            right = "volume " + (if cfg.backlightCard == "" then "" else "brightness ") + "temperature " + (if cfg.battery == "" then "" else "battery ") + "keyboard date";
+            right =
+              "volume "
+              + (
+                if cfg.backlightCard == ""
+                then ""
+                else "brightness "
+              )
+              + "temperature "
+              + (
+                if cfg.battery == ""
+                then ""
+                else "battery "
+              )
+              + "keyboard date";
           };
         };
 
@@ -174,8 +188,25 @@ in
             };
           };
           modules = {
-            left = (if cfg.spotify.enabled then "spotify-status spotify-prev spotify-play-pause spotify-next " else "") + "cpu memory filesystem";
-            right = (if cfg.network.interfaceWired == "" then "" else "network-wired ") + (if cfg.network.interfaceWireless == "" then "" else "network-wireless ") + "sysmenu";
+            left =
+              (
+                if cfg.spotify.enabled
+                then "spotify-status spotify-prev spotify-play-pause spotify-next "
+                else ""
+              )
+              + "cpu memory filesystem";
+            right =
+              (
+                if cfg.network.interfaceWired == ""
+                then ""
+                else "network-wired "
+              )
+              + (
+                if cfg.network.interfaceWireless == ""
+                then ""
+                else "network-wireless "
+              )
+              + "sysmenu";
           };
         };
 
@@ -294,7 +325,7 @@ in
               foreground = red;
             };
           };
-          ramp = [ "" "" "" "" "" ];
+          ramp = ["" "" "" "" ""];
         };
 
         "module/battery" = {
@@ -328,12 +359,12 @@ in
             discharging = "%percentage%%";
             full = "Full";
           };
-          ramp.capacity = [ "  " "  " "  " "  " "  " ];
+          ramp.capacity = ["  " "  " "  " "  " "  "];
         };
 
         "module/keyboard" = {
           type = "internal/xkeyboard";
-          blacklist = [ "num lock" "scroll lock" ];
+          blacklist = ["num lock" "scroll lock"];
           format = {
             text = "<label-layout> <label-indicator>";
             background = background;
@@ -393,7 +424,7 @@ in
               foreground = foreground;
             };
           };
-          ramp.volume = [ " " " " " " ];
+          ramp.volume = [" " " " " "];
           bar.volume = {
             format = "\${bar.format}";
             width = "\${bar.width}";
@@ -403,7 +434,7 @@ in
               foreground = foreground;
             };
             fill = "\${bar.fill}";
-            foreground = [ yellow ];
+            foreground = [yellow];
             empty = {
               text = "\${bar.empty}";
               foreground = foreground-alt;
@@ -420,13 +451,13 @@ in
             background = background;
             padding = 2;
           };
-          ramp = [ " " " " " " ];
+          ramp = [" " " " " "];
           bar = {
             format = "\${bar.format}";
             width = "\${bar.width}";
             gradient = false;
             fill = "\${bar.fill}";
-            foreground = [ yellow ];
+            foreground = [yellow];
             indicator = {
               text = "\${bar.indicator}";
               foreground = foreground;
@@ -466,7 +497,7 @@ in
 
         "module/spotify-play-pause" = {
           type = "custom/ipc";
-          hook = [ "echo \"  \"" "echo \"  \"" ];
+          hook = ["echo \"  \"" "echo \"  \""];
           initial = 1;
           format = {
             background = background;
@@ -523,7 +554,7 @@ in
 
         "module/filesystem" = {
           type = "internal/fs";
-          mount = [ "/" ];
+          mount = ["/"];
           interval = 30;
           fixed.values = true;
           label = {

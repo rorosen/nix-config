@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   rofi-theme = ''
     configuration {
         show-icons:                 false;
@@ -123,8 +121,7 @@ let
         text-color:                  var(background);
     }
   '';
-in
-{
+in {
   home.file.".config/polybar/sysmenu.sh" = {
     target = ".config/polybar/sysmenu.sh";
     executable = true;

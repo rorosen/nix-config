@@ -1,6 +1,9 @@
-{ pkgs, config, lib, ... }:
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   cfg = config.wayland.windowManager.sway;
 
   startupModule = lib.types.submodule {
@@ -22,15 +25,19 @@ let
     };
   };
 
-  startupEntryStr = { command, workspace, appId, ... }: ''
+  startupEntryStr = {
+    command,
+    workspace,
+    appId,
+    ...
+  }: ''
     ${pkgs.sway}/bin/swaymsg 'workspace ${builtins.toString workspace}';
     ${config.home.homeDirectory}/.config/sway/sway-toolwait --waitfor '${appId}' ${command};
   '';
-in
-{
+in {
   options.wayland.windowManager.sway.startupSync = lib.mkOption {
     type = lib.types.listOf startupModule;
-    default = [ ];
+    default = [];
     description = "Applications that should be launched synchronously on a specific workspace at startup.";
   };
 
