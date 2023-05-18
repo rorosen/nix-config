@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  imports = [./nextcloud-client.nix];
+
   home.username = "rob";
   home.homeDirectory = "/home/rob";
 

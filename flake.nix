@@ -36,7 +36,6 @@
               extraSpecialArgs = {inherit inputs homeManagerModules;};
               sharedModules = [
                 ./home-manager/hp-home.nix
-                ./home-manager/nextcloud-client.nix
               ];
             };
           }
