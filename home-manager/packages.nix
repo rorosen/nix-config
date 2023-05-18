@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # gui
     firefox
@@ -60,4 +58,3 @@
     brightnessctl
   ];
 }
-

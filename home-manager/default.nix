@@ -1,46 +1,48 @@
-{ pkgs
-, osConfig
-, lib
-, ...
-}:
-let
+{
+  pkgs,
+  osConfig,
+  lib,
+  ...
+}: let
   inherit (lib) mkIf;
   isSway = osConfig.system.flavor == "sway";
   isI3 = osConfig.system.flavor == "i3";
-in
-{
-  imports = [
-    ./packages.nix
-    ./vscode
-    ./zsh
-    ./alacritty.nix
-    ./gtk.nix
-    ./qt.nix
-    ./gnome-keyring.nix
-    ./git.nix
-    ./ssh-agent.nix
-    ./nemo.nix
-    ./blueman.nix
-    ./neovim.nix
-  ] ++ lib.optionals isSway [
-    ./sway
-    ./waybar
-    ./wofi
-    ./swaylock.nix
-    ./wlogout.nix
-    ./swayidle.nix
-    ./dunst.nix
-  ] ++ lib.optionals isI3 [
-    ./i3
-    ./polybar
-    ./rofi
-    ./betterlockscreen.nix
-  ];
+in {
+  imports =
+    [
+      ./packages.nix
+      ./vscode
+      ./zsh
+      ./alacritty.nix
+      ./gtk.nix
+      ./qt.nix
+      ./gnome-keyring.nix
+      ./git.nix
+      ./ssh-agent.nix
+      ./nemo.nix
+      ./blueman.nix
+      ./neovim.nix
+    ]
+    ++ lib.optionals isSway [
+      ./sway
+      ./waybar
+      ./wofi
+      ./swaylock.nix
+      ./wlogout.nix
+      ./swayidle.nix
+      ./dunst.nix
+    ]
+    ++ lib.optionals isI3 [
+      ./i3
+      ./polybar
+      ./rofi
+      ./betterlockscreen.nix
+    ];
 
   nixpkgs = {
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 

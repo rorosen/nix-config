@@ -1,12 +1,11 @@
-{ pkgs
-, lib
-, config
-, ...
-}:
-let
-  modifier = "Mod4";
-in
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  modifier = "Mod4";
+in {
   imports = [
     ./sway-toolwait.nix
     ./sync-startup.nix
@@ -46,7 +45,7 @@ in
 
     config = {
       modifier = modifier;
-      bars = [ ];
+      bars = [];
       terminal = "${pkgs.alacritty}/bin/alacritty";
       workspaceAutoBackAndForth = true;
       window = {
@@ -106,11 +105,11 @@ in
       };
 
       floating.criteria = [
-        { app_id = "nm-connection-editor"; }
+        {app_id = "nm-connection-editor";}
       ];
 
       startup = [
-        { command = "${config.home.homeDirectory}/.config/waybar/startup"; }
+        {command = "${config.home.homeDirectory}/.config/waybar/startup";}
       ];
     };
   };
