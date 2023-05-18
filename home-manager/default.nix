@@ -1,4 +1,5 @@
 {
+  homeManagerModules,
   pkgs,
   osConfig,
   lib,
@@ -10,6 +11,8 @@
 in {
   imports =
     [
+      homeManagerModules.hwmon-linker
+
       ./packages.nix
       ./vscode
       ./zsh

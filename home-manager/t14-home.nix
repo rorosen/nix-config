@@ -5,11 +5,6 @@
   home.homeDirectory = "/home/rob";
 
   programs.git.userEmail = "robert.rose@secunet.com";
-  programs.waybar.hwmon.dynamic = {
-    enable = true;
-    name = "thinkpad";
-    label = "CPU";
-  };
 
   wayland.windowManager.sway.startupSync = [
     {
@@ -18,4 +13,11 @@
       appId = "chromium-browser";
     }
   ];
+
+  programs.hwmon-linker = {
+    enable = true;
+
+    name = "thinkpad";
+    label = "CPU";
+  };
 }

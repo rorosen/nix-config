@@ -1,10 +1,4 @@
-{
-  homeManagerModules,
-  pkgs,
-  ...
-}: {
-  imports = [homeManagerModules.hwmon-linker];
-
+{pkgs, ...}: {
   home.username = "rob";
   home.homeDirectory = "/home/rob";
 

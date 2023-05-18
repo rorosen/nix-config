@@ -5,18 +5,14 @@
   ...
 }: let
   cfg = config.programs.waybar;
+  hwmonLinkerCfg = config.programs.hwmon-linker;
 in {
-  imports = [
-    ./startup.nix
-    ./hwmon-dynamic.nix
-  ];
-
   options.programs.waybar.hwmon.path = lib.mkOption {
     type = lib.types.str;
     default = "";
     description = ''
       The temperature path to use, e.g. /sys/class/hwmon/hwmon2/temp1_input instead of one in /sys/class/thermal/.
-      Only has an effect if programs.waybar.hwmon.dynamic is disabled.
+      Only has an effect if programs.hwmon-linker is disabled.
     '';
   };
 
@@ -101,8 +97,8 @@ in {
             format = "{icon} {temperatureC}°C";
             format-icons = [" " " " " " " " " "];
             hwmon-path =
-              if cfg.hwmon.dynamic.enable
-              then cfg.hwmon.dynamic.link
+              if hwmonLinkerCfg.enable
+              then hwmonLinkerCfg.link
               else (lib.mkIf (cfg.hwmon.path != "") cfg.hwmon.path);
             interval = 5;
           };
