@@ -18,7 +18,7 @@ in
     ./nemo.nix
     ./blueman.nix
     ./neovim.nix
-  ] ++ (if isSway then [
+  ] ++ lib.optionals isSway [
     ./sway
     ./waybar
     ./wofi
@@ -26,16 +26,18 @@ in
     ./wlogout.nix
     ./swayidle.nix
     ./dunst.nix
-  ] else if isI3 then [
+  ] ++ lib.optionals isI3 [
     ./i3
     ./polybar
     ./rofi
     ./betterlockscreen.nix
-  ] else [ ]);
+  ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = (_: true);
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
   };
 
   programs.home-manager.enable = true;

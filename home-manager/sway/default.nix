@@ -2,7 +2,6 @@
 
 let
   modifier = "Mod4";
-  toolwait = "${config.home.homeDirectory}/.config/sway/sway-toolwait";
 in
 {
   imports = [
@@ -12,6 +11,7 @@ in
 
   wayland.windowManager.sway = {
     enable = true;
+    systemdIntegration = true;
 
     startupSync = [
       { command = "${pkgs.vscode}/bin/code"; workspace = 2; appId = "code"; }
@@ -29,7 +29,11 @@ in
       modifier = modifier;
       bars = [ ];
       terminal = "${pkgs.alacritty}/bin/alacritty";
-      window.titlebar = false;
+      workspaceAutoBackAndForth = true;
+      window = {
+        titlebar = false;
+        hideEdgeBorders = "both";
+      };
 
       input = {
         "*" = {

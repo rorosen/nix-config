@@ -5,8 +5,6 @@ let
   isI3 = config.system.flavor == "i3";
 in
 {
-  imports = [ ../pkgs ];
-
   options.system.flavor = lib.mkOption {
     type = lib.types.enum [
       "i3"
@@ -17,7 +15,11 @@ in
   };
 
   config = {
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
+
     nixpkgs.config.allowUnfree = true;
 
     time.timeZone = "Europe/Berlin";

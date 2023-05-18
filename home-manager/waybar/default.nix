@@ -21,6 +21,8 @@ in
   config = {
     programs.waybar = {
       enable = true;
+      systemd.enable = true;
+      systemdTarget = "sway-session.target";
 
       settings = [
         {

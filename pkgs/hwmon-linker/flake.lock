@@ -5,7 +5,6 @@
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "hwmon-linker",
           "nixpkgs"
         ],
         "rust-overlay": "rust-overlay"
@@ -76,45 +75,6 @@
         "type": "github"
       }
     },
-    "home-manager": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1683543852,
-        "narHash": "sha256-aS9qNcg9GwSYFLCWa3Lw+2nVPG11mmQ3B7Oka1hh04M=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "3f3fa731ad0f99741d4dc98e8e1287b45e30b452",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "hwmon-linker": {
-      "inputs": {
-        "crane": "crane",
-        "flake-utils": "flake-utils_2",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-8r6iIai+HQis7bQiro9lmAdFsCWWlfnhbs3PH64YFmM=",
-        "path": "./pkgs/hwmon-linker/",
-        "type": "path"
-      },
-      "original": {
-        "path": "./pkgs/hwmon-linker/",
-        "type": "path"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1683408522,
@@ -133,20 +93,18 @@
     },
     "root": {
       "inputs": {
-        "home-manager": "home-manager",
-        "hwmon-linker": "hwmon-linker",
+        "crane": "crane",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs"
       }
     },
     "rust-overlay": {
       "inputs": {
         "flake-utils": [
-          "hwmon-linker",
           "crane",
           "flake-utils"
         ],
         "nixpkgs": [
-          "hwmon-linker",
           "crane",
           "nixpkgs"
         ]
