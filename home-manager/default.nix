@@ -54,7 +54,8 @@ in {
     keyboard.layout = "de";
     sessionVariables = {
       RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
-      NIXOS_OZONE_WL = mkIf isSway "1";
+      # FIXME: code crashes sometimes when setting this
+      # NIXOS_OZONE_WL = mkIf isSway "1";
     };
   };
 
