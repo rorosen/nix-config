@@ -9,7 +9,7 @@
   cfg = config.programs.hwmon-linker;
 in {
   options.programs.hwmon-linker = {
-    enable = mkEnableOption "enable dynamic linking of hwmon path.";
+    enable = mkEnableOption "enable creating a link of a hwmon path.";
 
     package = mkOption {
       type = types.package;
@@ -36,7 +36,7 @@ in {
     before = mkOption {
       type = types.str;
       default = "waybar.service";
-      description = "The linking willbe started before the specified unit is started";
+      description = "The linking will happen before the specified unit is started.";
     };
   };
 
@@ -52,8 +52,9 @@ in {
       Service = {
         Type = "oneshot";
         ExecStart = "${cfg.package}/bin/hwmon-linker --name ${cfg.name} --label ${cfg.label} --link-path ${cfg.link}";
-        Install = {WantedBy = ["multi-user.target"];};
       };
+
+      Install = {WantedBy = ["multi-user.target"];};
     };
   };
 }

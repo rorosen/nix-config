@@ -1,3 +1,3 @@
-{...}: {
-  imports = [./hwmon-linker.nix];
+{
+  hwmon-linker = import ./hwmon-linker.nix;
 }
