@@ -54,7 +54,7 @@ in {
         ExecStart = "${cfg.package}/bin/hwmon-linker --name ${cfg.name} --label ${cfg.label} --link-path ${cfg.link}";
       };
 
-      Install = {WantedBy = ["multi-user.target"];};
+      Install = {WantedBy = ["graphical-session-pre.target"];};
     };
   };
 }
