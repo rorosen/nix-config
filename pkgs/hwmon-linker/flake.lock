@@ -5,7 +5,6 @@
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "hwmon-linker",
           "nixpkgs"
         ],
         "rust-overlay": "rust-overlay"
@@ -76,52 +75,13 @@
         "type": "github"
       }
     },
-    "home-manager": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1684321175,
-        "narHash": "sha256-V4EbM+jK7pvjKBaj0dgAiW9ultzDE27Nz5fRyu/ceMk=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "59659243cd4ababda605e79b4a9c2e6d83e24c86",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "hwmon-linker": {
-      "inputs": {
-        "crane": "crane",
-        "flake-utils": "flake-utils_2",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-8r6iIai+HQis7bQiro9lmAdFsCWWlfnhbs3PH64YFmM=",
-        "path": "./pkgs/hwmon-linker/",
-        "type": "path"
-      },
-      "original": {
-        "path": "./pkgs/hwmon-linker/",
-        "type": "path"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1684215771,
-        "narHash": "sha256-fsum28z+g18yreNa1Y7MPo9dtps5h1VkHfZbYQ+YPbk=",
+        "lastModified": 1683408522,
+        "narHash": "sha256-9kcPh6Uxo17a3kK3XCHhcWiV1Yu1kYj22RHiymUhMkU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "963006aab35e3e8ebbf6052b6bf4ea712fdd3c28",
+        "rev": "897876e4c484f1e8f92009fd11b7d988a121a4e7",
         "type": "github"
       },
       "original": {
@@ -133,20 +93,18 @@
     },
     "root": {
       "inputs": {
-        "home-manager": "home-manager",
-        "hwmon-linker": "hwmon-linker",
+        "crane": "crane",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs"
       }
     },
     "rust-overlay": {
       "inputs": {
         "flake-utils": [
-          "hwmon-linker",
           "crane",
           "flake-utils"
         ],
         "nixpkgs": [
-          "hwmon-linker",
           "crane",
           "nixpkgs"
         ]

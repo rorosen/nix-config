@@ -1,12 +1,13 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}: let
+{ pkgs
+, config
+, lib
+, ...
+}:
+let
   isSway = config.system.flavor == "sway";
   isI3 = config.system.flavor == "i3";
-in {
+in
+{
   options.system.flavor = lib.mkOption {
     type = lib.types.enum [
       "i3"
@@ -17,7 +18,11 @@ in {
   };
 
   config = {
-    nix.settings.experimental-features = ["nix-command" "flakes"];
+    nix.settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
+
     nixpkgs.config.allowUnfree = true;
 
     time.timeZone = "Europe/Berlin";
@@ -42,13 +47,13 @@ in {
       polkit.enable = true;
       pam.services = {
         login.enableGnomeKeyring = true;
-        swaylock = lib.mkIf isSway {};
+        swaylock = lib.mkIf isSway { };
       };
     };
 
     sound.enable = true;
 
-    environment.pathsToLink = ["/share/zsh"];
+    environment.pathsToLink = [ "/share/zsh" ];
 
     environment.systemPackages = with pkgs;
       [
@@ -64,7 +69,7 @@ in {
     xdg.portal = lib.mkIf isSway {
       enable = true;
       wlr.enable = true;
-      extraPortals = with pkgs; [xdg-desktop-portal-wlr];
+      extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
     };
 
     services = {
@@ -126,7 +131,7 @@ in {
       terminus_font
       material-icons
       siji
-      (nerdfonts.override {fonts = ["Meslo" "Iosevka"];})
+      (nerdfonts.override { fonts = [ "Meslo" "Iosevka" ]; })
     ];
 
     i18n.defaultLocale = "en_US.utf8";

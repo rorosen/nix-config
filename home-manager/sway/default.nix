@@ -1,11 +1,12 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: let
+{ pkgs
+, lib
+, config
+, ...
+}:
+let
   modifier = "Mod4";
-in {
+in
+{
   imports = [
     ./sway-toolwait.nix
     ./sync-startup.nix
@@ -13,6 +14,7 @@ in {
 
   wayland.windowManager.sway = {
     enable = true;
+    systemdIntegration = true;
 
     startupSync = [
       {
@@ -44,9 +46,13 @@ in {
 
     config = {
       modifier = modifier;
-      bars = [];
+      bars = [ ];
       terminal = "${pkgs.alacritty}/bin/alacritty";
-      window.titlebar = false;
+      workspaceAutoBackAndForth = true;
+      window = {
+        titlebar = false;
+        hideEdgeBorders = "both";
+      };
 
       input = {
         "*" = {
@@ -100,11 +106,11 @@ in {
       };
 
       floating.criteria = [
-        {app_id = "nm-connection-editor";}
+        { app_id = "nm-connection-editor"; }
       ];
 
       startup = [
-        {command = "${config.home.homeDirectory}/.config/waybar/startup";}
+        { command = "${config.home.homeDirectory}/.config/waybar/startup"; }
       ];
     };
   };
