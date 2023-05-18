@@ -81,11 +81,6 @@ in {
             format = "{percent}% {icon}";
             format-icons = [" " " " " " " " " " " " " " " " " "];
           };
-          "custom/launcher" = {
-            on-click = "${pkgs.wofi}/bin/wofi --show=drun --allow-images --insensitive";
-            format = " ";
-            tooltip = false;
-          };
         }
         {
           name = "bottom-bar";
@@ -130,6 +125,11 @@ in {
             format-linked = "{ifname} (No IP)  ";
             format-disconnected = "Disconnected ⚠ ";
             on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
+          };
+          "custom/powermenu" = {
+            on-click = "${pkgs.wlogout}/bin/wlogout";
+            format = " ";
+            tooltip = false;
           };
         }
       ];
