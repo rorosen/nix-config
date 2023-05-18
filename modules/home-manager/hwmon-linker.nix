@@ -33,10 +33,10 @@ in {
       description = "The link to create for the specified hwmon path.";
     };
 
-    before = mkOption {
+    systemd.target = mkOption {
       type = types.str;
-      default = "waybar.service";
-      description = "The linking will happen before the specified unit is started.";
+      default = "graphical-session-pre.target";
+      description = "The systemd target that wants this servce.";
     };
   };
 
@@ -46,7 +46,6 @@ in {
     systemd.user.services.hwmon-linker = {
       Unit = {
         Description = "Tool that creates a symlink to a hwmon path";
-        Before = [cfg.before];
       };
 
       Service = {
@@ -54,7 +53,7 @@ in {
         ExecStart = "${cfg.package}/bin/hwmon-linker --name ${cfg.name} --label ${cfg.label} --link-path ${cfg.link}";
       };
 
-      Install = {WantedBy = ["graphical-session-pre.target"];};
+      Install = {WantedBy = [cfg.systemd.target];};
     };
   };
 }
