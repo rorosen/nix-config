@@ -1,10 +1,12 @@
-{ pkgs, lib, config, ... }:
-
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkOption mkEnableOption mkIf types;
   cfg = config.programs.waybar.hwmon.dynamic;
-in
-{
+in {
   options.programs.waybar.hwmon.dynamic = {
     enable = mkEnableOption "enable dynamic linking of hwmon path.";
     name = mkOption {

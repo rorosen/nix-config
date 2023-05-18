@@ -1,9 +1,11 @@
-{ pkgs, lib, config, ... }:
-
-let
-  cfg = config.programs.waybar;
-in
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.programs.waybar;
+in {
   imports = [
     ./startup.nix
     ./hwmon-dynamic.nix
@@ -29,17 +31,25 @@ in
           name = "top-bar";
           layer = "top";
           position = "top";
-          height = 26;
+          height = 22;
           spacing = 8;
-          modules-left = [ "custom/launcher" "sway/workspaces" "sway/mode" "sway/scratchpad" ];
-          modules-center = [ "sway/window" ];
-          modules-right = [ "sway/language" "idle_inhibitor" "pulseaudio" "backlight" "battery" "tray" ];
+          modules-left = ["custom/launcher" "sway/workspaces" "sway/mode" "sway/scratchpad"];
+          modules-center = ["sway/window"];
+          modules-right = ["keyboard-state" "idle_inhibitor" "pulseaudio" "backlight" "battery" "tray"];
           tray.spacing = 10;
           idle_inhibitor = {
             format = "{icon}";
             format-icons = {
               activated = " ";
               deactivated = " ";
+            };
+          };
+          keyboard-state = {
+            capslock = true;
+            format = "{icon}";
+            format-icons = {
+              locked = " ";
+              unlocked = "";
             };
           };
           pulseaudio = {
@@ -56,7 +66,7 @@ in
               phone = " ";
               portable = " ";
               car = " ";
-              default = [ " " " " " " ];
+              default = [" " " " " "];
             };
             on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           };
@@ -66,11 +76,11 @@ in
             format-charging = "{capacity}%  ";
             format-plugged = "{capacity}%  ";
             format-alt = "{time} {icon}";
-            format-icons = [ " " " " " " " " " " ];
+            format-icons = [" " " " " " " " " "];
           };
           backlight = {
             format = "{percent}% {icon}";
-            format-icons = [ " " " " " " " " " " " " " " " " " " ];
+            format-icons = [" " " " " " " " " " " " " " " " " "];
           };
           "custom/launcher" = {
             on-click = "${pkgs.wofi}/bin/wofi --show=drun --allow-images --insensitive";
@@ -82,10 +92,10 @@ in
           name = "bottom-bar";
           layer = "top";
           position = "bottom";
-          height = 26;
+          height = 22;
           spacing = 8;
-          modules-left = [ "custom/powermenu" "cpu" "memory" "disk" "temperature" ];
-          modules-right = [ "network" "clock" ];
+          modules-left = ["custom/powermenu" "cpu" "memory" "disk" "temperature"];
+          modules-right = ["network" "clock"];
           cpu.format = "  {usage}%";
           disk.format = "󰋊  {percentage_used}%";
           memory = {
@@ -95,8 +105,11 @@ in
           temperature = {
             critical-threshold = 80;
             format = "{icon} {temperatureC}°C";
-            format-icons = [ " " " " " " " " " " ];
-            hwmon-path = if cfg.hwmon.dynamic.enable then cfg.hwmon.dynamic.link else (lib.mkIf (cfg.hwmon.path != "") cfg.hwmon.path);
+            format-icons = [" " " " " " " " " "];
+            hwmon-path =
+              if cfg.hwmon.dynamic.enable
+              then cfg.hwmon.dynamic.link
+              else (lib.mkIf (cfg.hwmon.path != "") cfg.hwmon.path);
             interval = 5;
           };
           clock = {

@@ -1,7 +1,5 @@
-{ ... }:
-
-{
+{...}: {
   dconf.settings."org/blueman/general" = {
-    plugin-list = [ "!ConnectionNotifier" ];
+    plugin-list = ["!ConnectionNotifier"];
   };
 }

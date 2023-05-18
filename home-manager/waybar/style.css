@@ -32,6 +32,10 @@ window#waybar {
   background: transparent;
 }
 
+#keyboard-state {
+  color: #c9545d;
+}
+
 #clock,
 #battery,
 #cpu,

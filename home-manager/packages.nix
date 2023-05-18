@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     # gui
     firefox
-    ungoogled-chromium
     evince
     cinnamon.nemo
     keepassxc
@@ -38,7 +37,7 @@
     gopls
     go-outline
     nil
-    nixpkgs-fmt
+    alejandra
 
     # utils
     git

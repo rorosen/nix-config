@@ -1,5 +1,8 @@
-{ pkgs, config, lib, ... }:
-
+{ pkgs
+, config
+, lib
+, ...
+}:
 let
   isSway = config.system.flavor == "sway";
   isI3 = config.system.flavor == "i3";
@@ -52,14 +55,16 @@ in
 
     environment.pathsToLink = [ "/share/zsh" ];
 
-    environment.systemPackages = with pkgs; [
-      networkmanager
-      vim
-    ] ++ lib.optionals isSway [
-      xdg-desktop-portal
-      xdg-desktop-portal-wlr
-      grim
-    ];
+    environment.systemPackages = with pkgs;
+      [
+        networkmanager
+        vim
+      ]
+      ++ lib.optionals isSway [
+        xdg-desktop-portal
+        xdg-desktop-portal-wlr
+        grim
+      ];
 
     xdg.portal = lib.mkIf isSway {
       enable = true;

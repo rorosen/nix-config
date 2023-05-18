@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.file.".config/polybar/spotify-status.sh" = {
     target = ".config/polybar/spotify-status.sh";
     executable = true;

@@ -1,16 +1,17 @@
 # TODO: Does not work, fails each start with "COULD NOT FIND CSS FILE! REINSTALL THE PACKAGE!"
-
-{ pkgs, lib, config, ... }:
-
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkEnableOption mkPackageOption mkOption mkIf types;
   cfg = config.services.swaync;
-in
-{
+in {
   options.services.swaync = {
     enable = mkEnableOption "a simple GTK based notification daemon for SwayWM";
 
-    package = mkPackageOption pkgs "swaynotificationcenter" { };
+    package = mkPackageOption pkgs "swaynotificationcenter" {};
 
     systemd.target = mkOption {
       type = types.str;
@@ -36,16 +37,15 @@ in
       Unit = {
         Description = "Simple GTK based notification daemon for SwayWM";
         Documentation = "man:swaync(1)";
-        PartOf = [ "graphical-session.target" ];
+        PartOf = ["graphical-session.target"];
       };
 
       Service = {
         Type = "simple";
-        ExecStart =
-          "${cfg.package}/bin/swaync --config ${config.home.homeDirectory}/.config/swaync/config.json --style ${config.home.homeDirectory}/.config/swaync/style.css";
+        ExecStart = "${cfg.package}/bin/swaync --config ${config.home.homeDirectory}/.config/swaync/config.json --style ${config.home.homeDirectory}/.config/swaync/style.css";
       };
 
-      Install = { WantedBy = [ cfg.systemd.target ]; };
+      Install = {WantedBy = [cfg.systemd.target];};
     };
   };
 }

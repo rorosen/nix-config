@@ -1,10 +1,7 @@
-{ pkgs, ... }:
-
-let
-  swayPython = pkgs.python3.withPackages (ps: [ ps.i3ipc ]);
-in
-{
-  home.packages = [ swayPython ];
+{pkgs, ...}: let
+  swayPython = pkgs.python3.withPackages (ps: [ps.i3ipc]);
+in {
+  home.packages = [swayPython];
   home.file.".config/sway/sway-toolwait" = {
     executable = true;
 

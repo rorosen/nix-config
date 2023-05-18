@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.rofi = {
     enable = true;
 
@@ -8,4 +6,3 @@
     theme = ./theme.rafi;
   };
 }
-

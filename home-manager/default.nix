@@ -1,6 +1,10 @@
-{ pkgs, osConfig, lib, ... }:
-
+{ pkgs
+, osConfig
+, lib
+, ...
+}:
 let
+  inherit (lib) mkIf;
   isSway = osConfig.system.flavor == "sway";
   isI3 = osConfig.system.flavor == "i3";
 in
@@ -43,10 +47,13 @@ in
   programs.home-manager.enable = true;
   home = {
     keyboard.layout = "de";
-    sessionVariables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+    sessionVariables = {
+      RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+      NIXOS_OZONE_WL = mkIf isSway "1";
+    };
   };
 
-  xsession = lib.mkIf isI3 {
+  xsession = mkIf isI3 {
     enable = true;
     numlock.enable = true;
     profileExtra = ''
@@ -54,7 +61,7 @@ in
     '';
   };
 
-  programs.bash = lib.mkIf isSway {
+  programs.bash = mkIf isSway {
     enable = true;
     profileExtra = ''
       export SDL_VIDEODRIVER=wayland

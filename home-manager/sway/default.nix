@@ -1,5 +1,8 @@
-{ pkgs, lib, config, ... }:
-
+{ pkgs
+, lib
+, config
+, ...
+}:
 let
   modifier = "Mod4";
 in
@@ -14,10 +17,26 @@ in
     systemdIntegration = true;
 
     startupSync = [
-      { command = "${pkgs.vscode}/bin/code"; workspace = 2; appId = "code"; }
-      { command = "${pkgs.firefox}/bin/firefox"; workspace = 1; appId = "firefox"; }
-      { command = "${pkgs.alacritty}/bin/alacritty"; workspace = 3; appId = "Alacritty"; }
-      { command = "${pkgs.keepassxc}/bin/keepassxc"; workspace = 20; appId = "org.keepassxc.KeePassXC"; }
+      {
+        command = "${pkgs.vscode}/bin/code";
+        workspace = 2;
+        appId = "code-url-handler";
+      }
+      {
+        command = "${pkgs.firefox}/bin/firefox";
+        workspace = 1;
+        appId = "firefox";
+      }
+      {
+        command = "${pkgs.alacritty}/bin/alacritty";
+        workspace = 3;
+        appId = "Alacritty";
+      }
+      {
+        command = "${pkgs.keepassxc}/bin/keepassxc";
+        workspace = 20;
+        appId = "org.keepassxc.KeePassXC";
+      }
     ];
 
     extraConfigEarly = ''
@@ -38,6 +57,7 @@ in
       input = {
         "*" = {
           xkb_layout = "de";
+          xkb_numlock = "enabled";
         };
 
         "type:touchpad" = {

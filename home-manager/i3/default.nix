@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./layouts.nix
   ];
@@ -10,7 +12,7 @@
 
     config = rec {
       modifier = "Mod4";
-      bars = [ ];
+      bars = [];
 
       terminal = "${pkgs.alacritty}/bin/alacritty";
 
@@ -55,12 +57,11 @@
 
       window.titlebar = false;
 
-      floating.criteria =
-        [
-          {
-            class = "Nm-connection-editor";
-          }
-        ];
+      floating.criteria = [
+        {
+          class = "Nm-connection-editor";
+        }
+      ];
 
       startup = [
         {
@@ -83,16 +84,40 @@
           command = "${pkgs.i3}/bin/i3-msg \"workspace 20; append_layout $HOME/.config/i3/workspace-20.json\"";
           notification = false;
         }
-        { command = "${pkgs.systemd}/bin/systemctl --user restart polybar"; always = true; notification = false; }
-        { command = "${pkgs.pasystray}/bin/pasystray"; notification = false; }
-        { command = "${pkgs.firefox}/bin/firefox"; notification = false; }
-        { command = "${pkgs.vscode}/bin/code"; notification = false; }
-        { command = "${pkgs.alacritty}/bin/alacritty"; notification = false; }
-        { command = "${pkgs.thunderbird}/bin/thunderbird"; notification = false; }
-        { command = "${pkgs.keepassxc}/bin/keepassxc"; notification = false; }
-        { command = "${pkgs.nextcloud-client}/bin/nextcloud"; notification = false; }
+        {
+          command = "${pkgs.systemd}/bin/systemctl --user restart polybar";
+          always = true;
+          notification = false;
+        }
+        {
+          command = "${pkgs.pasystray}/bin/pasystray";
+          notification = false;
+        }
+        {
+          command = "${pkgs.firefox}/bin/firefox";
+          notification = false;
+        }
+        {
+          command = "${pkgs.vscode}/bin/code";
+          notification = false;
+        }
+        {
+          command = "${pkgs.alacritty}/bin/alacritty";
+          notification = false;
+        }
+        {
+          command = "${pkgs.thunderbird}/bin/thunderbird";
+          notification = false;
+        }
+        {
+          command = "${pkgs.keepassxc}/bin/keepassxc";
+          notification = false;
+        }
+        {
+          command = "${pkgs.nextcloud-client}/bin/nextcloud";
+          notification = false;
+        }
       ];
     };
   };
 }
-
