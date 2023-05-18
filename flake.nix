@@ -19,7 +19,9 @@
     nixpkgs,
     home-manager,
     ...
-  }: {
+  }: let
+    homeManagerModules = import ./modules/home-manager;
+  in {
     nixosConfigurations = {
       hp = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -31,7 +33,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.rob = import ./home-manager;
-              extraSpecialArgs = {inherit inputs;};
+              extraSpecialArgs = {inherit inputs homeManagerModules;};
               sharedModules = [
                 ./home-manager/hp-home.nix
                 ./home-manager/nextcloud-client.nix
@@ -50,7 +52,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.rob = import ./home-manager;
-              extraSpecialArgs = {inherit inputs;};
+              extraSpecialArgs = {inherit inputs homeManagerModules;};
               sharedModules = [
                 ./home-manager/t14-home.nix
               ];

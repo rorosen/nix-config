@@ -1,5 +1,3 @@
 {...}: {
-  imports = [
-    ./swaync.nix
-  ];
+  imports = [./hwmon-linker.nix];
 }

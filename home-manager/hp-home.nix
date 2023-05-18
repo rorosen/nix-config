@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  homeManagerModules,
+  pkgs,
+  ...
+}: {
+  imports = [homeManagerModules.hwmon-linker];
+
   home.username = "rob";
   home.homeDirectory = "/home/rob";
 
@@ -21,4 +27,11 @@
   ];
 
   programs.git.userEmail = "robert.rose@mailbox.org";
+
+  programs.hwmon-linker = {
+    enable = true;
+
+    name = "k10temp";
+    label = "Tctl";
+  };
 }
