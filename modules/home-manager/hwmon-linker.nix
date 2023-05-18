@@ -6,9 +6,9 @@
   ...
 }: let
   inherit (lib) mkOption mkEnableOption mkIf types;
-  cfg = config.programs.hwmon-linker;
+  cfg = config.services.hwmon-linker;
 in {
-  options.programs.hwmon-linker = {
+  options.services.hwmon-linker = {
     enable = mkEnableOption "enable creating a link of a hwmon path.";
 
     package = mkOption {

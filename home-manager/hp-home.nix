@@ -24,7 +24,7 @@
 
   programs.git.userEmail = "robert.rose@mailbox.org";
 
-  programs.hwmon-linker = {
+  services.hwmon-linker = {
     enable = true;
 
     name = "k10temp";

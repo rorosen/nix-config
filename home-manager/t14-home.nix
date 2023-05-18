@@ -14,7 +14,7 @@
     }
   ];
 
-  programs.hwmon-linker = {
+  services.hwmon-linker = {
     enable = true;
 
     name = "thinkpad";

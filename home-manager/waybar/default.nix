@@ -5,14 +5,14 @@
   ...
 }: let
   cfg = config.programs.waybar;
-  hwmonLinkerCfg = config.programs.hwmon-linker;
+  hwmonLinkerCfg = config.services.hwmon-linker;
 in {
   options.programs.waybar.hwmon.path = lib.mkOption {
     type = lib.types.str;
     default = "";
     description = ''
       The temperature path to use, e.g. /sys/class/hwmon/hwmon2/temp1_input instead of one in /sys/class/thermal/.
-      Only has an effect if programs.hwmon-linker is disabled.
+      Only has an effect if services.hwmon-linker is disabled.
     '';
   };
 
