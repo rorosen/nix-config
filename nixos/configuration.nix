@@ -4,10 +4,10 @@
   lib,
   ...
 }: let
-  isSway = config.system.flavor == "sway";
-  isI3 = config.system.flavor == "i3";
+  isSway = config.windowManager.type == "sway";
+  isI3 = config.windowManager.type == "i3";
 in {
-  options.system.flavor = lib.mkOption {
+  options.windowManager.type = lib.mkOption {
     type = lib.types.enum [
       "i3"
       "sway"

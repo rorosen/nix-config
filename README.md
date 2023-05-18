@@ -45,7 +45,7 @@ Remember to add newly created files to git before building the profile.
 
 ## Sway or i3
 
-Select either Sway or i3 with `system.flavor` like in `system.flavor = "sway"`.
+Select either Sway or i3 with `windowManager.type` like in `windowManager.type = "sway"`.
 
 ## Building a Profile
 
