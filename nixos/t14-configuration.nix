@@ -4,7 +4,7 @@
     ./t14-hardware-configuration.nix
   ];
 
-  system.flavor = "sway";
+  windowManager.type = "sway";
   networking.hostName = "t14";
 
   boot.initrd.systemd.enable = true;

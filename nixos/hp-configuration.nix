@@ -4,7 +4,7 @@
     ./hp-hardware-configuration.nix
   ];
 
-  system.flavor = "sway";
+  windowManager.type = "sway";
   networking.hostName = "hp";
 
   boot.initrd.kernelModules = ["amdgpu"];

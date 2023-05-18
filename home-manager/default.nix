@@ -6,8 +6,8 @@
   ...
 }: let
   inherit (lib) mkIf;
-  isSway = osConfig.system.flavor == "sway";
-  isI3 = osConfig.system.flavor == "i3";
+  isSway = osConfig.windowManager.type == "sway";
+  isI3 = osConfig.windowManager.type == "i3";
 in {
   imports =
     [
