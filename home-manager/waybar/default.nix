@@ -32,7 +32,7 @@ in {
           position = "top";
           height = 22;
           spacing = 8;
-          modules-left = ["custom/launcher" "sway/workspaces" "sway/mode" "sway/scratchpad"];
+          modules-left = ["sway/workspaces" "sway/mode" "sway/scratchpad"];
           modules-center = ["sway/window"];
           modules-right = ["keyboard-state" "idle_inhibitor" "pulseaudio" "backlight" "battery" "tray"];
           tray.spacing = 10;
@@ -130,11 +130,6 @@ in {
             format-linked = "{ifname} (No IP)  ";
             format-disconnected = "Disconnected ⚠ ";
             on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
-          };
-          "custom/powermenu" = {
-            on-click = "${pkgs.wlogout}/bin/wlogout";
-            format = " ";
-            tooltip = false;
           };
         }
       ];
