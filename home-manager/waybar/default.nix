@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.programs.waybar;
-  hwmonLinkerCfg = config.services.hwmon-linker;
+  tempLinkerCfg = config.services.temp-linker;
 in {
   options.programs.waybar.hwmon.path = lib.mkOption {
     type = lib.types.str;
@@ -97,8 +97,8 @@ in {
             format = "{icon} {temperatureC}°C";
             format-icons = [" " " " " " " " " "];
             hwmon-path =
-              if hwmonLinkerCfg.enable
-              then hwmonLinkerCfg.link
+              if tempLinkerCfg.enable
+              then tempLinkerCfg.link
               else (lib.mkIf (cfg.hwmon.path != "") cfg.hwmon.path);
             interval = 5;
           };

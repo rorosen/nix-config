@@ -1,3 +1,3 @@
 {
-  hwmon-linker = import ./hwmon-linker.nix;
+  temp-linker = import ./temp-linker.nix;
 }

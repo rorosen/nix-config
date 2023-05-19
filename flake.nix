@@ -9,8 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hwmon-linker = {
-      url = "path:./pkgs/hwmon-linker/";
+    temp-linker = {
+      url = "github:rorosen/temp-linker/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

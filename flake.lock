@@ -5,7 +5,7 @@
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "hwmon-linker",
+          "temp-linker",
           "nixpkgs"
         ],
         "rust-overlay": "rust-overlay"
@@ -83,36 +83,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1684442239,
-        "narHash": "sha256-8wD+fQpNULCF9a88E1Knw3MtXWqvyhn8u/859QSSoE4=",
+        "lastModified": 1684484967,
+        "narHash": "sha256-P3ftCqeJmDYS9LSr2gGC4XGGcp5vv8TOasJX6fVHWsw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c10403a5739d6275334710903fe709bc8d587980",
+        "rev": "b9a52ad20e58ebd003444915e35e3dd2c18fc715",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
-      }
-    },
-    "hwmon-linker": {
-      "inputs": {
-        "crane": "crane",
-        "flake-utils": "flake-utils_2",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-ohZBos+JfOn0MO054R+0Hun/8L4TLlFBI/7SVmbST3c=",
-        "path": "./pkgs/hwmon-linker/",
-        "type": "path"
-      },
-      "original": {
-        "path": "./pkgs/hwmon-linker/",
-        "type": "path"
       }
     },
     "nixpkgs": {
@@ -134,19 +115,19 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "hwmon-linker": "hwmon-linker",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "temp-linker": "temp-linker"
       }
     },
     "rust-overlay": {
       "inputs": {
         "flake-utils": [
-          "hwmon-linker",
+          "temp-linker",
           "crane",
           "flake-utils"
         ],
         "nixpkgs": [
-          "hwmon-linker",
+          "temp-linker",
           "crane",
           "nixpkgs"
         ]
@@ -192,6 +173,28 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "temp-linker": {
+      "inputs": {
+        "crane": "crane",
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1684489543,
+        "narHash": "sha256-Q20/QHmKOkKLK/2QOF6ijjWp/LXbPHJVMM3pMqu1SdA=",
+        "owner": "rorosen",
+        "repo": "temp-linker",
+        "rev": "1f4258ca0b5ec4c4dc586375f14b9ef1f44d939b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rorosen",
+        "repo": "temp-linker",
         "type": "github"
       }
     }

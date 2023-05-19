@@ -11,7 +11,7 @@
 in {
   imports =
     [
-      homeManagerModules.hwmon-linker
+      homeManagerModules.temp-linker
 
       ./packages.nix
       ./vscode
