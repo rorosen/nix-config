@@ -1,21 +1,8 @@
 {
   pkgs,
-  lib,
   config,
   ...
-}: let
-  cfg = config.programs.waybar;
-  tempLinkerCfg = config.services.temp-linker;
-in {
-  options.programs.waybar.hwmon.path = lib.mkOption {
-    type = lib.types.str;
-    default = "";
-    description = ''
-      The temperature path to use, e.g. /sys/class/hwmon/hwmon2/temp1_input instead of one in /sys/class/thermal/.
-      Only has an effect if services.hwmon-linker is disabled.
-    '';
-  };
-
+}: {
   config = {
     programs.waybar = {
       enable = true;
@@ -96,10 +83,7 @@ in {
             critical-threshold = 80;
             format = "{icon} {temperatureC}°C";
             format-icons = [" " " " " " " " " "];
-            hwmon-path =
-              if tempLinkerCfg.enable
-              then tempLinkerCfg.link
-              else (lib.mkIf (cfg.hwmon.path != "") cfg.hwmon.path);
+            hwmon-path = config.services.temp-linker.link;
             interval = 5;
           };
           clock = {

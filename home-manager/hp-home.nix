@@ -14,6 +14,8 @@
     android-tools
   ];
 
+  programs.git.userEmail = "robert.rose@mailbox.org";
+
   wayland.windowManager.sway.startupSync = [
     {
       command = "${pkgs.thunderbird}/bin/thunderbird";
@@ -21,8 +23,6 @@
       appId = "thunderbird";
     }
   ];
-
-  programs.git.userEmail = "robert.rose@mailbox.org";
 
   services.hwmon-linker = {
     enable = true;
