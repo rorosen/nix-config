@@ -259,11 +259,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1684611407,
-        "narHash": "sha256-hf8gcut67i8UYSMxBfX5rn3bA9s8qt6E6KlFahNC/Wk=",
+        "lastModified": 1684619634,
+        "narHash": "sha256-T1RpfL28jac5EJD/fqtjyXXMfIH8ZpslNpbdgDi5M00=",
         "owner": "rorosen",
         "repo": "sway-toolwait",
-        "rev": "4f4f9ec05c82655c62d8d96757a33b2e4bc5174c",
+        "rev": "5e037b4541da8dfaaf39a78930416171ea42f42b",
         "type": "github"
       },
       "original": {
