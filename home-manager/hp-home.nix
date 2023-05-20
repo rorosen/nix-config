@@ -24,7 +24,7 @@
     }
   ];
 
-  services.hwmon-linker = {
+  services.temp-linker = {
     enable = true;
 
     name = "k10temp";

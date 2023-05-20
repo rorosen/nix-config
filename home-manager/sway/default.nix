@@ -19,7 +19,7 @@ in {
       {
         command = "${pkgs.vscode}/bin/code";
         workspace = 2;
-        appId = "code-url-handler";
+        appId = "code";
       }
       {
         command = "${pkgs.firefox}/bin/firefox";
