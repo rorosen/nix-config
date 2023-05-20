@@ -10,7 +10,12 @@
     };
 
     temp-linker = {
-      url = "github:rorosen/temp-linker/";
+      url = "github:rorosen/temp-linker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sway-toolwait = {
+      url = "github:rorosen/sway-toolwait";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

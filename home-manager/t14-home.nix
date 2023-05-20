@@ -6,11 +6,11 @@
 
   programs.git.userEmail = "robert.rose@secunet.com";
 
-  wayland.windowManager.sway.startupSync = [
+  wayland.windowManager.sway.autostart = [
     {
       command = "${pkgs.ungoogled-chromium}/bin/chromium";
       workspace = 4;
-      appId = "chromium-browser";
+      waitFor = "chromium-browser";
     }
   ];
 

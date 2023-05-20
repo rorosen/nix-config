@@ -7,34 +7,33 @@
   modifier = "Mod4";
 in {
   imports = [
-    ./sway-toolwait.nix
-    ./sync-startup.nix
+    ./autostart.nix
   ];
 
   wayland.windowManager.sway = {
     enable = true;
     systemdIntegration = true;
 
-    startupSync = [
+    autostart = [
       {
         command = "${pkgs.vscode}/bin/code";
         workspace = 2;
-        appId = "code";
+        waitFor = "code";
       }
       {
         command = "${pkgs.firefox}/bin/firefox";
         workspace = 1;
-        appId = "firefox";
+        waitFor = "firefox";
       }
       {
         command = "${pkgs.alacritty}/bin/alacritty";
         workspace = 3;
-        appId = "Alacritty";
+        waitFor = "Alacritty";
       }
       {
         command = "${pkgs.keepassxc}/bin/keepassxc";
         workspace = 20;
-        appId = "org.keepassxc.KeePassXC";
+        waitFor = "org.keepassxc.KeePassXC";
       }
     ];
 

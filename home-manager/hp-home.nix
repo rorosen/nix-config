@@ -16,11 +16,11 @@
 
   programs.git.userEmail = "robert.rose@mailbox.org";
 
-  wayland.windowManager.sway.startupSync = [
+  wayland.windowManager.sway.autostart = [
     {
       command = "${pkgs.thunderbird}/bin/thunderbird";
       workspace = 19;
-      appId = "thunderbird";
+      waitFor = "thunderbird";
     }
   ];
 
