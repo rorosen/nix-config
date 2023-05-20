@@ -24,6 +24,7 @@ in {
 
     label = mkOption {
       type = types.str;
+      default = "";
       description = "The label of the hwmon temp input to use.";
     };
 
@@ -50,7 +51,13 @@ in {
 
       Service = {
         Type = "oneshot";
-        ExecStart = "${cfg.package}/bin/temp-linker --name ${cfg.name} --label ${cfg.label} --link-path ${cfg.link}";
+        ExecStart =
+          "${cfg.package}/bin/temp-linker --name ${cfg.name} --link-path ${cfg.link}"
+          + (
+            if cfg.label == ""
+            then ""
+            else "--label ${cfg.label}"
+          );
       };
 
       Install = {WantedBy = [cfg.systemd.target];};
