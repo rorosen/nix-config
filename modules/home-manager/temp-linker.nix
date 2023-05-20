@@ -56,7 +56,7 @@ in {
           + (
             if cfg.label == ""
             then ""
-            else "--label ${cfg.label}"
+            else " --label ${cfg.label}"
           );
       };
 

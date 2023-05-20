@@ -31,7 +31,7 @@
       hp = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./nixos/hp-configuration.nix
+          ./hosts/hp/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -49,7 +49,7 @@
       t14 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./nixos/t14-configuration.nix
+          ./hosts/t14/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {

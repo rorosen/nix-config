@@ -6,8 +6,8 @@
   ...
 }: let
   inherit (lib) mkIf;
-  isSway = osConfig.windowManager.type == "sway";
-  isI3 = osConfig.windowManager.type == "i3";
+  isSway = true;
+  isI3 = false;
 in {
   imports =
     [
