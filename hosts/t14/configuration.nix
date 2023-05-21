@@ -19,12 +19,9 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.rob = import ../../home-manager;
+    users.rob = import ../../home-manager/rob/t14;
     extraSpecialArgs = {
       inherit inputs;
     };
-    sharedModules = [
-      ../../home-manager/t14-home.nix
-    ];
   };
 }
