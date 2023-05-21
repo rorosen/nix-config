@@ -18,6 +18,7 @@
     ./nemo.nix
     ./blueman.nix
     ./neovim.nix
+    ./chromium.nix
   ];
 
   nixpkgs = {
