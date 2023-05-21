@@ -2,7 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common/graphical
-    ../common/graphical/sway.nix
+    ../common/graphical/wayland.nix
   ];
 
   networking.hostName = "t14";
