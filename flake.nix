@@ -21,47 +21,35 @@
   };
 
   outputs = inputs @ {
+    self,
     nixpkgs,
     home-manager,
     ...
   }: let
-    homeManagerModules = import ./modules/home-manager;
+    mkConfig = {
+      system,
+      modules,
+    }:
+      nixpkgs.lib.nixosSystem {
+        inherit system modules;
+        specialArgs = {inherit inputs;};
+      };
   in {
+    homeManagerModules = import ./modules/home-manager;
+
     nixosConfigurations = {
-      hp = nixpkgs.lib.nixosSystem {
+      hp = mkConfig {
         system = "x86_64-linux";
         modules = [
           ./hosts/hp/configuration.nix
           home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.rob = import ./home-manager;
-              extraSpecialArgs = {inherit inputs homeManagerModules;};
-              sharedModules = [
-                ./home-manager/hp-home.nix
-              ];
-            };
-          }
         ];
       };
-      t14 = nixpkgs.lib.nixosSystem {
+      t14 = mkConfig {
         system = "x86_64-linux";
         modules = [
           ./hosts/t14/configuration.nix
           home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.rob = import ./home-manager;
-              extraSpecialArgs = {inherit inputs homeManagerModules;};
-              sharedModules = [
-                ./home-manager/t14-home.nix
-              ];
-            };
-          }
         ];
       };
     };

@@ -1,4 +1,4 @@
-{...}: {
+{inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../common/graphical
@@ -14,5 +14,17 @@
   users.users.rob = {
     isNormalUser = true;
     extraGroups = ["wheel" "libvirtd" "docker" "cups" "lp" "audio" "wireshark" "video" "input"];
+  };
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.rob = import ../../home-manager;
+    extraSpecialArgs = {
+      inherit inputs;
+    };
+    sharedModules = [
+      ../../home-manager/t14-home.nix
+    ];
   };
 }

@@ -1,7 +1,6 @@
 {
-  homeManagerModules,
+  inputs,
   pkgs,
-  osConfig,
   lib,
   ...
 }: let
@@ -11,7 +10,7 @@
 in {
   imports =
     [
-      homeManagerModules.temp-linker
+      inputs.self.homeManagerModules.temp-linker
 
       ./packages.nix
       ./vscode
