@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ../common/complete.nix
-    ../common/sway
+    ../../common/complete.nix
+    ../../common/sway
     ./kanshi.nix
   ];
 
