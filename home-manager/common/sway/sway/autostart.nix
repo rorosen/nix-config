@@ -12,12 +12,12 @@
     options = {
       command = mkOption {
         type = types.str;
-        description = "Command that will be executed.";
+        description = "Command to run.";
       };
 
       workspace = mkOption {
         type = types.number;
-        description = "Workspace on which the is executed.";
+        description = "Workspace on which the command is run.";
       };
 
       waitFor = mkOption {
