@@ -9,15 +9,15 @@
     virt-manager
     gparted
     pdfsam-basic
-    gnome.simple-scan
     xfce.ristretto
     xfce.tumbler
     libreoffice
     pavucontrol
-    pasystray
     flameshot
     gnome.seahorse
     drawio
+    gimp
+    wireshark
 
     # terminal
     zsh
@@ -54,7 +54,6 @@
     pinentry
     gnupg
     texlive.combined.scheme-medium
-    wireshark
     brightnessctl
   ];
 }

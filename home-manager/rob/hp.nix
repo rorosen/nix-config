@@ -15,6 +15,7 @@
     freecad
     element-desktop
     android-tools
+    gnome.simple-scan
   ];
 
   programs.git.userEmail = "robert.rose@mailbox.org";
