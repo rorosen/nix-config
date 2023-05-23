@@ -49,7 +49,6 @@ in {
       workspaceAutoBackAndForth = true;
       window = {
         titlebar = false;
-        hideEdgeBorders = "both";
       };
 
       input = {
