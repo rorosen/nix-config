@@ -18,6 +18,7 @@
     drawio
     gimp
     wireshark
+    tigervnc
 
     # terminal
     zsh
