@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     temp-linker = {
       url = "github:rorosen/temp-linker";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,6 +35,7 @@
     nixpkgs,
     home-manager,
     disko,
+    deploy-rs,
     ...
   }: let
     mkConfig = {
@@ -65,5 +71,19 @@
         ];
       };
     };
+
+    deploy.nodes = {
+      amun = {
+        hostname = "";
+
+        profiles.system = {
+          sshUser = "root";
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.amun;
+        };
+      };
+    };
+
+    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
   };
 }
