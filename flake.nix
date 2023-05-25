@@ -67,7 +67,7 @@
       amun = mkConfig {
         system = "x86_64-linux";
         modules = [
-          ./hosts/amun/configuration.nix
+          ./hosts/amun.nix
         ];
       };
     };

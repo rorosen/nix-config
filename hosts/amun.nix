@@ -2,8 +2,8 @@
   disk = "/dev/sda";
 in {
   imports = [
-    ../common/server
-    ../common/server/disk.nix
+    ./common/server
+    ./common/server/disk.nix
   ];
 
   networking.hostName = "amun";
