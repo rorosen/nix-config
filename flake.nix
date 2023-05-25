@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     temp-linker = {
       url = "github:rorosen/temp-linker";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +29,7 @@
     self,
     nixpkgs,
     home-manager,
+    disko,
     ...
   }: let
     mkConfig = {
@@ -50,6 +56,12 @@
         modules = [
           ./hosts/t14/configuration.nix
           home-manager.nixosModules.home-manager
+        ];
+      };
+      amun = mkConfig {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/amun/configuration.nix
         ];
       };
     };
