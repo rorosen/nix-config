@@ -1,7 +1,9 @@
 {...}: {
   imports = [
-    ./common/vps
-    ./common/vps/disk.nix
+    ../common/vps
+    ../common/vps/disk.nix
+    ../common/vps/openssh.nix
+    ./users.nix
   ];
 
   networking.hostName = "amun";
