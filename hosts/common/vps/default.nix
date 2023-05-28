@@ -11,5 +11,11 @@
 
   console.keyMap = "de-latin1";
   time.timeZone = "Etc/UTC";
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+
+    extraConfig = ''
+      HostKeyAlgorithms ssh-ed25519
+    '';
+  };
 }
