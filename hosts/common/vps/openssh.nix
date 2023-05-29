@@ -4,7 +4,7 @@
 
     settings = {
       PasswordAuthentication = false;
-      # PermitRootLogin = "no";
+      PermitRootLogin = "no";
     };
 
     hostKeys = [

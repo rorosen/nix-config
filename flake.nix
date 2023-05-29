@@ -19,10 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # sops-nix = {
-    #   url = "github:Mic92/sops-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     temp-linker = {
       url = "github:rorosen/temp-linker";
@@ -62,6 +62,7 @@
           home-manager.nixosModules.home-manager
         ];
       };
+
       t14 = mkConfig {
         system = "x86_64-linux";
         modules = [
@@ -69,10 +70,11 @@
           home-manager.nixosModules.home-manager
         ];
       };
+
       amun = mkConfig {
         system = "x86_64-linux";
         modules = [
-          ./hosts/amun.nix
+          ./hosts/amun
         ];
       };
     };
@@ -82,8 +84,10 @@
         hostname = "";
 
         profiles.system = {
-          sshUser = "root";
+          sshUser = "rob";
           user = "root";
+          sshOpts = ["-A"];
+          remoteBuild = true;
           path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.amun;
         };
       };
