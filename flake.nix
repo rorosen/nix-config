@@ -9,21 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     temp-linker = {
       url = "github:rorosen/temp-linker";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,8 +24,6 @@
     self,
     nixpkgs,
     home-manager,
-    disko,
-    deploy-rs,
     ...
   }: let
     mkConfig = {
@@ -70,29 +53,6 @@
           home-manager.nixosModules.home-manager
         ];
       };
-
-      amun = mkConfig {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/amun
-        ];
-      };
     };
-
-    deploy.nodes = {
-      amun = {
-        hostname = "";
-
-        profiles.system = {
-          sshUser = "rob";
-          user = "root";
-          sshOpts = ["-A"];
-          remoteBuild = true;
-          path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.amun;
-        };
-      };
-    };
-
-    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
   };
 }

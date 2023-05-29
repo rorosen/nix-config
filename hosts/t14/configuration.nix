@@ -1,8 +1,8 @@
 {inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ../common/graphical
-    ../common/graphical/wayland.nix
+    ../common
+    ../common/wayland.nix
   ];
 
   networking.hostName = "t14";

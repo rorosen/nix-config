@@ -2,13 +2,13 @@
   imports = [
     ../common/complete.nix
     ../common/sway
+    ../common/nextcloud-client.nix
   ];
 
   home.username = "rob";
   home.homeDirectory = "/home/rob";
 
   home.packages = with pkgs; [
-    nextcloud-client
     thunderbird
     signal-desktop
     prusa-slicer
