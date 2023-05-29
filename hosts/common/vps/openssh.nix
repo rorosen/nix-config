@@ -13,7 +13,7 @@
         type = "ed25519";
       }
     ];
-
-    security.pam.enableSSHAgentAuth = true;
   };
+
+  security.pam.enableSSHAgentAuth = true;
 }

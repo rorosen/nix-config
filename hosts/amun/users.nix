@@ -4,6 +4,6 @@
     isNormalUser = true;
     extraGroups = ["wheel"];
 
-    openssh.authorizedKeys.keys = [(builtins.readFile ../hp/rob-id_25519.pub)];
+    openssh.authorizedKeys.keys = [(builtins.readFile ../hp/rob-id_ed25519.pub)];
   };
 }
