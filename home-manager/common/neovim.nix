@@ -15,6 +15,7 @@
 
     extraConfig = ''
       set number relativenumber
+      set clipboard+=unnamedplus
     '';
 
     extraLuaConfig = ''
