@@ -9,6 +9,11 @@
     ./dunst.nix
   ];
 
+  home.packages = with pkgs; [
+    grim
+    slurp
+  ];
+
   programs.bash = {
     enable = true;
     profileExtra = ''

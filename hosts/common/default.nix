@@ -43,12 +43,14 @@
 
   sound.enable = true;
 
-  environment.pathsToLink = ["/share/zsh"];
+  environment = {
+    pathsToLink = ["/share/zsh"];
 
-  environment.systemPackages = with pkgs; [
-    networkmanager
-    vim
-  ];
+    systemPackages = with pkgs; [
+      networkmanager
+      vim
+    ];
+  };
 
   services = {
     fwupd.enable = true;
