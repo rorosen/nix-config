@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }: let
   modifier = "Mod4";
@@ -104,10 +103,6 @@ in {
 
       floating.criteria = [
         {app_id = "nm-connection-editor";}
-      ];
-
-      startup = [
-        {command = "${config.home.homeDirectory}/.config/waybar/startup";}
       ];
     };
   };
