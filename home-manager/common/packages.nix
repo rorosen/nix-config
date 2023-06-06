@@ -57,5 +57,6 @@
     texlive.combined.scheme-medium
     brightnessctl
     jq
+    file
   ];
 }
