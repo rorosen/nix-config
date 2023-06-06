@@ -20,11 +20,6 @@
     wireshark
     tigervnc
 
-    # terminal
-    zsh
-    alacritty
-    any-nix-shell
-
     # programming
     shfmt
     cargo
@@ -58,5 +53,8 @@
     brightnessctl
     jq
     file
+    zsh
+    alacritty
+    any-nix-shell
   ];
 }
