@@ -56,5 +56,6 @@
     gnupg
     texlive.combined.scheme-medium
     brightnessctl
+    jq
   ];
 }
