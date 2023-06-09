@@ -88,12 +88,22 @@
           };
           clock = {
             format = "{:%H:%M}  ";
-            tooltip-format = "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>";
-            calendar-weeks-pos = "right";
-            today-format = "<span color = '#ff6699'><u>{}</u></span>";
-            format-calendar = "<span color='#ecc6d9'>{}</span>";
-            format-calendar-weeks = "<span color='#99ffdd'>KW{:%V}</span>";
-            format-calendar-weekdays = "<span color='#ffcc66'>{}</span>";
+            tooltip = true;
+            tooltip-format = "<tt><big>{calendar}</big></tt>";
+            actions = {
+              on-scroll-up = "shift_up";
+              on-scroll-down = "shift_down";
+            };
+            calendar = {
+              mode = "month";
+              weeks-pos = "right";
+              format = {
+                days = "<span color='#ffffff'>{}</span>";
+                weeks = "<span color='#99ffdd'>KW{:%W}</span>";
+                weekdays = "<span color='#ffcc66'>{}</span>";
+                today = "<span color = '#ff6699'>{}</span>";
+              };
+            };
           };
           network = {
             interval = 1;
