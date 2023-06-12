@@ -11,7 +11,7 @@ in {
 
   wayland.windowManager.sway = {
     enable = true;
-    systemdIntegration = true;
+    systemd.enable = true;
 
     autostart = [
       {
