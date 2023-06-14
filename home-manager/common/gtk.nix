@@ -9,4 +9,8 @@
       name = "Adwaita";
     };
   };
+
+  home.sessionVariables = {
+    XCURSOR_THEME = "Adwaita";
+  };
 }
