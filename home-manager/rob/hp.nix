@@ -16,6 +16,7 @@
     element-desktop
     android-tools
     gnome.simple-scan
+    joplin-desktop
   ];
 
   programs.git.userEmail = "robert.rose@mailbox.org";
