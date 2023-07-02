@@ -7,6 +7,7 @@
 }: let
   inherit (lib) mkOption types mkIf;
   cfg = config.wayland.windowManager.sway;
+  sway-toolwait = inputs.sway-toolwait.packages.${pkgs.system}.default;
 
   autostartModule = types.submodule {
     options = {
@@ -34,12 +35,18 @@
     waitFor,
     ...
   }:
-    "${inputs.sway-toolwait.packages.${pkgs.system}.default}/bin/sway-toolwait --workspace ${builtins.toString workspace} --command ${command} "
+    "${sway-toolwait}/bin/sway-toolwait --workspace ${builtins.toString workspace} --command ${command} "
     + (
       if waitFor == ""
       then "--nocheck"
       else "--waitfor ${waitFor}"
     );
+
+  autostartScript =
+    pkgs.writeShellScript "sway-autostart"
+    ''
+      ${builtins.concatStringsSep "\n" (map autostartEntryStr cfg.autostart)}
+    '';
 in {
   options.wayland.windowManager.sway.autostart = mkOption {
     type = types.listOf autostartModule;
@@ -48,20 +55,10 @@ in {
   };
 
   config = mkIf (builtins.length cfg.autostart > 0) {
-    home.packages = [inputs.sway-toolwait.packages.${pkgs.system}.default];
-
-    home.file.".config/sway/autostart" = {
-      executable = true;
-
-      text = ''
-        #!${pkgs.bash}/bin/bash
-
-        ${builtins.concatStringsSep "\n" (map autostartEntryStr cfg.autostart)}
-      '';
-    };
+    home.packages = [sway-toolwait];
 
     wayland.windowManager.sway.extraConfig = ''
-      exec ${config.home.homeDirectory}/.config/sway/autostart
+      exec ${autostartScript}
     '';
   };
 }
