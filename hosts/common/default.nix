@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -12,6 +16,8 @@
       persistent = true;
       options = "--delete-older-than 30d";
     };
+
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   };
 
   nixpkgs.config.allowUnfree = true;
