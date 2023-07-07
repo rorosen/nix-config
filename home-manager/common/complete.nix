@@ -19,6 +19,7 @@
     ./blueman.nix
     ./neovim.nix
     ./chromium.nix
+    ./direnv.nix
   ];
 
   nixpkgs = {

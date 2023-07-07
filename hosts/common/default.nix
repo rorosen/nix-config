@@ -7,8 +7,12 @@
     settings = {
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
-      trusted-users = ["@wheel"];
     };
+
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+    '';
 
     gc = {
       automatic = true;
