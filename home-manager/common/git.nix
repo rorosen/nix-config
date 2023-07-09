@@ -7,7 +7,7 @@
       st = "status";
       sw = "switch";
       ci = "commit";
-      pu = "pull";
+      pl = "pull";
       ps = "push";
     };
   };
