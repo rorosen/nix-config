@@ -13,7 +13,6 @@
     signal-desktop
     prusa-slicer
     freecad
-    element-desktop
     android-tools
     gnome.simple-scan
     joplin-desktop
