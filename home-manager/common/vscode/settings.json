@@ -44,6 +44,10 @@
   "[latex]": {
     "editor.defaultFormatter": "James-Yu.latex-workshop"
   },
+  "[helm]": {
+    "editor.formatOnSave": false,
+    "prettier.bracketSpacing": false
+  },
   "editor": {
     "codeActionsOnSave": ["source.organizeImports"],
     "defaultFormatter": "esbenp.prettier-vscode",
@@ -56,7 +60,6 @@
   "explorer.confirmDragAndDrop": false,
   "git.confirmSync": false,
   "prettier": {
-    "bracketSpacing": false,
     "proseWrap": "always"
   },
   "redhat.telemetry.enabled": false,
