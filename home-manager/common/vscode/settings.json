@@ -59,9 +59,7 @@
   },
   "explorer.confirmDragAndDrop": false,
   "git.confirmSync": false,
-  "prettier": {
-    "proseWrap": "always"
-  },
+  "prettier.proseWrap": "always",
   "redhat.telemetry.enabled": false,
   "shellformat.flag": "-i=4",
   "update.showReleaseNotes": false,
