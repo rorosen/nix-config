@@ -21,7 +21,7 @@
         rust-lang.rust-analyzer
         ms-vsliveshare.vsliveshare
         zxh404.vscode-proto3
-        bungcip.better-toml
+        tamasfe.even-better-toml
         Arjun.swagger-viewer
         ms-azuretools.vscode-docker
         arrterian.nix-env-selector
