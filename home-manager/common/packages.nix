@@ -34,6 +34,7 @@
     alejandra
 
     # utils
+    niv
     git
     openssh
     arp-scan
