@@ -37,6 +37,12 @@
           version = "1.6.6";
           sha256 = "sha256-SPcSnS7LnRL5gdiJIVsFaN7eccrUHSj9uQYIQZllm0M=";
         }
+        {
+          name = "vscode-protolint";
+          publisher = "plex";
+          version = "0.8.0";
+          sha256 = "sha256-DTKWQYRQkV1VTCnuDxakI7mjyMFF55Ppss/QRwjWIog=";
+        }
       ];
 
     userSettings =

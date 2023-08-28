@@ -48,6 +48,9 @@
     "editor.formatOnSave": false,
     "prettier.bracketSpacing": false
   },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
   "editor": {
     "codeActionsOnSave": ["source.organizeImports"],
     "defaultFormatter": "esbenp.prettier-vscode",
@@ -57,6 +60,9 @@
     "suggest.snippetsPreventQuickSuggestions": false,
     "lineNumbers": "relative"
   },
+  "clang-format.style": "google",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
   "explorer.confirmDragAndDrop": false,
   "git.confirmSync": false,
   "prettier.proseWrap": "always",
