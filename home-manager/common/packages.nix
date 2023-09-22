@@ -57,6 +57,5 @@
     zsh
     alacritty
     any-nix-shell
-    atuin
   ];
 }

@@ -20,6 +20,7 @@
     ./neovim.nix
     ./chromium.nix
     ./direnv.nix
+    ./atuin.nix
   ];
 
   nixpkgs = {
