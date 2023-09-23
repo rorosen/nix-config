@@ -54,7 +54,7 @@
         ];
       };
 
-      tower = {
+      tower = mkConfig {
         system = "x86_64-linux";
         modules = [
           ./hosts/tower/configuration.nix
