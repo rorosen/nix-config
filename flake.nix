@@ -53,6 +53,14 @@
           home-manager.nixosModules.home-manager
         ];
       };
+
+      tower = {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/tower/configuration.nix
+          home-manager.nixosModules.home-manager
+        ];
+      };
     };
   };
 }
