@@ -29,7 +29,7 @@
   ];
 
   services.temp-linker = {
-    enable = false;
+    enable = true;
 
     name = "k10temp";
     label = "Tctl";
