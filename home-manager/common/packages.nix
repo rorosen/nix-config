@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # gui
     firefox
     evince
     cinnamon.nemo
@@ -20,7 +19,6 @@
     wireshark
     tigervnc
 
-    # programming
     shfmt
     cargo
     rustc
@@ -33,7 +31,8 @@
     nil
     alejandra
 
-    # utils
+    grpcurl
+    deploy-rs
     niv
     git
     openssh
