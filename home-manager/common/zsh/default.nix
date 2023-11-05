@@ -33,6 +33,7 @@
       ".." = "cd ..";
       "k" = "kubectl";
       "kn" = "kubens";
+      "c" = "codium .";
     };
 
     plugins = [
