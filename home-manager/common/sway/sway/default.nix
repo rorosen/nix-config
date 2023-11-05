@@ -15,9 +15,9 @@ in {
 
     autostart = [
       {
-        command = "${pkgs.vscode}/bin/code";
+        command = "${pkgs.vscodium}/bin/codium";
         workspace = 2;
-        waitFor = "code";
+        waitFor = "vscodium";
       }
       {
         command = "${pkgs.firefox}/bin/firefox";

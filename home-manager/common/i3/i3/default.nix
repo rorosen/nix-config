@@ -98,7 +98,7 @@
           notification = false;
         }
         {
-          command = "${pkgs.vscode}/bin/code";
+          command = "${pkgs.vscodium}/bin/codium";
           notification = false;
         }
         {

@@ -49,8 +49,8 @@
         "percent": 1,
         "swallows": [
           {
-            "class": "^Code$",
-            "instance": "^code$",
+            "class": "^VSCodium$",
+            "instance": "^vscodium$",
             // "machine": "^hp$",
             // "title": "^i3\\.nix\\ \\-\\ nixfiles\\ \\-\\ Visual\\ Studio\\ Code$",
             "window_role": "^browser\\-window$"
