@@ -6,6 +6,15 @@
   ];
 
   networking.hostName = "t14";
+  networking.hosts = {
+    "192.168.101.180" = [
+      "auth.herder.com"
+      "dashboard.herder.com"
+      "api.herder.com"
+      "grpc.herder.com"
+    ];
+    # "195.192.158.108" = ["git.seven.secucloud.secunet.com"];
+  };
 
   boot.initrd.systemd.enable = true;
   boot.initrd.luks.devices.cryptroot.crypttabExtraOpts = ["fido2-device=auto"];

@@ -4,6 +4,7 @@
     wlr.enable = true;
     lxqt.enable = true;
 
+    config.common.default = "*";
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
     ];
