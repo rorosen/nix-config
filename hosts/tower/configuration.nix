@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   pkgs,
   ...
 }: {
@@ -12,6 +11,7 @@
 
   networking.hostName = "tower";
 
+  boot.initrd.kernelModules = ["amdgpu"];
   hardware = {
     logitech.wireless = {
       enable = true;
@@ -21,13 +21,6 @@
     sane = {
       enable = true;
       extraBackends = [pkgs.sane-airscan];
-    };
-
-    nvidia = {
-      open = true;
-      modesetting.enable = true;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
 

@@ -32,6 +32,7 @@
     alejandra
 
     grpcurl
+    nixos-anywhere
     deploy-rs
     niv
     git
