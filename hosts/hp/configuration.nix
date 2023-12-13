@@ -10,6 +10,13 @@
   ];
 
   networking.hostName = "hp";
+  networking.hosts = {
+    "192.168.122.23" = [
+      "nextcloud.dev.internal"
+      "auth.dev.internal"
+      "dashboard.dev.internal"
+    ];
+  };
 
   boot.initrd.kernelModules = ["amdgpu"];
   hardware.sane = {
