@@ -13,6 +13,10 @@
       "api.herder.com"
       "grpc.herder.com"
     ];
+    "192.168.101.149" = [
+      "auth.kadem.internal"
+      "dashboard.kadem.internal"
+    ];
     # "195.192.158.108" = ["git.seven.secucloud.secunet.com"];
   };
 
