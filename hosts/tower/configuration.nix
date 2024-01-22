@@ -10,8 +10,9 @@
   ];
 
   networking.hostName = "tower";
-
+  services.openssh.enable = true;
   boot.initrd.kernelModules = ["amdgpu"];
+
   hardware = {
     logitech.wireless = {
       enable = true;
@@ -31,8 +32,6 @@
     ];
     extraGroups = ["wheel" "libvirtd" "docker" "cups" "lp" "audio" "wireshark" "video" "input" "scanner"];
   };
-
-  services.openssh.enable = true;
 
   home-manager = {
     useGlobalPkgs = true;
