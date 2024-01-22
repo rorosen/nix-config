@@ -26,8 +26,13 @@
 
   users.users.rob = {
     isNormalUser = true;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE8BYhhtM7cj2GqBtW3ftPGtlBazkpePGrMSQX4MG2QD rob@hp"
+    ];
     extraGroups = ["wheel" "libvirtd" "docker" "cups" "lp" "audio" "wireshark" "video" "input" "scanner"];
   };
+
+  services.openssh.enable = true;
 
   home-manager = {
     useGlobalPkgs = true;
