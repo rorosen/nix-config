@@ -11,13 +11,7 @@
 
   networking.hostName = "t14";
   networking.hosts = {
-    "192.168.101.180" = [
-      "auth.herder.com"
-      "dashboard.herder.com"
-      "api.herder.com"
-      "grpc.herder.com"
-    ];
-    "192.168.122.69" = [
+    "192.168.101.130" = [
       "auth.kadem.internal"
       "dashboard.kadem.internal"
       "registry.kadem.internal"
