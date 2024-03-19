@@ -1,7 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
+{ pkgs
+, lib
+, ...
 }: {
   programs.zsh = {
     enable = true;
@@ -28,7 +27,7 @@
       bindkey "\e[F" end-of-line
     '';
 
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     shellAliases = {
       ".." = "cd ..";
       "k" = "kubectl";
