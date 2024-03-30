@@ -49,12 +49,11 @@
       builtins.fromJSON (builtins.readFile ./settings.json)
       // {
         "shellformat.path" = "${pkgs.shfmt}/bin/shfmt";
-        # "nix.formatterPath" = "${pkgs.alejandra}/bin/alejandra";
-        "nix.formatterPath" = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
         "nix.serverPath" = "${pkgs.nil}/bin/nil";
         "nix.serverSettings" = {
           "nil" = {
             "formatting" = {
+              # "command" = [ "${pkgs.alejandra}/bin/alejandra" ];
               "command" = ["${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt"];
             };
           };
