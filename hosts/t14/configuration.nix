@@ -12,6 +12,7 @@
   networking.hostName = "t14";
   networking.hosts = {
     "192.168.101.69" = [
+      "example.kadem.internal"
       "auth.kadem.internal"
       "dashboard.kadem.internal"
       "registry.kadem.internal"
