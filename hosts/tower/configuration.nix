@@ -22,6 +22,7 @@
     };
   };
 
+  programs.steam.enable = true;
   networking.hostName = "tower";
   services.openssh.enable = true;
 
