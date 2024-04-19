@@ -14,12 +14,12 @@
       keep-derivations = true
     '';
 
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      persistent = true;
-      options = "--delete-older-than 30d";
-    };
+    # gc = {
+    #   automatic = true;
+    #   dates = "weekly";
+    #   persistent = true;
+    #   options = "--delete-older-than 30d";
+    # };
 
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   };
