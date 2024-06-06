@@ -2,7 +2,7 @@
   services.kanshi = {
     enable = true;
 
-    profiles = {
+    settings = {
       mobile = {
         exec = [
           "${pkgs.networkmanager}/bin/nmcli connection up Neuland"

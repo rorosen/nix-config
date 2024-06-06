@@ -24,7 +24,7 @@
         ms-vsliveshare.vsliveshare
         zxh404.vscode-proto3
         tamasfe.even-better-toml
-        Arjun.swagger-viewer
+        arjun.swagger-viewer
         ms-azuretools.vscode-docker
         arrterian.nix-env-selector
         eamodio.gitlens
