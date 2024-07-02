@@ -89,7 +89,7 @@
 
   hardware = {
     bluetooth.enable = true;
-    opengl.enable = true;
+    graphics.enable = true;
   };
 
   fonts.enableDefaultPackages = true;
