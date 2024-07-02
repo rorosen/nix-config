@@ -16,6 +16,9 @@
     android-tools
     gnome.simple-scan
     joplin-desktop
+    kicad
+    pcb2gcode
+    candle
   ];
 
   programs.git.userEmail = "robert.rose@mailbox.org";
