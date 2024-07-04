@@ -2,13 +2,14 @@
   services.kanshi = {
     enable = true;
 
-    settings = {
-      mobile = {
-        exec = [
+    settings = [
+      {
+        profile.name = "mobile";
+        profile.exec = [
           "${pkgs.networkmanager}/bin/nmcli connection up Neuland"
         ];
 
-        outputs = [
+        profile.outputs = [
           {
             criteria = "eDP-1";
             mode = "1920x1200@60Hz";
@@ -18,13 +19,14 @@
             transform = "normal";
           }
         ];
-      };
-      docked = {
-        exec = [
+      }
+      {
+        profile.name = "docked";
+        profile.exec = [
           "${pkgs.networkmanager}/bin/nmcli connection down Neuland"
         ];
 
-        outputs = [
+        profile.outputs = [
           {
             criteria = "eDP-1";
             status = "disable";
@@ -46,7 +48,7 @@
             transform = "normal";
           }
         ];
-      };
-    };
+      }
+    ];
   };
 }
