@@ -54,7 +54,7 @@
           "nil" = {
             "formatting" = {
               # "command" = [ "${pkgs.alejandra}/bin/alejandra" ];
-              "command" = ["${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt"];
+              "command" = ["${pkgs.nixfmt-rfc-style}/bin/nixfmt"];
             };
           };
         };
