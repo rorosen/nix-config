@@ -14,7 +14,7 @@
     prusa-slicer
     freecad
     android-tools
-    gnome.simple-scan
+    simple-scan
     joplin-desktop
     kicad
     pcb2gcode

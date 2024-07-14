@@ -13,7 +13,7 @@
     libreoffice
     pavucontrol
     flameshot
-    gnome.seahorse
+    seahorse
     drawio
     gimp
     wireshark
