@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -6,7 +7,8 @@
     enableExtensionUpdateCheck = false;
     mutableExtensionsDir = false;
 
-    extensions = with pkgs.vscode-extensions;
+    extensions =
+      with pkgs.vscode-extensions;
       [
         bbenoist.nix
         jnoortheen.nix-ide
@@ -45,19 +47,17 @@
         }
       ];
 
-    userSettings =
-      builtins.fromJSON (builtins.readFile ./settings.json)
-      // {
-        "shellformat.path" = "${pkgs.shfmt}/bin/shfmt";
-        "nix.serverPath" = "${pkgs.nil}/bin/nil";
-        "nix.serverSettings" = {
-          "nil" = {
-            "formatting" = {
-              # "command" = [ "${pkgs.alejandra}/bin/alejandra" ];
-              "command" = ["${pkgs.nixfmt-rfc-style}/bin/nixfmt"];
-            };
+    userSettings = builtins.fromJSON (builtins.readFile ./settings.json) // {
+      "shellformat.path" = "${pkgs.shfmt}/bin/shfmt";
+      "nix.serverPath" = "${pkgs.nil}/bin/nil";
+      "nix.serverSettings" = {
+        "nil" = {
+          "formatting" = {
+            # "command" = [ "${pkgs.alejandra}/bin/alejandra" ];
+            "command" = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
           };
         };
       };
+    };
   };
 }

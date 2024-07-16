@@ -1,13 +1,9 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{ pkgs, lib, ... }:
+let
   modifier = "Mod4";
-in {
-  imports = [
-    ./autostart.nix
-  ];
+in
+{
+  imports = [ ./autostart.nix ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -43,7 +39,7 @@ in {
 
     config = {
       modifier = modifier;
-      bars = [];
+      bars = [ ];
       terminal = "${pkgs.alacritty}/bin/alacritty";
       workspaceAutoBackAndForth = true;
       window = {
@@ -101,9 +97,7 @@ in {
         "${modifier}+Shift+Ctrl+0" = "move container to workspace number 20";
       };
 
-      floating.criteria = [
-        {app_id = "nm-connection-editor";}
-      ];
+      floating.criteria = [ { app_id = "nm-connection-editor"; } ];
     };
   };
 }

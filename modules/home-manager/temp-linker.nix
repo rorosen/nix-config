@@ -4,10 +4,17 @@
   lib,
   config,
   ...
-}: let
-  inherit (lib) mkOption mkEnableOption mkIf types;
+}:
+let
+  inherit (lib)
+    mkOption
+    mkEnableOption
+    mkIf
+    types
+    ;
   cfg = config.services.temp-linker;
-in {
+in
+{
   options.services.temp-linker = {
     enable = mkEnableOption "enable creating a link of a hwmon temp input.";
 
@@ -42,7 +49,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [cfg.package];
+    home.packages = [ cfg.package ];
 
     systemd.user.services.temp-linker = {
       Unit = {
@@ -53,14 +60,12 @@ in {
         Type = "oneshot";
         ExecStart =
           "${cfg.package}/bin/temp-linker --name ${cfg.name} --link-path ${cfg.link}"
-          + (
-            if cfg.label == ""
-            then ""
-            else " --label ${cfg.label}"
-          );
+          + (lib.optionalString (cfg.label != "") " --label ${cfg.label}");
       };
 
-      Install = {WantedBy = [cfg.systemd.target];};
+      Install = {
+        WantedBy = [ cfg.systemd.target ];
+      };
     };
   };
 }

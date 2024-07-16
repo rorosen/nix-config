@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   systemd.user.services."ssh-agent" = {
     Unit = {
       Description = "SSH key agent";
@@ -15,7 +16,7 @@
     };
 
     Install = {
-      WantedBy = ["default.target"];
+      WantedBy = [ "default.target" ];
     };
   };
 }

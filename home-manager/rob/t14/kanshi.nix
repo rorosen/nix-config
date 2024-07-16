@@ -1,13 +1,12 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services.kanshi = {
     enable = true;
 
     settings = [
       {
         profile.name = "mobile";
-        profile.exec = [
-          "${pkgs.networkmanager}/bin/nmcli connection up Neuland"
-        ];
+        profile.exec = [ "${pkgs.networkmanager}/bin/nmcli connection up Neuland" ];
 
         profile.outputs = [
           {
@@ -22,9 +21,7 @@
       }
       {
         profile.name = "docked";
-        profile.exec = [
-          "${pkgs.networkmanager}/bin/nmcli connection down Neuland"
-        ];
+        profile.exec = [ "${pkgs.networkmanager}/bin/nmcli connection down Neuland" ];
 
         profile.outputs = [
           {

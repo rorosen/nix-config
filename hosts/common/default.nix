@@ -1,11 +1,11 @@
+{ inputs, pkgs, ... }:
 {
-  inputs,
-  pkgs,
-  ...
-}: {
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
     };
 
@@ -21,7 +21,7 @@
     #   options = "--delete-older-than 30d";
     # };
 
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -31,7 +31,7 @@
 
   boot = {
     tmp.cleanOnBoot = true;
-    binfmt.emulatedSystems = ["aarch64-linux"];
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
 
     loader = {
       systemd-boot.enable = true;
@@ -55,7 +55,7 @@
   sound.enable = true;
 
   environment = {
-    pathsToLink = ["/share/zsh"];
+    pathsToLink = [ "/share/zsh" ];
 
     systemPackages = with pkgs; [
       networkmanager
@@ -99,7 +99,12 @@
     terminus_font
     material-icons
     siji
-    (nerdfonts.override {fonts = ["Meslo" "Iosevka"];})
+    (nerdfonts.override {
+      fonts = [
+        "Meslo"
+        "Iosevka"
+      ];
+    })
   ];
 
   i18n.defaultLocale = "en_US.utf8";

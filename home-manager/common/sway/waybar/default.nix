@@ -1,8 +1,5 @@
+{ pkgs, config, ... }:
 {
-  pkgs,
-  config,
-  ...
-}: {
   config = {
     programs.waybar = {
       enable = true;
@@ -15,9 +12,20 @@
           position = "top";
           height = 22;
           spacing = 8;
-          modules-left = ["sway/workspaces" "sway/mode" "sway/scratchpad"];
-          modules-center = ["sway/window"];
-          modules-right = ["keyboard-state" "idle_inhibitor" "pulseaudio" "backlight" "battery" "tray"];
+          modules-left = [
+            "sway/workspaces"
+            "sway/mode"
+            "sway/scratchpad"
+          ];
+          modules-center = [ "sway/window" ];
+          modules-right = [
+            "keyboard-state"
+            "idle_inhibitor"
+            "pulseaudio"
+            "backlight"
+            "battery"
+            "tray"
+          ];
           tray.spacing = 10;
           idle_inhibitor = {
             format = "{icon}";
@@ -48,7 +56,11 @@
               phone = " ";
               portable = " ";
               car = " ";
-              default = [" " " " " "];
+              default = [
+                " "
+                " "
+                " "
+              ];
             };
             on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           };
@@ -58,11 +70,27 @@
             format-charging = "{capacity}%  ";
             format-plugged = "{capacity}%  ";
             format-alt = "{time} {icon}";
-            format-icons = [" " " " " " " " " "];
+            format-icons = [
+              " "
+              " "
+              " "
+              " "
+              " "
+            ];
           };
           backlight = {
             format = "{percent}% {icon}";
-            format-icons = [" " " " " " " " " " " " " " " " " "];
+            format-icons = [
+              " "
+              " "
+              " "
+              " "
+              " "
+              " "
+              " "
+              " "
+              " "
+            ];
           };
         }
         {
@@ -71,8 +99,17 @@
           position = "bottom";
           height = 22;
           spacing = 8;
-          modules-left = ["custom/powermenu" "cpu" "memory" "disk" "temperature"];
-          modules-right = ["network" "clock"];
+          modules-left = [
+            "custom/powermenu"
+            "cpu"
+            "memory"
+            "disk"
+            "temperature"
+          ];
+          modules-right = [
+            "network"
+            "clock"
+          ];
           cpu.format = "  {usage}%";
           disk.format = "󰋊  {percentage_used}%";
           memory = {
@@ -82,7 +119,13 @@
           temperature = {
             critical-threshold = 80;
             format = "{icon} {temperatureC}°C";
-            format-icons = [" " " " " " " " " "];
+            format-icons = [
+              " "
+              " "
+              " "
+              " "
+              " "
+            ];
             hwmon-path = config.services.temp-linker.link;
             interval = 5;
           };

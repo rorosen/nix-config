@@ -4,6 +4,6 @@ _: {
     enableZshIntegration = true;
 
     settings.search_mode = "fulltext";
-    flags = ["--disable-up-arrow"];
+    flags = [ "--disable-up-arrow" ];
   };
 }

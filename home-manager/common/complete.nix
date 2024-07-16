@@ -1,8 +1,5 @@
+{ inputs, pkgs, ... }:
 {
-  inputs,
-  pkgs,
-  ...
-}: {
   imports = [
     inputs.self.homeManagerModules.temp-linker
 

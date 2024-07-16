@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.file.".local/share/nemo/actions/open_in_alacritty.nemo_action" = {
     target = ".local/share/nemo/actions/open_in_alacritty.nemo_action";
 

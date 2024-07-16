@@ -1,3 +1,1 @@
-{
-  temp-linker = import ./temp-linker.nix;
-}
+{ temp-linker = import ./temp-linker.nix; }

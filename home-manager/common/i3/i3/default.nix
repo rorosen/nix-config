@@ -1,18 +1,13 @@
+{ pkgs, lib, ... }:
 {
-  pkgs,
-  lib,
-  ...
-}: {
-  imports = [
-    ./layouts.nix
-  ];
+  imports = [ ./layouts.nix ];
 
   xsession.windowManager.i3 = {
     enable = true;
 
     config = rec {
       modifier = "Mod4";
-      bars = [];
+      bars = [ ];
 
       terminal = "${pkgs.alacritty}/bin/alacritty";
 
@@ -57,11 +52,7 @@
 
       window.titlebar = false;
 
-      floating.criteria = [
-        {
-          class = "Nm-connection-editor";
-        }
-      ];
+      floating.criteria = [ { class = "Nm-connection-editor"; } ];
 
       startup = [
         {

@@ -1,18 +1,15 @@
+{ inputs, pkgs, ... }:
 {
-  inputs,
-  pkgs,
-  ...
-}: {
   imports = [
     ./hardware-configuration.nix
     ../common
     ../common/wayland.nix
   ];
 
-  boot.initrd.kernelModules = ["amdgpu"];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   hardware.sane = {
     enable = true;
-    extraBackends = [pkgs.sane-airscan];
+    extraBackends = [ pkgs.sane-airscan ];
   };
 
   networking = {
