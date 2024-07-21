@@ -24,9 +24,8 @@
   programs.steam.enable = true;
   networking = {
     hostName = "tower";
-
     hosts = {
-      "192.168.122.23" = [
+      "192.168.122.85" = [
         "nextcloud.dev.internal"
         "auth.dev.internal"
         "dashboard.dev.internal"

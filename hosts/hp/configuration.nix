@@ -14,7 +14,6 @@
 
   networking = {
     hostName = "hp";
-
     hosts = {
       "192.168.122.23" = [
         "nextcloud.dev.internal"
