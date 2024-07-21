@@ -19,9 +19,20 @@
     };
   };
 
-  programs.steam.enable = true;
-  networking.hostName = "tower";
+  nix.settings.trusted-users = [ "nixremote" ];
   services.openssh.enable = true;
+  programs.steam.enable = true;
+  networking = {
+    hostName = "tower";
+
+    hosts = {
+      "192.168.122.23" = [
+        "nextcloud.dev.internal"
+        "auth.dev.internal"
+        "dashboard.dev.internal"
+      ];
+    };
+  };
 
   users.users.rob = {
     isNormalUser = true;
@@ -39,11 +50,10 @@
     ];
   };
 
-  nix.settings.trusted-users = [ "nixremote" ];
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.rob = import ../../home-manager/rob/tower.nix;
+    users.rob = import ../../home-manager/rob;
     extraSpecialArgs = {
       inherit inputs;
     };
