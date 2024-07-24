@@ -28,7 +28,6 @@
         tamasfe.even-better-toml
         arjun.swagger-viewer
         ms-azuretools.vscode-docker
-        arrterian.nix-env-selector
         eamodio.gitlens
         vscodevim.vim
       ]
