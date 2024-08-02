@@ -51,6 +51,9 @@
   "[go]": {
     "editor.defaultFormatter": "golang.go"
   },
+  "vs-kubernetes": {
+    "disable-linters": ["resource-limits"]
+  },
   "editor": {
     "codeActionsOnSave": ["source.organizeImports"],
     "defaultFormatter": "esbenp.prettier-vscode",
