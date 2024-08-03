@@ -31,6 +31,7 @@
           system = "x86_64-linux";
           modules = [
             (_: {
+              imports = [ inputs.home-manager.nixosModules.home-manager ];
               nixpkgs.overlays = [
                 temp-linker.overlays.default
                 sway-toolwait.overlays.default

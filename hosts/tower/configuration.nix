@@ -1,12 +1,13 @@
 { inputs, pkgs, ... }:
 {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
-    ../common
-    ../common/wayland.nix
+    ../common.nix
   ];
 
+  nix.settings.trusted-users = [ "nixremote" ];
+  services.openssh.enable = true;
+  programs.steam.enable = true;
   boot.initrd.kernelModules = [ "amdgpu" ];
   hardware = {
     logitech.wireless = {
@@ -20,9 +21,6 @@
     };
   };
 
-  nix.settings.trusted-users = [ "nixremote" ];
-  services.openssh.enable = true;
-  programs.steam.enable = true;
   networking = {
     hostName = "tower";
     hosts = {
@@ -53,7 +51,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.rob = import ../../home-manager/rob;
+    users.rob = import ../../home/rob;
     extraSpecialArgs = {
       inherit inputs;
     };

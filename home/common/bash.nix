@@ -1,21 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./sway
-    ./waybar
-    ./wofi
-    ./swaylock.nix
-    ./wlogout.nix
-    ./swayidle.nix
-    ./dunst.nix
-  ];
-
-  home.packages = with pkgs; [
-    grim
-    slurp
-    wl-clipboard
-  ];
-
   programs.bash = {
     enable = true;
     profileExtra = ''

@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
-    ../../common/complete.nix
-    ../../common/sway
+    inputs.self.homeManagerModules.temp-linker
+    ../../common
     ./kanshi.nix
   ];
 

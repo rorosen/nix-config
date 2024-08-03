@@ -1,10 +1,11 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
-    inputs.self.homeManagerModules.temp-linker
-
     ./vscode
     ./zsh
+    ./sway
+    ./waybar
+    ./wofi
     ./packages.nix
     ./alacritty.nix
     ./gtk.nix
@@ -18,16 +19,22 @@
     ./chromium.nix
     ./direnv.nix
     ./atuin.nix
+    ./swaylock.nix
+    ./wlogout.nix
+    ./swayidle.nix
+    ./dunst.nix
   ];
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
+  # You can update Home Manager without changing this value. See
+  # the Home Manager release notes for a list of state version
+  # changes in each release.
+  home.stateVersion = "22.11";
+  programs.home-manager.enable = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = _: true;
   };
 
-  programs.home-manager.enable = true;
   home = {
     keyboard.layout = "de";
     sessionVariables = {
@@ -37,9 +44,4 @@
       # NIXOS_OZONE_WL = mkIf isSway "1";
     };
   };
-
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "22.11";
 }

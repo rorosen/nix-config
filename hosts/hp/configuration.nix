@@ -1,10 +1,8 @@
 { inputs, pkgs, ... }:
 {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
-    ../common
-    ../common/wayland.nix
+    ../common.nix
   ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -57,7 +55,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.rob = import ../../home-manager/rob;
+    users.rob = import ../../home/rob;
     extraSpecialArgs = {
       inherit inputs;
     };

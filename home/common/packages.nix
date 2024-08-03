@@ -18,7 +18,10 @@
     gimp
     wireshark
     tigervnc
+    grim
+    slurp
 
+    wl-clipboard
     shfmt
     cargo
     rustc

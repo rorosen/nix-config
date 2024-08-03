@@ -1,6 +1,14 @@
 { inputs, pkgs, ... }:
 {
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "22.11";
+  programs.xwayland.enable = true;
+  nixpkgs.config.allowUnfree = true;
+  time.timeZone = "Europe/Berlin";
+  console.keyMap = "de-latin1";
   nix = {
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     settings = {
       experimental-features = [
         "nix-command"
@@ -20,14 +28,16 @@
     #   persistent = true;
     #   options = "--delete-older-than 30d";
     # };
-
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
 
-  nixpkgs.config.allowUnfree = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    lxqt.enable = true;
 
-  time.timeZone = "Europe/Berlin";
-  console.keyMap = "de-latin1";
+    config.common.default = "*";
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+  };
 
   boot = {
     tmp.cleanOnBoot = true;
@@ -48,6 +58,7 @@
     rtkit.enable = true;
     polkit.enable = true;
     pam.services = {
+      swaylock = { };
       login.enableGnomeKeyring = true;
     };
   };
@@ -90,35 +101,35 @@
     graphics.enable = true;
   };
 
-  fonts.enableDefaultPackages = true;
-  fonts.packages = with pkgs; [
-    fantasque-sans-mono
-    noto-fonts
-    terminus_font
-    material-icons
-    siji
-    (nerdfonts.override {
-      fonts = [
-        "Meslo"
-        "Iosevka"
-      ];
-    })
-  ];
-
-  i18n.defaultLocale = "en_US.utf8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.utf8";
-    LC_IDENTIFICATION = "de_DE.utf8";
-    LC_MEASUREMENT = "de_DE.utf8";
-    LC_MONETARY = "de_DE.utf8";
-    LC_NAME = "de_DE.utf8";
-    LC_NUMERIC = "de_DE.utf8";
-    LC_PAPER = "de_DE.utf8";
-    LC_TELEPHONE = "de_DE.utf8";
-    LC_TIME = "de_DE.utf8";
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      fantasque-sans-mono
+      noto-fonts
+      terminus_font
+      material-icons
+      siji
+      (nerdfonts.override {
+        fonts = [
+          "Meslo"
+          "Iosevka"
+        ];
+      })
+    ];
   };
 
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11";
+  i18n = {
+    defaultLocale = "en_US.utf8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "de_DE.utf8";
+      LC_IDENTIFICATION = "de_DE.utf8";
+      LC_MEASUREMENT = "de_DE.utf8";
+      LC_MONETARY = "de_DE.utf8";
+      LC_NAME = "de_DE.utf8";
+      LC_NUMERIC = "de_DE.utf8";
+      LC_PAPER = "de_DE.utf8";
+      LC_TELEPHONE = "de_DE.utf8";
+      LC_TIME = "de_DE.utf8";
+    };
+  };
 }
