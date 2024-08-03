@@ -1,70 +1,50 @@
 {
-  inputs,
   pkgs,
   lib,
   config,
   ...
 }:
 let
-  inherit (lib)
-    mkOption
-    mkEnableOption
-    mkIf
-    types
-    ;
   cfg = config.services.temp-linker;
 in
 {
   options.services.temp-linker = {
-    enable = mkEnableOption "enable creating a link of a hwmon temp input.";
+    enable = lib.mkEnableOption "linking a hwmon temp input.";
+    package = lib.mkPackageOption pkgs "temp-linker" { };
 
-    package = mkOption {
-      type = types.package;
-      default = inputs.temp-linker.packages.${pkgs.system}.default;
-      description = "Package to use";
-    };
-
-    name = mkOption {
-      type = types.str;
+    name = lib.mkOption {
+      type = lib.types.str;
       description = "The name of the hwmon temp input to use.";
     };
 
-    label = mkOption {
-      type = types.str;
+    label = lib.mkOption {
+      type = lib.types.str;
       default = "";
       description = "The label of the hwmon temp input to use.";
     };
 
-    link = mkOption {
-      type = types.str;
+    link = lib.mkOption {
+      type = lib.types.str;
       default = "/tmp/temperature";
       description = "The link to create for the specified hwmon temp input.";
     };
 
-    systemd.target = mkOption {
-      type = types.str;
+    systemd.target = lib.mkOption {
+      type = lib.types.str;
       default = "graphical-session-pre.target";
-      description = "The systemd target that wants this servce.";
+      description = "The systemd target that wants this service.";
     };
   };
 
-  config = mkIf cfg.enable {
-    home.packages = [ cfg.package ];
-
+  config = lib.mkIf cfg.enable {
     systemd.user.services.temp-linker = {
-      Unit = {
-        Description = "Tool that creates a symlink to a hwmon temp input";
-      };
-
+      Unit.Description = "Tool that creates a symlink to a hwmon temp input";
+      Install.WantedBy = [ cfg.systemd.target ];
       Service = {
         Type = "oneshot";
         ExecStart =
           "${cfg.package}/bin/temp-linker --name ${cfg.name} --link-path ${cfg.link}"
           + (lib.optionalString (cfg.label != "") " --label ${cfg.label}");
-      };
-
-      Install = {
-        WantedBy = [ cfg.systemd.target ];
       };
     };
   };

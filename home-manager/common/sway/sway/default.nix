@@ -70,7 +70,7 @@ in
         # Custom keybindings
         "${modifier}+d" = "exec ${pkgs.wofi}/bin/wofi --show=drun --allow-images --insensitive";
         "${modifier}+x" = "exec ${pkgs.wlogout}/bin/wlogout";
-        "${modifier}+n" = "exec ${pkgs.cinnamon.nemo}/bin/nemo";
+        "${modifier}+n" = "exec ${pkgs.nemo}/bin/nemo";
         "${modifier}+less" = "move workspace to output left";
         # Keybindings for additional workaspces
         "${modifier}+0" = "workspace number 10";

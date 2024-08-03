@@ -3,17 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     temp-linker = {
-      url = "github:rorosen/temp-linker";
+      url = "/home/rob/misc/temp-linker";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     sway-toolwait = {
       url = "github:rorosen/sway-toolwait";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,16 +19,25 @@
 
   outputs =
     inputs@{
-      self,
       nixpkgs,
-      home-manager,
+      temp-linker,
+      sway-toolwait,
       ...
     }:
     let
       mkConfig =
-        { system, modules }:
+        module:
         nixpkgs.lib.nixosSystem {
-          inherit system modules;
+          system = "x86_64-linux";
+          modules = [
+            (_: {
+              nixpkgs.overlays = [
+                temp-linker.overlays.default
+                sway-toolwait.overlays.default
+              ];
+            })
+            module
+          ];
           specialArgs = {
             inherit inputs;
           };
@@ -39,31 +45,10 @@
     in
     {
       homeManagerModules = import ./modules/home-manager;
-
       nixosConfigurations = {
-        hp = mkConfig {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/hp/configuration.nix
-            home-manager.nixosModules.home-manager
-          ];
-        };
-
-        t14 = mkConfig {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/t14/configuration.nix
-            home-manager.nixosModules.home-manager
-          ];
-        };
-
-        tower = mkConfig {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/tower/configuration.nix
-            home-manager.nixosModules.home-manager
-          ];
-        };
+        hp = mkConfig ./hosts/hp/configuration.nix;
+        t14 = mkConfig ./hosts/t14/configuration.nix;
+        tower = mkConfig ./hosts/tower/configuration.nix;
       };
     };
 }

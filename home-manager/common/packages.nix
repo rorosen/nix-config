@@ -3,9 +3,8 @@
   home.packages = with pkgs; [
     firefox
     evince
-    cinnamon.nemo
+    nemo
     keepassxc
-    spotify
     virt-manager
     gparted
     pdfsam-basic

@@ -85,11 +85,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1721534365,
-        "narHash": "sha256-XpZOkaSJKdOsz1wU6JfO59Rx2fqtcarQ0y6ndIOKNpI=",
+        "lastModified": 1722630065,
+        "narHash": "sha256-QfM/9BMRkCmgWzrPDK+KbgJOUlSJnfX4OvsUupEUZvA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "635563f245309ef5320f80c7ebcb89b2398d2949",
+        "rev": "afc892db74d65042031a093adb6010c4c3378422",
         "type": "github"
       },
       "original": {
@@ -100,11 +100,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1721379653,
-        "narHash": "sha256-8MUgifkJ7lkZs3u99UDZMB4kbOxvMEXQZ31FO3SopZ0=",
+        "lastModified": 1722421184,
+        "narHash": "sha256-/DJBI6trCeVnasdjUo9pbnodCLZcFqnVZiLUfqLH4jA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "1d9c2c9b3e71b9ee663d11c5d298727dace8d374",
+        "rev": "9f918d616c5321ad374ae6cb5ea89c9e04bf3e58",
         "type": "github"
       },
       "original": {
@@ -131,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1720982403,
-        "narHash": "sha256-VQe/bJhWeDEmNvcr5sISWoDGW5qZlrkf+h5ywLcOoDc=",
+        "lastModified": 1722687223,
+        "narHash": "sha256-aCyfl/kY1RckpkvyT7PMIVyrwfvBVXollm2MzCOtNXw=",
         "owner": "rorosen",
         "repo": "sway-toolwait",
-        "rev": "88d2eb82a3ed3352a7a0ddcf5a90d8f338318525",
+        "rev": "e997029864008ed84d95bdfb532b3f1a87bd6b5a",
         "type": "github"
       },
       "original": {
@@ -183,17 +183,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1721164470,
-        "narHash": "sha256-dV70lP2CrJoZ54GXNiLPIGMfPk2S7aECBEBDX3lPueE=",
-        "owner": "rorosen",
-        "repo": "temp-linker",
-        "rev": "e92c03b6eea6836c735cd2bf91c544659e87941e",
-        "type": "github"
+        "lastModified": 1722687186,
+        "narHash": "sha256-LAOI6Szh2C+C/M7S5S6tM3GbTafQ+ZCXoEJqg+M9Jfg=",
+        "ref": "refs/heads/master",
+        "rev": "bb57eb749f7b0e554405204e2cb991464b520af0",
+        "revCount": 8,
+        "type": "git",
+        "url": "file:///home/rob/misc/temp-linker"
       },
       "original": {
-        "owner": "rorosen",
-        "repo": "temp-linker",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/rob/misc/temp-linker"
       }
     }
   },

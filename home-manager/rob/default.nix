@@ -20,6 +20,7 @@
     kicad
     pcb2gcode
     candle
+    spotify
   ];
 
   programs.git.userEmail = "robert.rose@mailbox.org";
