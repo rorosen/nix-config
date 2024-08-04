@@ -7,15 +7,14 @@
         width = 30;
         autoExpandWidth = true;
       };
+      filesystem.filteredItems.visible = true;
     };
 
-    keymaps = [
-      {
-        mode = "n";
-        key = "<leader>n";
-        action = ":Neotree action=focus reveal<CR>";
-        options.silent = true;
-      }
-    ];
+    keymaps = [{
+      mode = "n";
+      key = "<leader>n";
+      action = ":Neotree action=focus reveal<CR>";
+      options.silent = true;
+    }];
   };
 }

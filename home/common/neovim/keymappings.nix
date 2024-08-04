@@ -51,6 +51,9 @@
               # M = Alt key
               "<M-k>" = ":move-2<CR>";
               "<M-j>" = ":move+<CR>";
+
+              # format the buffer
+              "<leader>f" = ":Format<CR>";
             };
         visual =
           lib.mapAttrsToList

@@ -4,6 +4,7 @@
     inputs.nixvim.homeManagerModules.nixvim
     ./plugins
     ./keymappings.nix
+    ./autocommands.nix
   ];
 
   programs.zsh.shellAliases.v = "nvim";

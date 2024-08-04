@@ -1,5 +1,12 @@
 { pkgs, ... }:
 {
+    wayland.windowManager.sway.autostart = [
+      {
+        command = "${pkgs.alacritty}/bin/alacritty";
+        workspace = 3;
+        waitFor = "Alacritty";
+      }
+  ];
   programs.alacritty = {
     enable = true;
 
