@@ -5,9 +5,11 @@
     userName = "Robert Rose";
 
     aliases = {
+      a = "add";
+      s = "status";
       st = "stash";
       sw = "switch";
-      ci = "commit";
+      co = "commit";
       pl = "pull";
       ps = "push";
     };

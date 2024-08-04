@@ -8,11 +8,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     temp-linker = {
-      url = "/home/rob/misc/temp-linker";
+      url = "github:rorosen/temp-linker";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sway-toolwait = {
       url = "github:rorosen/sway-toolwait";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

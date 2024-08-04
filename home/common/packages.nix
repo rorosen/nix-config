@@ -20,6 +20,7 @@
     tigervnc
     grim
     slurp
+    ripgrep
 
     wl-clipboard
     shfmt

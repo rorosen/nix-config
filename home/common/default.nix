@@ -6,6 +6,7 @@
     ./sway
     ./waybar
     ./wofi
+    ./neovim
     ./packages.nix
     ./alacritty.nix
     ./gtk.nix
@@ -15,7 +16,6 @@
     ./ssh-agent.nix
     ./nemo.nix
     ./blueman.nix
-    ./neovim.nix
     ./chromium.nix
     ./direnv.nix
     ./atuin.nix

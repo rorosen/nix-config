@@ -6,7 +6,6 @@
 }:
 let
   cfg = config.wayland.windowManager.sway;
-
   autostartModule = lib.types.submodule {
     options = {
       command = lib.mkOption {
