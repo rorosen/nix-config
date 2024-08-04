@@ -3,6 +3,7 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./plugins
+    ./completion.nix
     ./keymappings.nix
     ./autocommands.nix
   ];

@@ -12,7 +12,7 @@
     ./lsp.nix
     ./efm.nix
     ./todo.nix
-    ./completion.nix
+    ./comments.nix
   ];
 
   programs.nixvim = {
@@ -36,13 +36,8 @@
         enable = true;
         settings = {
           highlight = true;
-          ft_blocklist = [
-            "checkhealth"
-            "floaterm"
-            "lspinfo"
-            "neo-tree"
-            "TelescopePrompt"
-          ];
+          ft_blocklist =
+            [ "checkhealth" "floaterm" "lspinfo" "neo-tree" "TelescopePrompt" ];
         };
       };
     };
