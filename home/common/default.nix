@@ -23,6 +23,7 @@
     ./wlogout.nix
     ./swayidle.nix
     ./dunst.nix
+    ./bash.nix
   ];
 
   # You can update Home Manager without changing this value. See
@@ -40,8 +41,7 @@
     sessionVariables = {
       RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket";
-      # FIXME: code crashes sometimes when setting this
-      # NIXOS_OZONE_WL = mkIf isSway "1";
+      NIXOS_OZONE_WL = "1";
     };
   };
 }
