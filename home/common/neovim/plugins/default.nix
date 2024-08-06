@@ -5,7 +5,7 @@
     ./markdown-preview.nix
     ./barbar.nix
     ./floaterm.nix
-    ./startify.nix
+    ./alpha.nix
     ./tagbar.nix
     ./telescope.nix
     ./treesitter.nix
