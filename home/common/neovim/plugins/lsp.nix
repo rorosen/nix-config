@@ -12,7 +12,6 @@
 
       lspBuf = {
         gd = "definition";
-        gf = "format";
         gD = "references";
         gt = "type_definition";
         gi = "implementation";
@@ -22,14 +21,21 @@
     };
 
     servers = {
-      clangd.enable = true;
-      texlab.enable = true;
+      clangd.enable = true; # C/C++
+      texlab.enable = true; # Tex
+      nil-ls.enable = true; # Nix
+      bashls.enable = true; # Bash
+      marksman.enable = true; # Markdown
+      yamlls.enable = true; # YAML
+      jsonls.enable = true; # JSON
+      gopls.enable = true; # Go
+
+      # Rust
       rust-analyzer = {
         enable = true;
         installCargo = false;
         installRustc = false;
       };
-      nil-ls.enable = true;
     };
   };
 }

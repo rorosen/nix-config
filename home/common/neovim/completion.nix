@@ -21,6 +21,15 @@
 
       cmp = {
         enable = true;
+        performance = {
+          debounce = 60;
+          fetchingTimeout = 200;
+          maxViewEntries = 30;
+        };
+        window = {
+          completion = { border = "solid"; };
+          documentation = { border = "solid"; };
+        };
         settings = {
           snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
           mapping = {

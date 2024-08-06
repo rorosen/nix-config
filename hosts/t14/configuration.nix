@@ -1,9 +1,5 @@
-{ inputs, ... }:
-{
-  imports = [
-    ./hardware-configuration.nix
-    ../common.nix
-  ];
+{ inputs, ... }: {
+  imports = [ ./hardware-configuration.nix ../common.nix ];
 
   boot.initrd = {
     systemd.enable = true;
@@ -22,6 +18,7 @@
         "dashboard.kadem.internal"
         "registry.kadem.internal"
       ];
+      # "192.168.122.54" = [ "kadem.herder.syseleven.seven.secunet.com" ];
       # "195.192.158.108" = ["git.seven.secucloud.secunet.com"];
     };
   };
@@ -45,8 +42,6 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.rob = import ../../home/rob/t14;
-    extraSpecialArgs = {
-      inherit inputs;
-    };
+    extraSpecialArgs = { inherit inputs; };
   };
 }
