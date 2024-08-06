@@ -10,15 +10,20 @@
     ./telescope.nix
     ./treesitter.nix
     ./lsp.nix
-    ./efm.nix
+    # ./efm.nix
     ./todo.nix
     ./comments.nix
+    ./conform.nix
+    ./fidget.nix
   ];
 
   programs.nixvim = {
     colorschemes.gruvbox.enable = true;
     plugins = {
+      indent-blankline.enable = true;
       nvim-autopairs.enable = true;
+      persistence.enable = true;
+      lazygit.enable = true;
       gitsigns = {
         enable = true;
         settings.signs = {
