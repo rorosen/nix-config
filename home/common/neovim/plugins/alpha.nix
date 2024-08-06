@@ -1,7 +1,7 @@
 {
-    programs.nixvim.plugins.alpha = {
-      enable = true;
-      theme = "dashboard";
-      iconsEnabled = true;
-    };
+  programs.nixvim.plugins.alpha = {
+    enable = true;
+    theme = "dashboard";
+    iconsEnabled = true;
+  };
 }

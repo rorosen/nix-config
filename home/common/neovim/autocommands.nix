@@ -16,7 +16,11 @@
     # Enable spellcheck for some filetypes
     {
       event = "FileType";
-      pattern = [ "tex" "latex" "markdown" ];
+      pattern = [
+        "tex"
+        "latex"
+        "markdown"
+      ];
       command = "setlocal spell spelllang=en";
     }
   ];

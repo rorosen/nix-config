@@ -1,5 +1,9 @@
-{ inputs, ... }: {
-  imports = [ ./hardware-configuration.nix ../common.nix ];
+{ inputs, ... }:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ../common.nix
+  ];
 
   boot.initrd = {
     systemd.enable = true;
@@ -42,6 +46,8 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.rob = import ../../home/rob/t14;
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+    };
   };
 }

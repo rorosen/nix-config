@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim.plugins.floaterm = {
     enable = true;
     width = 0.8;

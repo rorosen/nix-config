@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   wayland.windowManager.sway.autostart = [
     {
       command = "${pkgs.alacritty}/bin/alacritty";
