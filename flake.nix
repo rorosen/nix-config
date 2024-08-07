@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    temp-linker = {
-      url = "github:rorosen/temp-linker";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     sway-toolwait = {
       url = "github:rorosen/sway-toolwait";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,22 +14,11 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
-      #       devshell.follows = "";
-      # flake-compat.follows = "";
-      # git-hooks.follows = "";
-      # home-manager.follows = "";
-      # nix-darwin.follows = "";
-      # treefmt-nix.follows = "";
     };
   };
 
   outputs =
-    inputs@{
-      nixpkgs,
-      temp-linker,
-      sway-toolwait,
-      ...
-    }:
+    inputs@{ nixpkgs, sway-toolwait, ... }:
     let
       mkConfig =
         module:
@@ -42,10 +27,7 @@
           modules = [
             (_: {
               imports = [ inputs.home-manager.nixosModules.home-manager ];
-              nixpkgs.overlays = [
-                temp-linker.overlays.default
-                sway-toolwait.overlays.default
-              ];
+              nixpkgs.overlays = [ sway-toolwait.overlays.default ];
             })
             module
           ];

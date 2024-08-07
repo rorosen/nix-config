@@ -1,9 +1,6 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
-  imports = [
-    inputs.self.homeManagerModules.temp-linker
-    ../common
-  ];
+  imports = [ ../common ];
 
   home = {
     username = "rob";
@@ -23,7 +20,13 @@
     ];
   };
 
-  programs.git.userEmail = "robert.rose@mailbox.org";
+  programs = {
+    git.userEmail = "robert.rose@mailbox.org";
+    waybar = {
+      hwmon-path-abs = [ "/sys/devices/pci0000:00/0000:00:18.3/hwmon" ];
+      input-filename = "temp1_input";
+    };
+  };
   wayland.windowManager.sway.autostart = [
     {
       command = "${pkgs.thunderbird}/bin/thunderbird";
@@ -31,15 +34,8 @@
       waitFor = "thunderbird";
     }
   ];
-  services = {
-    nextcloud-client = {
-      enable = true;
-      startInBackground = true;
-    };
-    temp-linker = {
-      enable = true;
-      name = "k10temp";
-      label = "Tctl";
-    };
+  services.nextcloud-client = {
+    enable = true;
+    startInBackground = true;
   };
 }
