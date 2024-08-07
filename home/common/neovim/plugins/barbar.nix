@@ -4,7 +4,6 @@
     keymaps = {
       next.key = "<TAB>";
       previous.key = "<S-TAB>";
-      close.key = "<C-w>";
       goTo1.key = "<A-1>";
       goTo2.key = "<A-2>";
       goTo3.key = "<A-3>";

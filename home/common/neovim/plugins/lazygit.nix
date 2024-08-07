@@ -1,6 +1,6 @@
 {
-  programs.nixvim.plugins.lazygit = {
-    enable = true;
+  programs.nixvim = {
+    plugins.lazygit.enable = true;
     keymaps = [
       {
         mode = "n";
