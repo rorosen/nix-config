@@ -20,8 +20,6 @@
               # Esc to clear search results
               "<esc>" = ":noh<CR>";
 
-              # open lazygit
-              "gg" = ":LazyGit<CR>";
               # back and fourth between the two most recent files
               "<C-c>" = ":b#<CR>";
 
@@ -50,11 +48,6 @@
               # M = Alt key
               "<M-k>" = ":move-2<CR>";
               "<M-j>" = ":move+<CR>";
-
-              # format the buffer
-              "<leader>f" = ":Format<CR>";
-
-              "<leader>ll" = '':lua require("persistence").load({ last = true })<CR>'';
             };
         visual =
           lib.mapAttrsToList

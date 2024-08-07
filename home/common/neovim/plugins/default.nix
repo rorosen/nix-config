@@ -15,6 +15,7 @@
     ./comments.nix
     ./conform.nix
     ./fidget.nix
+    ./lazygit.nix
   ];
 
   programs.nixvim = {
@@ -23,7 +24,6 @@
       indent-blankline.enable = true;
       nvim-autopairs.enable = true;
       # persistence.enable = true;
-      lazygit.enable = true;
       gitsigns = {
         enable = true;
         settings.signs = {
