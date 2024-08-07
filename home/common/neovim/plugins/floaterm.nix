@@ -4,7 +4,7 @@
     enable = true;
     width = 0.8;
     height = 0.8;
-    title = "${pkgs.zsh}/bin/zsh";
+    shell = "${pkgs.zsh}/bin/zsh";
     keymaps.toggle = "<leader>,";
   };
 }
