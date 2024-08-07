@@ -22,7 +22,7 @@
     plugins = {
       indent-blankline.enable = true;
       nvim-autopairs.enable = true;
-      persistence.enable = true;
+      # persistence.enable = true;
       lazygit.enable = true;
       gitsigns = {
         enable = true;
