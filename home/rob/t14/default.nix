@@ -1,7 +1,6 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
-    inputs.self.homeManagerModules.temp-linker
     ../../common
     ./kanshi.nix
   ];
@@ -18,11 +17,4 @@
       waitFor = "chromium-browser";
     }
   ];
-
-  services.temp-linker = {
-    enable = true;
-
-    name = "thinkpad";
-    label = "CPU";
-  };
 }

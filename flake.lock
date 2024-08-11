@@ -21,27 +21,6 @@
         "type": "github"
       }
     },
-    "crane_2": {
-      "inputs": {
-        "nixpkgs": [
-          "temp-linker",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1721058578,
-        "narHash": "sha256-fs/PVa3H5dS1//4BjecWi3nitXm5fRObx0JxXIAo+JA=",
-        "owner": "ipetkov",
-        "repo": "crane",
-        "rev": "17e5109bb1d9fb393d70fba80988f7d70d1ded1a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ipetkov",
-        "repo": "crane",
-        "type": "github"
-      }
-    },
     "devshell": {
       "inputs": {
         "nixpkgs": [
@@ -119,24 +98,6 @@
     "flake-utils_2": {
       "inputs": {
         "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1710146030,
-        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "flake-utils_3": {
-      "inputs": {
-        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1710146030,
@@ -337,8 +298,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
-        "sway-toolwait": "sway-toolwait",
-        "temp-linker": "temp-linker"
+        "sway-toolwait": "sway-toolwait"
       }
     },
     "sway-toolwait": {
@@ -390,43 +350,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_3": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "temp-linker": {
-      "inputs": {
-        "crane": "crane_2",
-        "flake-utils": "flake-utils_3",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1722687186,
-        "narHash": "sha256-LAOI6Szh2C+C/M7S5S6tM3GbTafQ+ZCXoEJqg+M9Jfg=",
-        "owner": "rorosen",
-        "repo": "temp-linker",
-        "rev": "bb57eb749f7b0e554405204e2cb991464b520af0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rorosen",
-        "repo": "temp-linker",
         "type": "github"
       }
     },
