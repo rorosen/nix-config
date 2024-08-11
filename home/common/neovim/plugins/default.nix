@@ -22,6 +22,8 @@
   programs.nixvim = {
     colorschemes.gruvbox.enable = true;
     plugins = {
+      noice.enable = true;
+      notify.enable = true;
       indent-blankline.enable = true;
       nvim-autopairs.enable = true;
       # persistence.enable = true;
