@@ -13,6 +13,11 @@
     };
   };
 
+  nix.settings = {
+    substituters = [ "http://seven-cache01.syseleven.seven.secunet.com/" ];
+    trusted-public-keys = [ "seven-1:M1znlh60ChXxeuOXaxFVLTrmeJS+UpYVfmI5fmX2Itc=" ];
+  };
+
   networking = {
     hostName = "t14";
     hosts = {
