@@ -8,7 +8,13 @@
   home.username = "rob";
   home.homeDirectory = "/home/rob";
 
-  programs.git.userEmail = "robert.rose@secunet.com";
+  programs = {
+    git.userEmail = "robert.rose@secunet.com";
+    waybar = {
+      hwmon-path-abs = [ "/sys/devices/platform/thinkpad_hwmon/hwmon" ];
+      input-filename = "temp1_input";
+    };
+  };
 
   wayland.windowManager.sway.autostart = [
     {
