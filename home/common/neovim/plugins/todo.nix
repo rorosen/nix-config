@@ -6,7 +6,6 @@
     };
 
     match.TODO = "TODO";
-
     keymaps = [
       {
         mode = "n";
