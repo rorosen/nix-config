@@ -27,7 +27,7 @@
           "n"
           "v"
         ];
-        key = "<leader>l";
+        key = "<leader>ö";
         action.__raw = ''
           function()
             require("conform").format({ async = true, lsp_format = "fallback" })
