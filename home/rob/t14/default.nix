@@ -1,12 +1,32 @@
 { pkgs, ... }:
+let
+  get-kubeconfig = pkgs.writeShellScriptBin "get-kubeconfig" ''
+    if [[ $# -ne 1 ]]; then
+        echo "Usage: $(basename "$0") <hostname_or_ip>"
+        exit 1
+    fi
+
+    CONFIG="$HOME/.kube/config"
+    set -ex
+
+    install --backup --suffix=".backup" --mode 600 /dev/null "$CONFIG"
+
+    ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" \
+        "root@$1" 'cat /etc/rancher/k3s/k3s.yaml' |
+        sed "s/127.0.0.1/$1/" > "$CONFIG"
+  '';
+in
 {
   imports = [
     ../../common
     ./kanshi.nix
   ];
 
-  home.username = "rob";
-  home.homeDirectory = "/home/rob";
+  home = {
+    username = "rob";
+    homeDirectory = "/home/rob";
+    packages = [ get-kubeconfig ];
+  };
 
   programs = {
     git.userEmail = "robert.rose@secunet.com";
