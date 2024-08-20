@@ -17,6 +17,7 @@
     ./fidget.nix
     ./lazygit.nix
     ./trouble.nix
+    ./oil.nix
   ];
 
   programs.nixvim = {
