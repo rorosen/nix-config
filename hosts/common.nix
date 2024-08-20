@@ -9,6 +9,7 @@
   console.keyMap = "de-latin1";
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    package = pkgs.nixVersions.latest;
     settings = {
       experimental-features = [
         "nix-command"
