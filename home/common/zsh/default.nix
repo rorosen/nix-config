@@ -2,7 +2,10 @@
 {
   programs.zsh = {
     enable = true;
-
+    dotDir = ".config/zsh";
+    autosuggestion.enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
     initExtra = ''
       bindkey "\e[5~" beginning-of-history
       bindkey "\e[6~" end-of-history
@@ -25,7 +28,6 @@
       bindkey "\e[F" end-of-line
     '';
 
-    autosuggestion.enable = true;
     shellAliases = {
       ".." = "cd ..";
       "k" = "kubectl";
@@ -43,6 +45,11 @@
         name = "powerlevel10k-config";
         src = lib.cleanSource ./.;
         file = "p10k.zsh";
+      }
+      {
+        name = "vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
       }
     ];
   };
