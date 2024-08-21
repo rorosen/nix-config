@@ -1,21 +1,22 @@
 {
   imports = [
-    ./lualine.nix
-    ./markdown-preview.nix
-    ./barbar.nix
-    ./floaterm.nix
     ./alpha.nix
-    ./tagbar.nix
-    ./telescope.nix
-    ./treesitter.nix
-    ./lsp.nix
-    ./todo.nix
+    ./barbar.nix
     ./comments.nix
     ./conform.nix
     ./fidget.nix
+    ./floaterm.nix
     ./lazygit.nix
-    ./trouble.nix
+    ./lsp.nix
+    ./lualine.nix
+    ./markdown-preview.nix
+    ./neo-tree.nix
     ./oil.nix
+    ./tagbar.nix
+    ./telescope.nix
+    ./todo.nix
+    ./treesitter.nix
+    ./trouble.nix
   ];
 
   programs.nixvim = {
@@ -25,7 +26,6 @@
       notify.enable = true;
       indent-blankline.enable = true;
       nvim-autopairs.enable = true;
-      # persistence.enable = true;
       gitsigns = {
         enable = true;
         settings.signs = {
