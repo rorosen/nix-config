@@ -30,6 +30,7 @@
       # "192.168.122.54" = [ "kadem.herder.syseleven.seven.secunet.com" ];
       # "195.192.158.108" = ["git.seven.secucloud.secunet.com"];
     };
+    wg-quick.interfaces.wg0.configFile = "/home/rob/.wireguard/wg0.conf";
   };
 
   users.users.rob = {
