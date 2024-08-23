@@ -24,6 +24,7 @@
     wl-clipboard
     shfmt
     cargo
+    clippy
     rustc
     rustfmt
     gcc

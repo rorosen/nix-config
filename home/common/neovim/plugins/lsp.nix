@@ -1,40 +1,50 @@
 {
-  programs.nixvim.plugins.lsp = {
-    enable = true;
+  programs.nixvim.plugins = {
+    lsp = {
+      enable = true;
 
-    keymaps = {
-      silent = true;
-      diagnostic = {
-        # Navigate in diagnostics
-        "<leader>k" = "goto_prev";
-        "<leader>j" = "goto_next";
+      keymaps = {
+        silent = true;
+        diagnostic = {
+          # Navigate in diagnostics
+          "<leader>k" = "goto_prev";
+          "<leader>j" = "goto_next";
+        };
+
+        lspBuf = {
+          gd = "definition";
+          gD = "references";
+          gt = "type_definition";
+          gi = "implementation";
+          K = "hover";
+          "<F2>" = "rename";
+        };
       };
 
-      lspBuf = {
-        gd = "definition";
-        gD = "references";
-        gt = "type_definition";
-        gi = "implementation";
-        K = "hover";
-        "<F2>" = "rename";
+      servers = {
+        clangd.enable = true; # C/C++
+        texlab.enable = true; # Tex
+        nil-ls.enable = true; # Nix
+        bashls.enable = true; # Bash
+        marksman.enable = true; # Markdown
+        yamlls.enable = true; # YAML
+        jsonls.enable = true; # JSON
+        gopls.enable = true; # Go
+
+        # rustaceanvim
       };
     };
 
-    servers = {
-      clangd.enable = true; # C/C++
-      texlab.enable = true; # Tex
-      nil-ls.enable = true; # Nix
-      bashls.enable = true; # Bash
-      marksman.enable = true; # Markdown
-      yamlls.enable = true; # YAML
-      jsonls.enable = true; # JSON
-      gopls.enable = true; # Go
+    rustaceanvim = {
+      enable = true;
 
-      # Rust
-      rust-analyzer = {
-        enable = true;
-        installCargo = false;
-        installRustc = false;
+      settings.server = {
+        default_settings.rust-analyzer = {
+          cargo.features = "all";
+          checkOnSave = true;
+          check.command = "clippy";
+          rustc.source = "discover";
+        };
       };
     };
   };
