@@ -19,6 +19,7 @@
         css = [ "prettierd" ];
         html = [ "prettierd" ];
         sh = [ "shfmt" ];
+        toml = [ "taplo" ];
       };
     };
     keymaps = [
