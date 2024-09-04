@@ -5,6 +5,7 @@
 
       settings = {
         auto_close = false;
+        page_title = "\$\{name}";
         theme = "dark";
       };
     };
