@@ -1,6 +1,5 @@
 {
   imports = [
-    ./alpha.nix
     ./barbar.nix
     ./comments.nix
     ./conform.nix
