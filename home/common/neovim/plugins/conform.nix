@@ -9,17 +9,19 @@
   programs.nixvim = {
     plugins.conform-nvim = {
       enable = true;
-      formatOnSave.lspFallback = true;
-      notifyOnError = true;
-      formattersByFt = {
-        nix = [ "nixfmt" ];
-        markdown = [ "prettierd" ];
-        json = [ "prettierd" ];
-        yaml = [ "yamlfmt" ];
-        css = [ "prettierd" ];
-        html = [ "prettierd" ];
-        sh = [ "shfmt" ];
-        toml = [ "taplo" ];
+      settings = {
+        notifyOnError = true;
+        formatOnSave.lspFallback = true;
+        formattersByFt = {
+          nix = [ "nixfmt" ];
+          markdown = [ "prettierd" ];
+          json = [ "prettierd" ];
+          yaml = [ "yamlfmt" ];
+          css = [ "prettierd" ];
+          html = [ "prettierd" ];
+          sh = [ "shfmt" ];
+          toml = [ "taplo" ];
+        };
       };
     };
     keymaps = [

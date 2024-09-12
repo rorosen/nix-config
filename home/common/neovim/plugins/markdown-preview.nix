@@ -4,8 +4,8 @@
       enable = true;
 
       settings = {
-        auto_close = false;
         page_title = "\$\{name}";
+        auto_close = 0;
         theme = "dark";
       };
     };
