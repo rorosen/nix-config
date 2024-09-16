@@ -11,9 +11,9 @@
     plugins.conform-nvim = {
       enable = true;
       settings = {
-        notifyOnError = true;
-        formatOnSave.lspFallback = true;
-        formattersByFt = {
+        notify_on_error = true;
+        format_on_save.lspFallback = true;
+        formatters_by_ft = {
           nix = [ "nixfmt" ];
           markdown = [ "prettierd" ];
           json = [ "prettierd" ];
