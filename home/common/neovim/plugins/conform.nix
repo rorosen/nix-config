@@ -5,6 +5,7 @@
     prettierd
     yamlfmt
     shfmt
+    taplo
   ];
   programs.nixvim = {
     plugins.conform-nvim = {
