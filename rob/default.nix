@@ -20,14 +20,11 @@
     ];
   };
 
-  programs = {
-    git.userEmail = "robert.rose@mailbox.org";
-    waybar = {
-      hwmon-path-abs = [ "/sys/devices/pci0000:00/0000:00:18.3/hwmon" ];
-      input-filename = "temp1_input";
-    };
+  programs.waybar = {
+    hwmon-path-abs = [ "/sys/devices/pci0000:00/0000:00:18.3/hwmon" ];
+    input-filename = "temp1_input";
   };
-  wayland.windowManager.sway.autostart = [
+  wayland.windowManager.sway.toolwait = [
     {
       command = "${pkgs.thunderbird}/bin/thunderbird";
       workspace = 19;

@@ -1,20 +1,7 @@
 { pkgs, ... }:
 {
-  wayland.windowManager.sway.autostart = [
-    {
-      command = "${pkgs.alacritty}/bin/alacritty";
-      workspace = 2;
-      waitFor = "Alacritty";
-    }
-    {
-      command = "${pkgs.alacritty}/bin/alacritty";
-      workspace = 3;
-      waitFor = "Alacritty";
-    }
-  ];
   programs.alacritty = {
     enable = true;
-
     settings = {
       window = {
         title = "Terminal";
@@ -25,12 +12,11 @@
         };
       };
 
+      shell.program = "${pkgs.zsh}/bin/zsh";
       font = {
         normal.family = "MesloLGSDZ Nerd Font";
         size = 8.0;
       };
-
-      shell.program = "${pkgs.zsh}/bin/zsh";
 
       colors = {
         primary = {

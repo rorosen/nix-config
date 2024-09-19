@@ -28,15 +28,12 @@ in
     packages = [ get-kubeconfig ];
   };
 
-  programs = {
-    git.userEmail = "robert.rose@secunet.com";
-    waybar = {
-      hwmon-path-abs = [ "/sys/devices/platform/thinkpad_hwmon/hwmon" ];
-      input-filename = "temp1_input";
-    };
+  programs.waybar = {
+    hwmon-path-abs = [ "/sys/devices/platform/thinkpad_hwmon/hwmon" ];
+    input-filename = "temp1_input";
   };
 
-  wayland.windowManager.sway.autostart = [
+  wayland.windowManager.sway.toolwait = [
     {
       command = "${pkgs.ungoogled-chromium}/bin/chromium";
       workspace = 4;

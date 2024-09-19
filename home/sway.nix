@@ -1,25 +1,40 @@
-{ pkgs, lib, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 let
   modifier = "Mod4";
 in
 {
-  imports = [ ./autostart.nix ];
+  imports = [ inputs.sway-toolwait.homeManagerModules.default ];
 
   wayland.windowManager.sway = {
     enable = true;
     systemd.enable = true;
 
-    autostart = [
+    toolwait = [
       {
         command = "${pkgs.firefox}/bin/firefox";
         workspace = 1;
-        waitFor = "firefox";
+        # waitFor = "firefox";
       }
-      {
-        command = "${pkgs.keepassxc}/bin/keepassxc";
-        workspace = 20;
-        waitFor = "org.keepassxc.KeePassXC";
-      }
+      # {
+      #   command = "${pkgs.alacritty}/bin/alacritty";
+      #   workspace = 2;
+      #   waitFor = "Alacritty";
+      # }
+      # {
+      #   command = "${pkgs.alacritty}/bin/alacritty";
+      #   workspace = 3;
+      #   waitFor = "Alacritty";
+      # }
+      # {
+      #   command = "${pkgs.keepassxc}/bin/keepassxc";
+      #   workspace = 20;
+      #   waitFor = "org.keepassxc.KeePassXC";
+      # }
     ];
 
     extraConfigEarly = ''
@@ -32,9 +47,7 @@ in
       bars = [ ];
       terminal = "${pkgs.alacritty}/bin/alacritty";
       workspaceAutoBackAndForth = true;
-      window = {
-        titlebar = false;
-      };
+      window.titlebar = false;
 
       input = {
         "*" = {

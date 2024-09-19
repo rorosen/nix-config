@@ -1,29 +1,29 @@
 { pkgs, ... }:
 {
   imports = [
-    ./vscode
-    ./zsh
-    ./sway
-    ./waybar
-    ./wofi
-    ./neovim
-    ./packages.nix
     ./alacritty.nix
-    ./gtk.nix
-    ./qt.nix
-    ./gnome-keyring.nix
-    ./git.nix
-    ./ssh-agent.nix
-    ./nemo.nix
+    ./atuin.nix
+    ./bash.nix
     ./blueman.nix
     ./chromium.nix
     ./direnv.nix
-    ./atuin.nix
-    ./swaylock.nix
-    ./wlogout.nix
-    ./swayidle.nix
     ./dunst.nix
-    ./bash.nix
+    ./git.nix
+    ./gnome-keyring.nix
+    ./gtk.nix
+    ./nemo.nix
+    ./neovim
+    ./packages.nix
+    ./qt.nix
+    ./ssh-agent.nix
+    ./sway.nix
+    ./swayidle.nix
+    ./swaylock.nix
+    ./vscode
+    ./waybar
+    ./wlogout.nix
+    ./wofi
+    ./zsh
   ];
 
   programs.home-manager.enable = true;
