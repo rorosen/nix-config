@@ -20,9 +20,7 @@
     tigervnc
     grim
     slurp
-
     wl-clipboard
-    shfmt
     cargo
     clippy
     rustc
@@ -32,15 +30,13 @@
     go
     gopls
     go-outline
-    nil
     alejandra
-
+    ripgrep
     grpcurl
     nixos-anywhere
     deploy-rs
     niv
     git
-    openssh
     arp-scan
     qemu
     kubectl
@@ -58,7 +54,6 @@
     brightnessctl
     jq
     file
-    zsh
     alacritty
     any-nix-shell
   ];
