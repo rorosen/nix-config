@@ -12,7 +12,6 @@
       enable = true;
       settings = {
         notify_on_error = true;
-        format_on_save.lspFallback = true;
         formatters_by_ft = {
           nix = [ "nixfmt" ];
           markdown = [ "prettierd" ];
