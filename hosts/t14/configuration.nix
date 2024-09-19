@@ -51,7 +51,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.rob = import ../../home/rob/t14;
+    users.rob = import ../../rob/t14;
     extraSpecialArgs = {
       inherit inputs;
     };

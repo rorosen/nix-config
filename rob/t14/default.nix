@@ -18,7 +18,7 @@ let
 in
 {
   imports = [
-    ../../common
+    ../../home
     ./kanshi.nix
   ];
 

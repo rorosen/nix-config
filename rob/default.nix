@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  imports = [ ../common ];
+  imports = [ ../home ];
 
   home = {
     username = "rob";

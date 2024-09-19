@@ -1,12 +1,16 @@
 { inputs, pkgs, ... }:
 {
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11";
-  programs.xwayland.enable = true;
+  boot = {
+    tmp.cleanOnBoot = true;
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
+
+  environment.pathsToLink = [ "/share/zsh" ];
   nixpkgs.config.allowUnfree = true;
-  time.timeZone = "Europe/Berlin";
-  console.keyMap = "de-latin1";
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     package = pkgs.lix;
@@ -22,13 +26,6 @@
       keep-outputs = true
       keep-derivations = true
     '';
-
-    # gc = {
-    #   automatic = true;
-    #   dates = "weekly";
-    #   persistent = true;
-    #   options = "--delete-older-than 30d";
-    # };
   };
 
   xdg.portal = {
@@ -40,16 +37,6 @@
     extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
   };
 
-  boot = {
-    tmp.cleanOnBoot = true;
-    binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-  };
-
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
@@ -59,35 +46,27 @@
     rtkit.enable = true;
     polkit.enable = true;
     pam.services = {
+      # Needed by swaylock (home-manager)
       swaylock = { };
       login.enableGnomeKeyring = true;
     };
   };
 
-  environment = {
-    pathsToLink = [ "/share/zsh" ];
-
-    systemPackages = with pkgs; [
-      networkmanager
-      vim
-    ];
-  };
-
   services = {
-    fwupd.enable = true;
-    printing.enable = true;
-    udisks2.enable = true;
     blueman.enable = true;
-
+    fwupd.enable = true;
+    udisks2.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
       jack.enable = true;
       pulse.enable = true;
     };
+    printing.enable = true;
   };
 
   programs = {
+    xwayland.enable = true;
     wireshark.enable = true;
     dconf.enable = true;
   };
@@ -119,6 +98,8 @@
     ];
   };
 
+  console.keyMap = "de-latin1";
+  time.timeZone = "Europe/Berlin";
   i18n = {
     defaultLocale = "en_US.utf8";
     extraLocaleSettings = {
@@ -133,4 +114,8 @@
       LC_TIME = "de_DE.utf8";
     };
   };
+
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "22.11";
 }
