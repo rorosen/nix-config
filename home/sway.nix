@@ -18,23 +18,23 @@ in
       {
         command = "${pkgs.firefox}/bin/firefox";
         workspace = 1;
-        # waitFor = "firefox";
+        waitFor = "firefox";
       }
-      # {
-      #   command = "${pkgs.alacritty}/bin/alacritty";
-      #   workspace = 2;
-      #   waitFor = "Alacritty";
-      # }
-      # {
-      #   command = "${pkgs.alacritty}/bin/alacritty";
-      #   workspace = 3;
-      #   waitFor = "Alacritty";
-      # }
-      # {
-      #   command = "${pkgs.keepassxc}/bin/keepassxc";
-      #   workspace = 20;
-      #   waitFor = "org.keepassxc.KeePassXC";
-      # }
+      {
+        command = "${pkgs.alacritty}/bin/alacritty";
+        workspace = 2;
+        waitFor = "Alacritty";
+      }
+      {
+        command = "${pkgs.alacritty}/bin/alacritty";
+        workspace = 3;
+        waitFor = "Alacritty";
+      }
+      {
+        command = "${pkgs.keepassxc}/bin/keepassxc";
+        workspace = 20;
+        waitFor = "org.keepassxc.KeePassXC";
+      }
     ];
 
     extraConfigEarly = ''
