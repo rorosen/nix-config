@@ -31,6 +31,7 @@
           yamlls.enable = true; # YAML
           jsonls.enable = true; # JSON
           gopls.enable = true; # Go
+          helm-ls.enable = true; # Helm
         };
       };
 

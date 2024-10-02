@@ -23,6 +23,7 @@
     plugins = {
       noice.enable = true;
       notify.enable = true;
+      helm.enable = true;
       indent-blankline.enable = true;
       nvim-autopairs.enable = true;
       gitsigns = {
