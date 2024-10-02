@@ -26,6 +26,7 @@
       helm.enable = true;
       indent-blankline.enable = true;
       nvim-autopairs.enable = true;
+      web-devicons.enable = true;
       gitsigns = {
         enable = true;
         settings.signs = {
