@@ -5,6 +5,7 @@
     ./conform.nix
     ./fidget.nix
     ./floaterm.nix
+    ./gitblame.nix
     ./lazygit.nix
     ./lsp.nix
     ./lualine.nix
