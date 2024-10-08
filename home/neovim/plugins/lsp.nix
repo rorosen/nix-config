@@ -25,13 +25,13 @@
         servers = {
           clangd.enable = true; # C/C++
           texlab.enable = true; # Tex
-          nil-ls.enable = true; # Nix
+          nil_ls.enable = true; # Nix
           bashls.enable = true; # Bash
           marksman.enable = true; # Markdown
           yamlls.enable = true; # YAML
           jsonls.enable = true; # JSON
           gopls.enable = true; # Go
-          helm-ls.enable = true; # Helm
+          helm_ls.enable = true; # Helm
         };
       };
 
