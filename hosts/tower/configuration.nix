@@ -37,7 +37,7 @@
     extraGroups = [
       "wheel"
       "libvirtd"
-      "podman"
+      "docker"
       "cups"
       "lp"
       "audio"
