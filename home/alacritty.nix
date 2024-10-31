@@ -12,7 +12,7 @@
         };
       };
 
-      shell.program = "${pkgs.zsh}/bin/zsh";
+      terminal.shell.program = "${pkgs.zsh}/bin/zsh";
       font = {
         normal.family = "MesloLGSDZ Nerd Font";
         size = 8.0;
