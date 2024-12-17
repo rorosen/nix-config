@@ -17,6 +17,7 @@
     ./todo.nix
     ./treesitter.nix
     ./trouble.nix
+    ./vimtex.nix
   ];
 
   programs.nixvim = {
