@@ -63,6 +63,13 @@
       pulse.enable = true;
     };
     printing.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns6 = true;
+      publish.addresses = true;
+      publish.enable = true;
+      ipv6 = true;
+    };
   };
 
   programs = {
