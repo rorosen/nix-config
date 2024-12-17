@@ -9,11 +9,18 @@ let
     CONFIG="$HOME/.kube/config"
     set -ex
 
+    could_be_ipv6() {
+      [[ $1 =~ ^([0-9a-fA-F]{0,4}:){0,7}[0-9a-fA-F]{1,4}$ ]]
+    }
+
     install --backup --suffix=".backup" --mode 600 /dev/null "$CONFIG"
 
+    # resolve hostname as kubectl has problems with hostnames sometimes
+    SERVER_IP=$(getent ahosts kadem-server.local | grep "$1" | cut -f 1 -d ' ')
+    could_be_ipv6 "$SERVER_IP" && SERVER_IP="[$SERVER_IP]"
     ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" \
         "root@$1" 'cat /etc/rancher/k3s/k3s.yaml' |
-        sed "s/127.0.0.1/$1/" > "$CONFIG"
+        sed -E -e "s/(127.0.0.1|\[::1\])/$SERVER_IP/" > "$CONFIG"
   '';
 in
 {
