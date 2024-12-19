@@ -96,12 +96,8 @@
       terminus_font
       material-icons
       siji
-      (nerdfonts.override {
-        fonts = [
-          "Meslo"
-          "Iosevka"
-        ];
-      })
+      nerd-fonts.meslo-lg
+      nerd-fonts.iosevka
     ];
   };
 
