@@ -2,7 +2,6 @@
   programs.nixvim = {
     plugins.markdown-preview = {
       enable = true;
-
       settings = {
         page_title = "\$\{name}";
         auto_close = 0;

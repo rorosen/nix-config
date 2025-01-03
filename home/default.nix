@@ -19,7 +19,7 @@
     ./sway.nix
     ./swayidle.nix
     ./swaylock.nix
-    ./vscode
+    # ./vscode
     ./waybar
     ./wlogout.nix
     ./wofi
