@@ -2,8 +2,8 @@
   programs.nixvim.plugins.barbar = {
     enable = true;
     keymaps = {
-      next.key = "<TAB>";
-      previous.key = "<S-TAB>";
+      next.key = "<C-TAB>";
+      previous.key = "<C-S-TAB>";
       goTo1.key = "<A-1>";
       goTo2.key = "<A-2>";
       goTo3.key = "<A-3>";

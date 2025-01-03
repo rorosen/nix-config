@@ -23,14 +23,15 @@
               # back and fourth between the two most recent files
               "<C-c>" = ":b#<CR>";
 
-              # close by Ctrl+x
+              # close with Ctrl+x
               "<C-x>" = ":close<CR>";
 
-              # save by Space+s or Ctrl+s
+              # save with Space+s
               "<leader>s" = ":w<CR>";
-              "<C-s>" = ":w<CR>";
 
-              # navigate to left/right window
+              # navigate to up/down/left/right window
+              "<leader>k" = "<C-w>k";
+              "<leader>j" = "<C-w>j";
               "<leader>h" = "<C-w>h";
               "<leader>l" = "<C-w>l";
 
@@ -59,12 +60,6 @@
               # better indenting
               ">" = ">gv";
               "<" = "<gv";
-              "<TAB>" = ">gv";
-              "<S-TAB>" = "<gv";
-
-              # move selected line / block of text in visual mode
-              "K" = ":m '<-2<CR>gv=gv";
-              "J" = ":m '>+1<CR>gv=gv";
             };
       in
       config.lib.nixvim.keymaps.mkKeymaps { options.silent = true; } (normal ++ visual);
