@@ -1,59 +1,60 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    firefox
-    evince
-    nemo
-    keepassxc
-    gparted
-    pdfsam-basic
-    xfce.ristretto
-    xfce.tumbler
-    libreoffice
-    pavucontrol
-    flameshot
-    seahorse
-    drawio
-    gimp
-    wireshark
-    tigervnc
-    grim
-    slurp
-    wl-clipboard
+    age
+    alacritty
+    alejandra
+    any-nix-shell
+    arp-scan
+    brightnessctl
     cargo
     clippy
+    deploy-rs
+    drawio
+    evince
+    file
+    firefox
+    flameshot
+    gcc
+    gimp
+    git
+    gnumake
+    gnupg
+    go
+    go-outline
+    gopls
+    gparted
+    grim
+    grpcurl
+    jq
+    keepassxc
+    kubectl
+    kubectx
+    kubernetes-helm
+    libreoffice
+    minikube
+    nemo
+    niv
+    nixos-anywhere
+    openssl
+    pavucontrol
+    pdfsam-basic
+    pinentry
+    qemu
+    ripgrep
     rustc
     rustfmt
-    gcc
-    gnumake
-    go
-    gopls
-    go-outline
-    alejandra
-    ripgrep
-    grpcurl
-    nixos-anywhere
-    deploy-rs
-    niv
-    git
-    arp-scan
-    qemu
-    kubectl
-    wireguard-tools
-    kubernetes-helm
-    openssl
-    kubectx
+    seahorse
+    slurp
     sops
-    age
-    minikube
-    udisks
-    pinentry
-    gnupg
     texlive.combined.scheme-medium
-    brightnessctl
-    jq
-    file
-    alacritty
-    any-nix-shell
+    tigervnc
+    udisks
+    virt-manager
+    wireguard-tools
+    wireshark
+    wl-clipboard
+    xfce.ristretto
+    xfce.tumbler
   ];
 }
