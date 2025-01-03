@@ -76,6 +76,7 @@
     xwayland.enable = true;
     wireshark.enable = true;
     dconf.enable = true;
+    virt-manager.enable = true;
   };
 
   virtualisation = {

@@ -5,7 +5,6 @@
     evince
     nemo
     keepassxc
-    virt-manager
     gparted
     pdfsam-basic
     xfce.ristretto
