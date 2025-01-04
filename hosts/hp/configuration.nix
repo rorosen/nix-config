@@ -30,7 +30,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.rob = import ../../rob;
+    users.rob = import ../../rob/hp.nix;
     extraSpecialArgs = {
       inherit inputs;
     };
