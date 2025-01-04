@@ -1,7 +1,19 @@
 { pkgs, ... }:
 {
   programs.nixvim = {
-    plugins.lazygit.enable = true;
+    plugins.lazygit =
+      let
+        configFile = (pkgs.formats.yaml { }).generate "lazygit-config.yml" {
+          quitOnTopLevelReturn = true;
+        };
+      in
+      {
+        enable = true;
+        settings = {
+          use_custom_config_file_path = 1;
+          config_file_path = "${configFile}";
+        };
+      };
     keymaps = [
       {
         mode = "n";
@@ -10,10 +22,5 @@
         options.silent = true;
       }
     ];
-  };
-  home.file.".config/lazygit/config.yml" = {
-    source = (pkgs.formats.yaml { }).generate "lazygit-config.yml" {
-      quitOnTopLevelReturn = true;
-    };
   };
 }
