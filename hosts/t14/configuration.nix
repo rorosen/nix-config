@@ -13,43 +13,43 @@
     };
   };
 
-  nix = {
-    # distributedBuilds = true;
-    # buildMachines = [
-    #   {
-    #     hostName = "aarch64-01";
-    #     protocol = "ssh-ng";
-    #     systems = [ "aarch64-linux" ];
-    #     maxJobs = 40;
-    #     speedFactor = 2;
-    #     supportedFeatures = [
-    #       "nixos-test"
-    #       "benchmark"
-    #       "big-parallel"
-    #       "kvm"
-    #     ];
-    #   }
-    #   {
-    #     hostName = "x86-64-01";
-    #     protocol = "ssh-ng";
-    #     systems = [ "x86_64-linux" ];
-    #     maxJobs = 40;
-    #     speedFactor = 2;
-    #     supportedFeatures = [
-    #       "nixos-test"
-    #       "benchmark"
-    #       "big-parallel"
-    #       "kvm"
-    #     ];
-    #   }
-    # ];
+  # nix = {
+  # distributedBuilds = true;
+  # buildMachines = [
+  #   {
+  #     hostName = "aarch64-01";
+  #     protocol = "ssh-ng";
+  #     systems = [ "aarch64-linux" ];
+  #     maxJobs = 40;
+  #     speedFactor = 2;
+  #     supportedFeatures = [
+  #       "nixos-test"
+  #       "benchmark"
+  #       "big-parallel"
+  #       "kvm"
+  #     ];
+  #   }
+  #   {
+  #     hostName = "x86-64-01";
+  #     protocol = "ssh-ng";
+  #     systems = [ "x86_64-linux" ];
+  #     maxJobs = 40;
+  #     speedFactor = 2;
+  #     supportedFeatures = [
+  #       "nixos-test"
+  #       "benchmark"
+  #       "big-parallel"
+  #       "kvm"
+  #     ];
+  #   }
+  # ];
 
-    # settings = {
-    #   substituters = [ "http://seven-cache01.syseleven.seven.secunet.com/" ];
-    #   trusted-public-keys = [ "seven-1:M1znlh60ChXxeuOXaxFVLTrmeJS+UpYVfmI5fmX2Itc=" ];
-    #   builders-use-substitutes = true;
-    # };
-  };
+  # settings = {
+  #   substituters = [ "http://seven-cache01.syseleven.seven.secunet.com/" ];
+  #   trusted-public-keys = [ "seven-1:M1znlh60ChXxeuOXaxFVLTrmeJS+UpYVfmI5fmX2Itc=" ];
+  #   builders-use-substitutes = true;
+  # };
+  # };
 
   # programs.ssh.extraConfig = ''
   #   Host aarch64-01
@@ -86,21 +86,6 @@
       # "195.192.158.108" = ["git.seven.secucloud.secunet.com"];
     };
     wg-quick.interfaces.wg0.configFile = "/home/rob/.wireguard/wg0.conf";
-  };
-
-  users.users.rob = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "libvirtd"
-      "docker"
-      "cups"
-      "lp"
-      "audio"
-      "wireshark"
-      "video"
-      "input"
-    ];
   };
 
   home-manager = {

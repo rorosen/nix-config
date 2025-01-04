@@ -22,35 +22,10 @@
     };
   };
 
-  users.users.rob = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "libvirtd"
-      "docker"
-      "cups"
-      "lp"
-      "audio"
-      "wireshark"
-      "video"
-      "input"
-      "scanner"
-    ];
-  };
-
-  nix = {
-    buildMachines = [
-      {
-        hostName = "tower";
-        system = "x86_64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 1;
-      }
-    ];
-    extraOptions = ''
-      builders-use-substitutes = true
-    '';
-  };
+  users.users.rob.extraGroups = [
+    "dialout"
+    "scanner"
+  ];
 
   home-manager = {
     useGlobalPkgs = true;

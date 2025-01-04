@@ -32,21 +32,7 @@
     };
   };
 
-  users.users.rob = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "libvirtd"
-      "docker"
-      "cups"
-      "lp"
-      "audio"
-      "wireshark"
-      "video"
-      "input"
-      "scanner"
-    ];
-  };
+  users.users.rob.extraGroups = [ "scanner" ];
 
   home-manager = {
     useGlobalPkgs = true;
