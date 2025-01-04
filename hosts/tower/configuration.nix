@@ -6,9 +6,14 @@
   ];
 
   nix.settings.trusted-users = [ "nixremote" ];
-  services.openssh.enable = true;
   programs.steam.enable = true;
   boot.initrd.kernelModules = [ "amdgpu" ];
+
+  services = {
+    getty.autologinUser = "rob";
+    openssh.enable = true;
+  };
+
   hardware = {
     logitech.wireless = {
       enable = true;
