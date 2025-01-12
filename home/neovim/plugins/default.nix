@@ -36,7 +36,6 @@
           change.text = "~";
         };
       };
-
       trim = {
         enable = true;
         settings = {
