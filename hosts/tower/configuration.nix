@@ -5,10 +5,9 @@
     ../common.nix
   ];
 
+  boot.initrd.kernelModules = [ "amdgpu" ];
   nix.settings.trusted-users = [ "nixremote" ];
   programs.steam.enable = true;
-  boot.initrd.kernelModules = [ "amdgpu" ];
-
   services = {
     getty.autologinUser = "rob";
     openssh.enable = true;
@@ -37,7 +36,10 @@
     };
   };
 
-  users.users.rob.extraGroups = [ "scanner" ];
+  users.users.rob = {
+    extraGroups = [ "scanner" ];
+    openssh.authorizedKeys.keyFiles = [ ../../rob/id_ed25519_hp.pub ];
+  };
 
   home-manager = {
     useGlobalPkgs = true;
