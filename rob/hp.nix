@@ -20,9 +20,18 @@
     ];
   };
 
-  programs.waybar = {
-    hwmon-path-abs = [ "/sys/devices/pci0000:00/0000:00:18.3/hwmon" ];
-    input-filename = "temp1_input";
+  programs = {
+    ssh = {
+      enable = true;
+      matchBlocks.tower.extraOptions = {
+        RequestTTY = "yes";
+        RemoteCommand = "zsh";
+      };
+    };
+    waybar = {
+      hwmon-path-abs = [ "/sys/devices/pci0000:00/0000:00:18.3/hwmon" ];
+      input-filename = "temp1_input";
+    };
   };
   wayland.windowManager.sway.toolwait = [
     {
