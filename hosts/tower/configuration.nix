@@ -19,7 +19,7 @@
       extraBackends = [ pkgs.sane-airscan ];
     };
   };
-
+  hardware.bluetooth.input.General.ClassicBondedOnly = false;
   networking = {
     hostName = "tower";
     hosts."192.168.122.85" = [
