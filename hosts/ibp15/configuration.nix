@@ -5,14 +5,19 @@
     ../common.nix
   ];
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd = {
+    kernelModules = [ "amdgpu" ];
+    systemd.enable = true;
+    luks.devices.enc.crypttabExtraOpts = [ "fido2-device=auto" ];
+  };
+
   hardware.sane = {
     enable = true;
     extraBackends = [ pkgs.sane-airscan ];
   };
 
   networking = {
-    hostName = "hp";
+    hostName = "ibp15";
     hosts = {
       "192.168.50.155" = [
         "nextcloud.dev.internal"
@@ -30,7 +35,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.rob = import ../../rob/hp.nix;
+    users.rob = import ../../rob/ibp15.nix;
     extraSpecialArgs = {
       inherit inputs;
     };

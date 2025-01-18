@@ -48,6 +48,7 @@
         hp = mkConfig ./hosts/hp/configuration.nix;
         t14 = mkConfig ./hosts/t14/configuration.nix;
         tower = mkConfig ./hosts/tower/configuration.nix;
+        ibp15 = mkConfig ./hosts/ibp15/configuration.nix;
       };
     };
 }
