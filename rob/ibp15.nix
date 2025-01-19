@@ -42,6 +42,7 @@
       waitFor = "thunderbird";
     }
   ];
+  wayland.windowManager.sway.config.output."eDP-1".scale = "1.5";
   services.nextcloud-client = {
     enable = true;
     startInBackground = true;
