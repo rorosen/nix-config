@@ -21,10 +21,19 @@
         treefmt-nix.follows = "";
       };
     };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    inputs@{ nixpkgs, sway-toolwait, ... }:
+    inputs@{
+      nixpkgs,
+      sway-toolwait,
+      firefox-addons,
+      ...
+    }:
     let
       mkConfig =
         module:
@@ -33,7 +42,10 @@
           modules = [
             (_: {
               imports = [ inputs.home-manager.nixosModules.home-manager ];
-              nixpkgs.overlays = [ sway-toolwait.overlays.default ];
+              nixpkgs.overlays = [
+                sway-toolwait.overlays.default
+                (final: _: { firefox-addons = firefox-addons.packages.${final.system}; })
+              ];
             })
             module
           ];
@@ -43,7 +55,6 @@
         };
     in
     {
-      homeManagerModules = import ./modules/home-manager;
       nixosConfigurations = {
         hp = mkConfig ./hosts/hp/configuration.nix;
         t14 = mkConfig ./hosts/t14/configuration.nix;

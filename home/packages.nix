@@ -13,7 +13,6 @@
     drawio
     evince
     file
-    firefox
     flameshot
     gcc
     gimp
