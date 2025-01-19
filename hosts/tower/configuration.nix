@@ -31,7 +31,10 @@
 
   users.users.rob = {
     extraGroups = [ "scanner" ];
-    openssh.authorizedKeys.keyFiles = [ ../../rob/id_ed25519_hp.pub ];
+    openssh.authorizedKeys.keyFiles = [
+      ../../rob/id_ed25519_hp.pub
+      ../../rob/id_ed25519_ibp15.pub
+    ];
   };
 
   home-manager = {
