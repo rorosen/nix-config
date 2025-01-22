@@ -19,10 +19,11 @@
   networking = {
     hostName = "ibp15";
     hosts = {
-      "192.168.50.155" = [
+      "192.168.122.109" = [
         "nextcloud.dev.internal"
         "auth.dev.internal"
         "dashboard.dev.internal"
+        "mail.dev.internal"
       ];
     };
   };
