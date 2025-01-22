@@ -9,7 +9,7 @@
       thunderbird
       signal-desktop
       prusa-slicer
-      freecad
+      freecad-wayland
       android-tools
       simple-scan
       joplin-desktop

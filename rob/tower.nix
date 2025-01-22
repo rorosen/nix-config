@@ -7,7 +7,7 @@
     packages = with pkgs; [
       thunderbird
       signal-desktop
-      freecad
+      freecad-wayland
       android-tools
       joplin-desktop
       kicad
