@@ -11,9 +11,12 @@
     luks.devices.enc.crypttabExtraOpts = [ "fido2-device=auto" ];
   };
 
-  hardware.sane = {
-    enable = true;
-    extraBackends = [ pkgs.sane-airscan ];
+  hardware = {
+    tuxedo-rs.enable = true;
+    sane = {
+      enable = true;
+      extraBackends = [ pkgs.sane-airscan ];
+    };
   };
 
   networking = {
@@ -36,7 +39,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.rob = import ../../rob/ibp15.nix;
+    users.rob = import ../../rob/ibp15;
     extraSpecialArgs = {
       inherit inputs;
     };
