@@ -164,6 +164,7 @@
           };
         };
         network = {
+          family = "ipv6";
           interval = 1;
           min-length = 35;
           format-wifi = "  {essid}     {bandwidthDownBytes}    {bandwidthUpBytes}";
