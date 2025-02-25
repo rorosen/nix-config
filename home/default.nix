@@ -20,7 +20,6 @@
     ./sway.nix
     ./swayidle.nix
     ./swaylock.nix
-    # ./vscode
     ./waybar
     ./wlogout.nix
     ./wofi
@@ -28,11 +27,6 @@
   ];
 
   programs.home-manager.enable = true;
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = _: true;
-  };
-
   home = {
     keyboard.layout = "de";
     sessionVariables = {
