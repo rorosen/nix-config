@@ -35,7 +35,7 @@
       };
       bookmarks = [
         {
-          name = "My sites";
+          name = "General sites";
           toolbar = true;
           bookmarks = [
             {
@@ -49,10 +49,6 @@
             {
               name = "Nixpkgs Manual";
               url = "https://nixos.org/manual/nixpkgs/unstable/";
-            }
-            {
-              name = "Nextcloud";
-              url = "https://nextcloud.rorose.de";
             }
           ];
         }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   get-kubeconfig = pkgs.writeShellScriptBin "get-kubeconfig" ''
     if [[ $# -ne 1 ]]; then
@@ -35,9 +35,35 @@ in
     packages = [ get-kubeconfig ];
   };
 
-  programs.waybar = {
-    hwmon-path-abs = [ "/sys/devices/platform/thinkpad_hwmon/hwmon" ];
-    input-filename = "temp1_input";
+  programs = {
+    firefox.profiles.rob.bookmarks = lib.mkAfter [
+      {
+        name = "t14 sites";
+        toolbar = true;
+        bookmarks = [
+          {
+            name = "Nixpkgs";
+            url = "https://github.com/NixOS/nixpkgs";
+          }
+          {
+            name = "k3s";
+            url = "https://github.com/k3s-io/k3s";
+          }
+          {
+            name = "Kadem";
+            url = "https://git.seven.secucloud.secunet.com/seven/kadem/kadem";
+          }
+          {
+            name = "Metakube";
+            url = "https://metakube.syseleven.de";
+          }
+        ];
+      }
+    ];
+    waybar = {
+      hwmon-path-abs = [ "/sys/devices/platform/thinkpad_hwmon/hwmon" ];
+      input-filename = "temp1_input";
+    };
   };
 
   wayland.windowManager.sway.toolwait = [
