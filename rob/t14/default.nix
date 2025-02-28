@@ -42,10 +42,6 @@ in
         toolbar = true;
         bookmarks = [
           {
-            name = "Nixpkgs";
-            url = "https://github.com/NixOS/nixpkgs";
-          }
-          {
             name = "k3s";
             url = "https://github.com/k3s-io/k3s";
           }
