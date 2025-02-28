@@ -14,6 +14,7 @@
         "browser.aboutConfig.showWarning" = false; # No warning when going to config
         "browser.warnOnQuitShortcut" = false;
         "browser.tabs.loadInBackground" = true; # Load tabs automatically
+        "browser.toolbars.bookmarks.visibility" = "always";
         "media.ffmpeg.vaapi.enabled" = true; # Enable hardware acceleration
         "layers.acceleration.force-enabled" = true;
         "gfx.webrender.all" = true;
@@ -49,6 +50,10 @@
             {
               name = "Nixpkgs Manual";
               url = "https://nixos.org/manual/nixpkgs/unstable/";
+            }
+            {
+              name = "Nixpkgs";
+              url = "https://github.com/NixOS/nixpkgs";
             }
           ];
         }
