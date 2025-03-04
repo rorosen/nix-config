@@ -14,11 +14,7 @@
       url = "github:nix-community/nixvim";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-        nix-darwin.follows = "";
         nuschtosSearch.follows = "";
-        devshell.follows = "";
-        treefmt-nix.follows = "";
       };
     };
     firefox-addons = {
