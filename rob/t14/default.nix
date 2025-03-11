@@ -47,7 +47,7 @@ in
           }
           {
             name = "Kadem";
-            url = "https://git.seven.secucloud.secunet.com/seven/kadem/kadem";
+            url = "https://git.seven.secucloud.secunet.com/seven/kadem";
           }
           {
             name = "Metakube";
