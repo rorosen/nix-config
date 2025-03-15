@@ -13,6 +13,7 @@
           sh = [ "shfmt" ];
           toml = [ "taplo" ];
           yaml = [ "yamlfmt" ];
+          python = [ "black" ];
         };
         formatters = {
           deno_fmt = {
@@ -40,6 +41,7 @@
               end
             '';
           };
+          black.command = lib.getExe pkgs.black;
           jq.command = lib.getExe pkgs.jq;
           nixfmt.command = lib.getExe pkgs.nixfmt-rfc-style;
           shfmt.command = lib.getExe pkgs.shfmt;
