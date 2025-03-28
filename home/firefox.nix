@@ -9,8 +9,8 @@
         "browser.urlbar.shortcuts.history" = false;
         "browser.urlbar.shortcuts.tabs" = false;
         "browser.tabs.tabMinWidth" = 75; # Make tabs able to be smaller to prevent scrolling
-        "browser.urlbar.placeholderName" = "DuckDuckGo";
-        "browser.urlbar.placeholderName.private" = "DuckDuckGo";
+        "browser.urlbar.placeholderName" = "ddg";
+        "browser.urlbar.placeholderName.private" = "ddg";
         "browser.aboutConfig.showWarning" = false; # No warning when going to config
         "browser.warnOnQuitShortcut" = false;
         "browser.tabs.loadInBackground" = true; # Load tabs automatically
@@ -30,34 +30,37 @@
       isDefault = true;
       search = {
         force = true;
-        default = "DuckDuckGo";
-        privateDefault = "DuckDuckGo";
-        order = [ "DuckDuckGo" ];
+        default = "ddg";
+        privateDefault = "ddg";
+        order = [ "ddg" ];
       };
-      bookmarks = [
-        {
-          name = "General sites";
-          toolbar = true;
-          bookmarks = [
-            {
-              name = "GitHub";
-              url = "https://github.com/";
-            }
-            {
-              name = "Nix search";
-              url = "https://search.nixos.org/packages";
-            }
-            {
-              name = "Nixpkgs Manual";
-              url = "https://nixos.org/manual/nixpkgs/unstable/";
-            }
-            {
-              name = "Nixpkgs";
-              url = "https://github.com/NixOS/nixpkgs";
-            }
-          ];
-        }
-      ];
+      bookmarks = {
+        force = true;
+        settings = [
+          {
+            name = "General sites";
+            toolbar = true;
+            bookmarks = [
+              {
+                name = "GitHub";
+                url = "https://github.com/";
+              }
+              {
+                name = "Nix search";
+                url = "https://search.nixos.org/packages";
+              }
+              {
+                name = "Nixpkgs Manual";
+                url = "https://nixos.org/manual/nixpkgs/unstable/";
+              }
+              {
+                name = "Nixpkgs";
+                url = "https://github.com/NixOS/nixpkgs";
+              }
+            ];
+          }
+        ];
+      };
       extensions.packages = with pkgs.firefox-addons; [
         ublock-origin
         keepassxc-browser

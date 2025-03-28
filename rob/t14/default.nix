@@ -36,26 +36,29 @@ in
   };
 
   programs = {
-    firefox.profiles.rob.bookmarks = lib.mkAfter [
-      {
-        name = "t14 sites";
-        toolbar = true;
-        bookmarks = [
-          {
-            name = "k3s";
-            url = "https://github.com/k3s-io/k3s";
-          }
-          {
-            name = "Kadem";
-            url = "https://git.seven.secucloud.secunet.com/seven/kadem";
-          }
-          {
-            name = "Metakube";
-            url = "https://metakube.syseleven.de";
-          }
-        ];
-      }
-    ];
+    firefox.profiles.rob.bookmarks = {
+      force = true;
+      settings = [
+        {
+          name = "t14 sites";
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "k3s";
+              url = "https://github.com/k3s-io/k3s";
+            }
+            {
+              name = "Kadem";
+              url = "https://git.seven.secucloud.secunet.com/seven/kadem";
+            }
+            {
+              name = "Metakube";
+              url = "https://metakube.syseleven.de";
+            }
+          ];
+        }
+      ];
+    };
     waybar = {
       hwmon-path-abs = [ "/sys/devices/platform/thinkpad_hwmon/hwmon" ];
       input-filename = "temp1_input";

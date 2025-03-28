@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   imports = [ ../../home ];
 
@@ -34,22 +34,25 @@
       hwmon-path-abs = [ "/sys/devices/pci0000:00/0000:00:18.3/hwmon" ];
       input-filename = "temp1_input";
     };
-    firefox.profiles.rob.bookmarks = lib.mkAfter [
-      {
-        name = "ibp15 sites";
-        toolbar = true;
-        bookmarks = [
-          {
-            name = "Nextcloud";
-            url = "https://nextcloud.rorose.de";
-          }
-          {
-            name = "Grafana";
-            url = "https://dashboard.rorose.de";
-          }
-        ];
-      }
-    ];
+    firefox.profiles.rob.bookmarks = {
+      force = true;
+      settings = [
+        {
+          name = "ibp15 sites";
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "Nextcloud";
+              url = "https://nextcloud.rorose.de";
+            }
+            {
+              name = "Grafana";
+              url = "https://dashboard.rorose.de";
+            }
+          ];
+        }
+      ];
+    };
   };
   wayland.windowManager.sway.toolwait = [
     {
