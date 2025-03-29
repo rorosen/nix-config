@@ -2,29 +2,6 @@
 {
   programs.firefox = {
     enable = true;
-    policies = {
-      Preferences = {
-        "browser.urlbar.suggest.searches" = true; # Need this for basic search suggestions
-        "browser.urlbar.shortcuts.bookmarks" = false;
-        "browser.urlbar.shortcuts.history" = false;
-        "browser.urlbar.shortcuts.tabs" = false;
-        "browser.tabs.tabMinWidth" = 75; # Make tabs able to be smaller to prevent scrolling
-        "browser.urlbar.placeholderName" = "ddg";
-        "browser.urlbar.placeholderName.private" = "ddg";
-        "browser.aboutConfig.showWarning" = false; # No warning when going to config
-        "browser.warnOnQuitShortcut" = false;
-        "browser.tabs.loadInBackground" = true; # Load tabs automatically
-        "browser.toolbars.bookmarks.visibility" = "always";
-        "media.ffmpeg.vaapi.enabled" = true; # Enable hardware acceleration
-        "layers.acceleration.force-enabled" = true;
-        "gfx.webrender.all" = true;
-        "browser.in-content.dark-mode" = true; # Use dark mode
-        "ui.systemUsesDarkTheme" = true;
-        "extensions.autoDisableScopes" = 0; # Automatically enable extensions
-        "extensions.update.enabled" = false;
-        "widget.use-xdg-desktop-portal.file-picker" = 1; # Use new gtk file picker instead of legacy one
-      };
-    };
     profiles.rob = {
       id = 0;
       isDefault = true;
@@ -131,7 +108,6 @@
         "toolkit.telemetry.unified" = false;
         "toolkit.telemetry.unifiedIsOptIn" = false;
         "toolkit.telemetry.updatePing.enabled" = false;
-
         # Disable fx accounts
         "identity.fxaccounts.enabled" = false;
         # Disable "save password" prompt
@@ -139,6 +115,33 @@
         # Harden
         "privacy.trackingprotection.enabled" = true;
         "dom.security.https_only_mode" = true;
+        # Need this for basic search suggestions
+        "browser.urlbar.suggest.searches" = true;
+        "browser.urlbar.shortcuts.bookmarks" = false;
+        "browser.urlbar.shortcuts.history" = false;
+        "browser.urlbar.shortcuts.tabs" = false;
+        # Make tabs able to be smaller to prevent scrolling
+        "browser.tabs.tabMinWidth" = 75;
+        "browser.urlbar.placeholderName" = "ddg";
+        "browser.urlbar.placeholderName.private" = "ddg";
+        # No warning when going to config
+        "browser.aboutConfig.showWarning" = false;
+        "browser.warnOnQuitShortcut" = false;
+        # Load tabs automatically
+        "browser.tabs.loadInBackground" = true;
+        "browser.toolbars.bookmarks.visibility" = "always";
+        # Enable hardware acceleration
+        "media.ffmpeg.vaapi.enabled" = true;
+        "layers.acceleration.force-enabled" = true;
+        "gfx.webrender.all" = true;
+        # Use dark mode
+        "browser.in-content.dark-mode" = true;
+        "ui.systemUsesDarkTheme" = true;
+        # Automatically enable extensions
+        "extensions.autoDisableScopes" = 0;
+        "extensions.update.enabled" = false;
+        # Use new gtk file picker instead of legacy one
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
       };
     };
   };
