@@ -83,6 +83,11 @@
           "T9nJot5PurhJSy8n038xGA=="
         ] (_: 1);
 
+        # Disable automatic translation
+        "browser.translations.enable" = false;
+        "browser.translations.automaticallyPopup" = false;
+        "browser.translations.panelShown" = false;
+
         # Disable some telemetry
         "app.shield.optoutstudies.enabled" = false;
         "browser.discovery.enabled" = false;
