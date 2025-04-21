@@ -6,7 +6,7 @@
     homeDirectory = "/home/rob";
     packages = with pkgs; [
       thunderbird
-      signal-desktop
+      signal-desktop-bin
       freecad-wayland
       android-tools
       joplin-desktop
