@@ -6,7 +6,7 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    initExtra = ''
+    initContent = ''
       bindkey "\e[5~" beginning-of-history
       bindkey "\e[6~" end-of-history
       bindkey "\e[3~" delete-char
