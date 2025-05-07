@@ -6,6 +6,7 @@
     alejandra
     any-nix-shell
     arp-scan
+    bat
     brightnessctl
     cargo
     clippy
