@@ -5,7 +5,10 @@
     ../common.nix
   ];
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_14;
+    initrd.kernelModules = [ "amdgpu" ];
+  };
   nix.settings.trusted-users = [ "nixremote" ];
   programs.steam.enable = true;
   services.openssh.enable = true;
