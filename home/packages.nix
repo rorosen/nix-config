@@ -28,11 +28,11 @@
     grpcurl
     jq
     keepassxc
+    kind
     kubectl
     kubectx
     kubernetes-helm
     libreoffice
-    minikube
     nemo
     niv
     nixos-anywhere

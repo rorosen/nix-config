@@ -81,7 +81,8 @@
 
   virtualisation = {
     libvirtd.enable = true;
-    docker.enable = true;
+    containers.enable = true;
+    podman.enable = true;
   };
 
   hardware = {
